@@ -7,7 +7,7 @@ class Executive extends BackendController {
     public function index() {
         $data['page_title'] = 'View Customer';
         $data['breadcrumb'] = 'View Customer';
-        $data['main_content'] = 'admin/view_customer';
+        $data['main_content'] = 'admin/executive/view_customer';
         $this->load->view('admin/layouts/home',$data);
       
     }
