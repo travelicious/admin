@@ -9,7 +9,8 @@ class Executive extends BackendController {
     }
 
     public function index() {
-        $data['customer_list']=$this->Executive_model->fetch_customer();
+        $uid = $_SESSION['logged_in']['id'];
+        $data['customer_list']=$this->Executive_model->fetch_customer($uid);
         $data['page_title'] = 'View Customer';
         $data['breadcrumb'] = 'View Customer';
         $data['main_content'] = 'admin/executive/view_customer';
