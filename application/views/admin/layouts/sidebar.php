@@ -54,7 +54,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> View Task</a></li>
+                        <li><a href="<?php echo base_url("admin/executive");?>"><i class="fa fa-circle-o"></i> View Task</a></li>
                        
                     </ul>
                 </li>
