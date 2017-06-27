@@ -15,8 +15,9 @@
                     <i class="fa fa-times"></i></button>
             </div>
         </div>
-        <div class="box-body">
 
+        <div class="box-body">
+      
             <?php
             if (!empty($customer_list)) {
                 ?>
@@ -68,12 +69,20 @@
             }
             ?>
         </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-            
-        <!-- /.box-footer-->
-    </div>
-    <!-- /.box -->
+        <!-- end /.box-body -->
 
-</section>
-<!-- /.content -->
+
+
+        <div class="box-footer">
+          Footer
+        </div>
+         <!-- /.box-body -->
+        <div class="box-footer">
+          Footer
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
