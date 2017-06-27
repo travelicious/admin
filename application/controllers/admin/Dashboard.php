@@ -9,8 +9,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends BackendController {
+    function __construct() {
+        parent::__construct();
+         
+    }
 
- 
+    
     public function index() {
         if(!isset($this->session->userdata['logged_in'])){
             $this->session->set_flashdata('no_user', 'Please Login');
