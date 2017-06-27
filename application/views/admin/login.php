@@ -20,6 +20,9 @@
                 <?php if ($this->session->flashdata('msg')) { ?>
                     <div class="alert alert-danger"> <?= $this->session->flashdata('msg') ?> </div>
                 <?php } ?>
+                 <?php if ($this->session->flashdata('no_user')) { ?>
+                    <div class="alert alert-danger"> <?= $this->session->flashdata('no_user') ?> </div>
+                <?php } ?>
 
 
 

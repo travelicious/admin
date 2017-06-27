@@ -24,6 +24,7 @@ class Login extends BackendController {
                     'name'=>$result->name,
                     'uid'=>$result->user_type,
                     'email'=>$result->email,
+                    'id'=>$result->id,
                 );
                 $this->session->set_userdata('logged_in', $sess);
                 redirect('admin/dashboard');
