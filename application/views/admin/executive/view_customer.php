@@ -39,7 +39,7 @@
                             ?>
                             <tr>
                                 <td class="mailbox-star"><?php echo ++$i;?></td>
-                                <td class="mailbox-subject"><b><?php echo $value->name; ?></b></td>
+                                <td class="mailbox-subject"><a href="#"><b><?php echo $value->name; ?></b></a></td>
                                 <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->address; ?></b></td>
@@ -70,8 +70,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            Footer
-        </div>
+            
         <!-- /.box-footer-->
     </div>
     <!-- /.box -->
