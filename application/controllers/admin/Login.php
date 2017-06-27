@@ -28,7 +28,7 @@ class Login extends BackendController {
                 $this->session->set_userdata('logged_in', $sess);
                 redirect('admin/dashboard');
             }else{
-                 $this->session->set_flashdata('msg', 'Some Error Please Try Again...');
+                 $this->session->set_flashdata('msg', 'Your Username/Password is wrong. Please try again.');
                  redirect('admin/welcome');
             }
        }
