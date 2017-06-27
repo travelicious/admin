@@ -47,7 +47,7 @@
             <?php if ($_SESSION['logged_in']['uid'] == 'exe') { ?>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-laptop"></i>
+                        <i class="fa fa-tasks"></i>
                         <span>Task</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
