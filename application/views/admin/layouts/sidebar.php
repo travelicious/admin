@@ -91,7 +91,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Add Customer</a></li>
+                        <li><a href="<?php echo base_url('admin/superAdmin/createTask') ?>"><i class="fa fa-circle-o"></i> Add Customer</a></li>
                        
                     </ul>
                 </li>
