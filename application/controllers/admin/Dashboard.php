@@ -26,6 +26,10 @@ class Dashboard extends BackendController {
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
+        if(!isset($this->session->userdata['logged_in'])){
+            $this->session->set_flashdata('no_user', 'Please Login');
+                 redirect('admin/welcome');
+        }
 
 
         $data['page_title'] = 'Dashboard';
