@@ -220,7 +220,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs"><?php echo $user_name; ?></span>
+                        <span class="hidden-xs"><?php echo $_SESSION['logged_in']['name'] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -228,8 +228,8 @@
                             <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
-                                <?php echo $user_name; ?>
-                                <small>Member since <?php echo $user_reg_date; ?></small>
+                                <?php echo $_SESSION['logged_in']['name'] ?>
+                                <!--<small>Member since <?php // echo $user_reg_date; ?></small>-->
                             </p>
                         </li>
                         <!-- Menu Body -->
