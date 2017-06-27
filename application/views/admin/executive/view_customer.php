@@ -15,16 +15,27 @@
               <i class="fa fa-times"></i></button>
           </div>
         </div>
+
         <div class="box-body">
-          Start creating  your amazing application!
+
+
+      
+
+
         </div>
-        <!-- /.box-body -->
+        <!-- end /.box-body -->
+
+
+
         <div class="box-footer">
           Footer
         </div>
-        <!-- /.box-footer-->
+        <!-- end/.box-footer-->
+
+
+
       </div>
-      <!-- /.box -->
+      <!-- end/.box -->
 
     </section>
     <!-- /.content -->
