@@ -43,7 +43,7 @@
 <td><?php echo $row->country; ?></td>
 
 <td><?php echo $row->phone; ?></td>
-<td><?php echo $row->assign_to; ?></td>
+<td><?php echo $row->assigned_employee_name . " (" . $row->employee_user_type . ") ";?></td>
 
 
 
