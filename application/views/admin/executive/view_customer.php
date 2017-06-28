@@ -71,9 +71,14 @@
         </div>
         <!-- end /.box-body -->
 
+        </div>
+ 
+
+
 
 
          <!-- /.box-body -->
+
         <div class="box-footer">
       
         </div>

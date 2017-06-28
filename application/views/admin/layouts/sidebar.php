@@ -80,6 +80,22 @@
                        
                     </ul>
                 </li>
+
+
+
+                  <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-laptop"></i>
+                        <span>Assign Work</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?php echo base_url("admin/manager/assign_work");?>"><i class="fa fa-circle-o"></i>Assign Work To</a></li>
+                       
+                    </ul>
+                </li>
                 
                 
                  <?php } ?>
@@ -98,7 +114,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<?php echo base_url('admin/superAdmin/createTask') ?>"><i class="fa fa-circle-o"></i> Add Customer</a></li>
-                       
+                        <li><a href="<?php echo base_url('admin/superAdmin/viewTask') ?>"><i class="fa fa-circle-o"></i> View Customer</a></li>
                     </ul>
                 </li>
                 
