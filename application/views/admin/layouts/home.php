@@ -39,7 +39,7 @@
 
         <!-- Main content -->
 
-        <?php $this->load->view($main_content); //This variable contains the filename of main content section. It is sent from Controller ?>
+        <?php $this->load->view($main_content);//This variable contains the filename of main content section. It is sent from Controller ?>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

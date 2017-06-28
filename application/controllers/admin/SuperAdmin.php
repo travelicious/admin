@@ -92,6 +92,9 @@ class SuperAdmin extends BackendController
 	 }
    }
    
+<<<<<<< HEAD
+
+=======
    
    
    /*
@@ -114,6 +117,7 @@ class SuperAdmin extends BackendController
 
      $this->load->view('admin/layouts/home', $data); 
 	}
+>>>>>>> fca81cdee9e94c2e5bc4141607e69791a84817f6
 }
 
 ?>
