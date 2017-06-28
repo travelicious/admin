@@ -1,3 +1,10 @@
+<?php
+if(!empty($message))
+{
+  echo $message;	
+}
+?>
+
    <!-- Main content -->
    
     <section class="content">
@@ -17,56 +24,58 @@
         <div class="box-body">
           <form action="<?php echo base_url('admin/superAdmin/createTask'); ?>" method="post"> 
 <label>Name</label>
-<input type="text" name="name"/>
+<input type="text" name="name" required="true"/>
 <br><br>
 
 <label>Email</label>
-<input type="email" name="email"/>
+<input type="email" name="email" required="true"/>
 <br><br>
 
 <label>Address</label>
-<input type="text" name="address"/>
+<input type="text" name="address" required="true"/>
 <br><br>
 
 <label>Country</label>
-<input type="text" name="country"/>
+<input type="text" name="country" required="true"/>
 <br><br>
 
 <label>Phone</label>
-<input type="text" name="phone"/>
+<input type="text" name="phone" required="true"/>
 <br><br>
 
+<h5 style="color:red">Tick checkbox if you want to assigned task to employee or untick otherwise</h5>
+<input type="checkbox" name="assign" value="true"/>
 <label>Assign to</label>
-<input type="radio" name="AssignTo" value="manager"/>
+<input type="radio" name="assignTo" value="manager" onchange="showEmployeeList(event, this)"/>
 Manager
-<input type ="radio" name="AssignTo" value="executive"/>
+<input type ="radio" name="assignTo" value="executive" onchange="showEmployeeList(event, this)"/>
 Executive
 <br><br>
 
-<select id="managerList" id="managerList" style="display:none">
+<select name="managerList" id="managerList" style="display:none">
    <option value="">Select Manager</option>
  <?php 
    if(!empty($managerList))
    {
-     foreach($managerList as $manager)
+	 foreach($managerList as $manager)
 	 {
     ?>
-	   <option value="<?php $manager->id ?>" ><?php $manager->name ?></option>   
+	   <option value="<?php echo $manager->id ?>" ><?php echo $manager->name ?></option>   
     <?php  	
 	 }	 
    }	   
  ?>
 </select>
 
-<select id="executiveList" id="executiveList" style="display:none">
+<select id="executiveList" name="executiveList" style="display:none">
    <option value="">Select executive</option>
  <?php 
    if(!empty($executiveList))
    {
-     foreach($executiveList as $executive)
+	 foreach($executiveList as $executive)
 	 {
     ?>
-	   <option value="<?php $executive->id ?>" ><?php $executive->name ?></option>   
+	   <option value="<?php echo $executive->id ?>" ><?php echo $executive->name ?></option>   
     <?php  	
 	 }	 
    }	   
@@ -76,7 +85,6 @@ Executive
 
 <input type="submit" name="Create Task" value="createTask"/>
 </form>
-
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -89,7 +97,7 @@ Executive
     </section>
     <!-- /.content -->
 
-
+<script src="<?php echo base_url('assets/js/superAdmin.js');?> "> </script>
 
 
 
