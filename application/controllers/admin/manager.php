@@ -8,8 +8,7 @@ class Manager extends BackendController
 
     public function index()
      {
-     	$this->load->model('manager/Manager_model');
-
+     	$this->load->model('manager/Manager_model');   
         $data['page_title'] = 'View Customer';
         $data['breadcrumb'] = 'View Customer';
 
