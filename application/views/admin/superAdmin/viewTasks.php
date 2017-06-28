@@ -15,15 +15,42 @@
           </div>
         </div>
         <div class="box-body">
+		<?php
+		  if(!empty($deleteSuccessMessage))
+		  {
+		?> 
+		    <h4><?php echo $deleteSuccessMessage; ?></h4>	  
+		<?php  
+		  }
+		?>
+        <?php 		
+		  if(!empty($createSuccessMessage))
+		  {
+	    ?>
+          		
+  		   <h4><?php echo $createSuccessMessage; ?></h4>	  
+        <?php   		
+		}
+		?>
 		
+		<?php
+		 if(!empty($updateSuccessMessage))
+		 {
+		?>
+		   <h4><?php echo $updateSuccessMessage ?></h4>
+        <?php		
+		 }
+		?>
+		  
 		<table border="1px" style="text-align:center">
-		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To</th> <th>Action</th>
+		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To Manager</th> <th>Assign To Executive</th> <th>Action</th>
 		 
          
          <?php
-           if(!empty($tasks))
+           if(!empty($tasks)) 
 		   {
-		     foreach($tasks as $task)	
+		     
+			 foreach($tasks as $task)	
 			 {
 		?>
 		      <tr>
@@ -33,9 +60,36 @@
 				<td> <?php echo $task->address; ?> </td>
 				<td> <?php echo $task->country; ?> </td>
 			    <td> <?php echo $task->phone; ?> </td>
-			    <td> <?php echo (!empty($task->assign_to)? $task->assign_to : '-'); ?> </td>
-			    <td> <a href="<?php echo base_url('admin/superAdmin/edit') ?>">Edit / </a>
-				     <a href="<?php echo base_url('admin/superAdmin/delete') ?>">delete</a>
+			    
+				<td> 
+				
+				  <?php 
+				    if(!empty($task->assign_to) && $task->user_type == 'mgr')
+					{
+				  	  echo $task->assigned_employee_name;			  
+					}
+					else
+					{
+					  echo '-';	
+					}
+				  ?> 
+				
+				</td>
+				<td>
+                  <?php 
+				    if(!empty($task->assign_to) && $task->user_type == 'exe')
+					{
+				  	  echo $task->assigned_employee_name;			  
+					}
+					else
+					{
+					  echo '-';	
+					}
+				  ?> 
+				 </td>  				  
+		
+			    <td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a>
+				     <a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>">delete</a>
 				</td>
 					
 			  </tr>
@@ -49,7 +103,7 @@
 		</div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+          
         </div>
         <!-- /.box-footer-->
       </div>

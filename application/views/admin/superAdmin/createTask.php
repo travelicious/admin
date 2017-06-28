@@ -23,24 +23,25 @@ if(!empty($message))
         </div>
         <div class="box-body">
           <form action="<?php echo base_url('admin/superAdmin/createTask'); ?>" method="post"> 
+		  <input type="hidden" name="id" value="<?php echo (!empty($id)?$id:''); ?>"/>
 <label>Name</label>
-<input type="text" name="name" required="true"/>
+<input type="text" name="name" required="true" value="<?php echo (!empty($name)?$name:''); ?>"/>
 <br><br>
 
 <label>Email</label>
-<input type="email" name="email" required="true"/>
+<input type="email" name="email" required="true" value="<?php echo (!empty($email)?$email:''); ?>"/>
 <br><br>
 
 <label>Address</label>
-<input type="text" name="address" required="true"/>
+<input type="text" name="address" required="true" value="<?php echo (!empty($address)?$address:''); ?>"`/>
 <br><br>
 
 <label>Country</label>
-<input type="text" name="country" required="true"/>
+<input type="text" name="country" required="true" value="<?php echo (!empty($country)?$country:''); ?>"/>
 <br><br>
 
 <label>Phone</label>
-<input type="text" name="phone" required="true"/>
+<input type="text" name="phone" required="true" value="<?php echo (!empty($phone)?$phone:''); ?>"/>
 <br><br>
 
 <h5 style="color:red">Tick checkbox if you want to assigned task to employee or untick otherwise</h5>
@@ -88,7 +89,6 @@ Executive
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
         </div>
         <!-- /.box-footer-->
       </div>
