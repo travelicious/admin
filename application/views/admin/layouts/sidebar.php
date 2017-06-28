@@ -43,11 +43,14 @@
             <li class="header">MAIN NAVIGATION</li>
 
             <li class="active"><a href="<?php echo base_url(); ?>admin/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+
+
  <!--id 3 = executive-->
+
             <?php if ($_SESSION['logged_in']['uid'] == 'exe') { ?>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-laptop"></i>
+                        <i class="fa fa-tasks"></i>
                         <span>Task</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
@@ -59,8 +62,10 @@
                     </ul>
                 </li>
             <?php } ?>
+
                 
                 <!--id 2 = manager-->
+
                  <?php if ($_SESSION['logged_in']['uid'] == 'mgr') { ?>
                  <li class="treeview">
                     <a href="#">
@@ -71,7 +76,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> View Customer</a></li>
+                      <li><a href="<?php echo base_url("admin/manager");?>"><i class="fa fa-circle-o"></i> View Customer</a></li>
                        
                     </ul>
                 </li>
@@ -81,6 +86,7 @@
                 
                 
                 <!--id 1  = admin-->
+
                  <?php if ($_SESSION['logged_in']['uid'] == 'adm') { ?>
                  <li class="treeview">
                     <a href="#">

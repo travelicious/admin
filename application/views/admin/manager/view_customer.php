@@ -1,16 +1,4 @@
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Blank page
-        <small>it all starts here</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
-    </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -18,7 +6,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+          <h3 class="box-title"><?php echo $page_title ?></h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -28,7 +16,49 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+
+        <table class="table table-responsive">
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Country</th>
+        <th>Phone</th>
+        <th>Assign To</th>
+
+
+      
+               <?php
+              foreach($fetch_data->result() as $row)
+                {
+                   ?>
+
+
+                  
+
+
+<tr>
+
+<td><?php echo $row->name; ?></td>
+<td><?php echo $row->email; ?></td>
+<td><?php echo $row->address; ?></td>
+<td><?php echo $row->country; ?></td>
+
+<td><?php echo $row->phone; ?></td>
+<td><?php echo $row->assign_to; ?></td>
+
+
+
+</tr>
+
+<?php
+}
+?>
+
+        </table>
+
+
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -40,4 +70,4 @@
 
     </section>
     <!-- /.content -->
-  </div>
+ 
