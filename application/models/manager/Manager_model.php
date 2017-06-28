@@ -7,7 +7,7 @@ class Manager_model extends CI_Model
 
 	{
 
-   $query = $this->db->query("select * from customer order by id desc");
+   $query = $this->db->query("select * from customer order by id desc ");
    return $query;
 	}
 }
