@@ -102,7 +102,7 @@ class SuperAdmin extends BackendController
    public function viewTask()
    {
 	 $data = array();
-     $query = "select * from customer";                   // Fetch all tasks from customer table   
+     $query = "select customer.*,tbl_user.name as assigned_employee_name,tbl_user.user_type as employee_user_type from customer,tbl_user where tbl_user.id = customer.assign_to order by customer.id desc";                   // Fetch all tasks from customer table   
      $tasks = $this->db->query($query);	 
 	 $tasks = $tasks->result();
 	 if(!empty($tasks))
