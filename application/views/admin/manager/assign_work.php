@@ -14,46 +14,27 @@
           </div>
         </div>
         <div class="box-body">
+        <h1>Assign Work To</h1>
+        <form>
 
-        <table class="table table-responsive">
-        <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Country</th>
-        <th>Phone</th>
-        <th>Assign To</th>
+<select>
+ <option value="">Assign Work To</option>
+ <option value="">Executive..</option>
+</select>
 
+<select>
+ <option value="">Select Executive</option>
+ <option value="">Executive 1</option>
+ <option value="">Executive 2</option>
+ <option value="">Executive 3</option>
+ <option value="">Executive 4</option>
+ <option value="">Executive 5</option>
+</select>
+<br><br>
+<input type="submit" name="" class="btn btn-primary" value="Assign Work">
+</form>
+   
 
-      
-               <?php
-              foreach($fetch_data->result() as $row)
-                {
-                   ?>
-
-
-                  
-
-
-<tr>
-
-<td><?php echo $row->name; ?></td>
-<td><?php echo $row->email; ?></td>
-<td><?php echo $row->address; ?></td>
-<td><?php echo $row->country; ?></td>
-
-<td><?php echo $row->phone; ?></td>
-<td><?php echo $row->assign_to; ?></td>
-
-
-
-</tr>
-
-<?php
-}
-?>
-
-        </table>
 
 
 

@@ -21,6 +21,20 @@ class Manager extends BackendController
 
 }
 
+
+    public function assign_work()
+     {
+     	$this->load->model('manager/Manager_model');
+
+        $data['page_title'] = 'Assign Work';
+        $data['breadcrumb'] = 'Assign Work';
+    
+        $data['main_content'] = 'admin/manager/assign_work';
+        $this->load->view('admin/layouts/home',$data);
+
+}
+
+
 }
 
 ?>

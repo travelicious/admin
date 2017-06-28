@@ -11,6 +11,7 @@
 <head>
 
     <title><?php echo $page_title; ?></title>
+    
     <?php $this->load->view('admin/layouts/css'); ?>
 
 </head>
