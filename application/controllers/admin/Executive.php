@@ -22,5 +22,13 @@ class Executive extends BackendController {
         $data['main_content'] = 'admin/executive/view_customer';
         $this->load->view('admin/layouts/home', $data);
     }
+    public function customer_details($id) {
+        $data['indv_custmr'] = $this->Executive_model->fetch_customer_by_id($id);
+        $data['page_title'] = 'Customer Details';
+        $data['breadcrumb'] = 'Customer Details';
+        $data['main_content'] = 'admin/executive/Customer Details';
+        $this->load->view('admin/layouts/home', $data);
+        
+    }
 
 }
