@@ -70,15 +70,15 @@
             ?>
         </div>
         <!-- end /.box-body -->
-<<<<<<< HEAD
+
         </div>
  
-=======
+
 
 
 
          <!-- /.box-body -->
->>>>>>> 183979105d7636fad0a9bb0adc78e23567bbeef9
+
         <div class="box-footer">
       
         </div>
