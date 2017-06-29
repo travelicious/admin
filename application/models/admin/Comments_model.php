@@ -10,7 +10,7 @@ class Comments_model extends CI_Model {
     }
 
     public function getAllComment($taskId) {
-        $query = "select comments.comments, comments.created_date, tbl_user.name from comments inner join tbl_user on comments.emp_id=tbl_user.id where comments.task_id=$taskId";
+        $query = "select comments.comments, comments.created_date, tbl_user.name from comments inner join tbl_user on comments.emp_id=tbl_user.id where comments.task_id=$taskId order by comments.created_date ASC ";
         $results = $this->db->query($query);
         if (!empty($results->result())) {
             return $results->result();

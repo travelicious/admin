@@ -41,7 +41,7 @@ public function saveComment() {
             $sql = "insert into comments(task_id, comments, emp_id) values($taskId, '$comment', $empId)";
 
             if ($this->db->query($sql)) {
-                $this->showCommentBox($taskId);
+                redirect("admin/comment/showCommentBox/".$taskId);
             }
         }
     }
@@ -60,7 +60,8 @@ public function saveComment() {
 
         $insrt_ok = $this->db->insert('comments', $followup_comment);
         $updt_ok = $this->db->query("update customer set  next_followup = '$dates' where id = " . $followup_comment['task_id'] . "");
-        $this->showCommentBox($followup_comment['task_id']);
+        redirect("admin/comment/showCommentBox/".$followup_comment['task_id']);
+
     }
 
 }
