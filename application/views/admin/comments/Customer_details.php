@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-10">
     <!-- Box Comment -->
     <div class="box box-widget">
         <div class="box-header with-border">
