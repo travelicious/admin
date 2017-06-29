@@ -62,7 +62,7 @@
 		<table border="1px" style="text-align:center">
 		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To Manager</th> <th>Assign To Executive</th> <th>Action</th>
 
->>>>>>> 6108a57f9d1cc3fe737f1553f03b4cc6969f33eb
+>>>>>>> d41f001683e88699acd480f990dea5bb65650453
 		 
          
 
@@ -101,7 +101,7 @@
 				 </td>  				  
 		
 <td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a><a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
->>>>>>> 6108a57f9d1cc3fe737f1553f03b4cc6969f33eb
+>>>>>>> d41f001683e88699acd480f990dea5bb65650453
 				</td>
 					
 			  </tr>
@@ -122,7 +122,7 @@
         <div class="box-footer">
           
         </div>
->>>>>>> 6108a57f9d1cc3fe737f1553f03b4cc6969f33eb
+>>>>>>> d41f001683e88699acd480f990dea5bb65650453
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->

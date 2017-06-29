@@ -110,7 +110,7 @@ class SuperAdmin extends BackendController
 	 $assign = new stdClass();
      $query = "select customer.*,tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on tbl_user.id = customer.assign_to order by customer.id desc";
 	 $tasks = $this->db->query($query);	 
->>>>>>> 6108a57f9d1cc3fe737f1553f03b4cc6969f33eb
+>>>>>>> d41f001683e88699acd480f990dea5bb65650453
 	 $tasks = $tasks->result();
 	 if(!empty($tasks))
 	 {
