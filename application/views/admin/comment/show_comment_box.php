@@ -122,7 +122,7 @@
         <!-- /.box-footer -->
     </div>
     <!-- /.box -->
-</div>
+
 
 <div class="col-md-2">
     <!-- Box Comment -->
