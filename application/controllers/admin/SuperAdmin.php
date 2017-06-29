@@ -222,7 +222,10 @@ public function view_employee()
 	}
 	
 	
-    
+	/*
+	  Created by Shahnawaz
+	  This function edit task with given id
+    */
     public function edit($id=null)
 	{
 	  if($id != null)
