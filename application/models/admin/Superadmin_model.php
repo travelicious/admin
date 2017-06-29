@@ -24,6 +24,17 @@ class Superadmin_model extends CI_Model
   
         $this->db->insert('tbl_user',$insert_data);
     }
+
+    public function fetch_employee()
+    {
+
+       $query = $this->db->query("select * from tbl_user order by id desc"); 
+         return $query; 
+
+        
+    }
+
+   
 }
 
 ?>

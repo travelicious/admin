@@ -42,12 +42,20 @@
 
         <div class="box-body">
             <!--number of comments-->
-            <span class="pull-right text-muted"> 2 comments</span>
+            <span class="pull-right text-muted"> 
+			 <?php
+			   if(!empty($noOfComment))
+			   {
+			     echo $noOfComment;	   
+			   }
+			 ?>
+			</span>
         </div>
         <!-- /.box-body -->
 
 
         <!--comment-->
+
         <?php if (!empty($allComment)) { ?>
             <div class="box-footer box-comments">
                 <div class="box-comment">
@@ -74,10 +82,8 @@
                     </div>
 
                 </div>
-                <!-- /.comment-text -->
-            </div>
-            <!-- /.box-comment -->
 
+    
         </div>
         <?php }
         ?>
