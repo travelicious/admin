@@ -25,7 +25,7 @@
 
                     <tr>
                         <th class="row">Phone</th><td class="row"><?php echo $indv_custmr->phone ?></td>
-                        <!--<th class="row">Name</th><td class="row"><?php // echo $indv_custmr->name      ?></td>-->
+                        <!--<th class="row">Name</th><td class="row"><?php // echo $indv_custmr->name       ?></td>-->
                     </tr>
 
                 </table><!-- /.table -->
@@ -43,14 +43,14 @@
         <div class="box-body">
             <!--number of comments-->
             <span class="pull-right text-muted"> 
-			 <?php
-			   if(!empty($noOfComment))
-			   {
-			     echo $noOfComment;	   
-			   }
-			 ?>
-			</span>
+                <?php
+                if (!empty($noOfComment)) {
+                    echo $noOfComment.'Comments';
+                }
+                ?>
+            </span>
         </div>
+    </div>
         <!-- /.box-body -->
 
 
@@ -83,8 +83,8 @@
 
                 </div>
 
-    
-        </div>
+
+            </div>
         <?php }
         ?>
         <!-- /.box-footer -->
@@ -114,7 +114,7 @@
     </div>
 
     <!-- /.box -->
- 
+
 
     <div class="col-md-2">
         <!-- Box Comment -->
@@ -127,23 +127,23 @@
                     </br>
                     <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup"); ?>" method="post">
                         <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
-                    <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
-                </form>
+                        <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
+                    </form>
+                </div>
+
+                <!-- /.user-block -->
+
+                <!-- /.box-tools -->
             </div>
 
-            <!-- /.user-block -->
-
-            <!-- /.box-tools -->
         </div>
-
+        <!-- /.box -->
     </div>
-    <!-- /.box -->
-</div>
-<script>
-    function show_datepicker() {
-        $("#datepicker_block").show();
-    }
+    <script>
+        function show_datepicker() {
+            $("#datepicker_block").show();
+        }
 
 
 
-</script>
+    </script>
