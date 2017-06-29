@@ -11,7 +11,7 @@ class Comment extends BackendController {
 
     public function showCommentBox($id) {
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
-        $this->load->model('commentModel');
+        $this->load->model('admin/CommentsModel');
         $allComment = $this->commentModel->getAllComment($id);
 		$noOfComment = $this->commentModel->totalNoOfComment($id);
 		if (!empty($allComment) && !empty($noOfComment)) 

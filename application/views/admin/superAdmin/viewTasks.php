@@ -33,6 +33,13 @@
 		}
 		?>
 
+
+
+
+		 <table class="table table-responsive">
+		
+
+
 		<?php
 		 if(!empty($updateSuccessMessage))
 		 {
@@ -44,8 +51,7 @@
 
 		
 
-		  
-		<table border="1px" style="text-align:center">
+		<table class="table table-responsive">
 		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To Manager</th> <th>Assign To Executive</th> <th>Action</th>
 
 		 
@@ -65,8 +71,8 @@
 				<td> <?php echo $task->address; ?> </td>
 				<td> <?php echo $task->country; ?> </td>
 			    <td> <?php echo $task->phone; ?> </td>
-			    
-	
+
+			  
 				<td>
                   <?php 
 				    if(!empty($task->assign_to) && $task->user_type == 'exe')
@@ -94,8 +100,9 @@
 				 </td>  
 				 
 		
-<td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a><a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
+                <td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a><a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
 				</td>
+
 					
 			  </tr>
         <?php   		
@@ -107,6 +114,9 @@
 		
 		</div>
         <!-- /.box-body -->
+       <!--  <div class="box-footer">
+          Footer
+        </div> -->
         <div class="box-footer">
           
         </div>

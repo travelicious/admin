@@ -103,14 +103,17 @@ class SuperAdmin extends BackendController
    public function viewTask()
    {
 	 $data = array();
-	 $assign = new stdClass();
+
+     $assign = new stdClass();
      $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer,tbl_user where customer.flag =1 and tbl_user.id = customer.assign_to";
 	 $tasks = $this->db->query($query);	 
 	 $tasks = $tasks->result();
 	 if(!empty($tasks))
 	 {
 	   $data['tasks'] = $tasks; 	 
+	   
 	 }
+	  
 	 $data['page_title'] = 'View Tasks';
      $data['breadcrumb'] = 'View Tasks';
 	 
