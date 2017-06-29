@@ -33,6 +33,16 @@
 		}
 		?>
 		
+<<<<<<< HEAD
+		 <table class="table table-responsive">
+		 <th>Name</th> 
+		 <th>Email</th> 
+		 <th>Address</th> 
+		 <th>Country</th> 
+		 <th>Phone</th>
+		 <th>Assign To</th>
+		 <th>Action</th>
+=======
 		<?php
 		 if(!empty($updateSuccessMessage))
 		 {
@@ -44,6 +54,7 @@
 		  
 		<table border="1px" style="text-align:center">
 		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To Manager</th> <th>Assign To Executive</th> <th>Action</th>
+>>>>>>> 46106ab4e3976b1e436db40d27aa381403d6fa29
 		 
          
          <?php

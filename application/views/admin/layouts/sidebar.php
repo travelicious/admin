@@ -117,6 +117,17 @@
                         <li><a href="<?php echo base_url('admin/superAdmin/viewTask') ?>"><i class="fa fa-circle-o"></i> View Customer</a></li>
                     </ul>
                 </li>
+
+                                 <li class="treeview">
+                    <a href="<?php echo base_url('admin/superAdmin/add_employee') ?>">
+                        <i class="fa fa-laptop"></i>
+                        <span>Add Employee</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+
+                </li>
                 
                  <?php } ?>
 
