@@ -161,6 +161,45 @@ add employee in tbl_user
 		$this->load->view('admin/layouts/home', $data); 
 	}
 
+
+
+/*
+Code----By suvendra singh-----
+
+add employee in tbl_user
+
+*/
+public function view_employee()
+{
+
+
+	$this->load->model('admin/Superadmin_model');
+
+     $data['page_title'] = 'view employee';
+     $data['breadcrumb'] = 'View Employee';
+
+     $data["fetch_data"]=$this->Superadmin_model->fetch_employee();
+
+
+
+     $data['main_content'] = 'admin/superAdmin/view_employee';
+
+		$this->load->view('admin/layouts/home', $data); 
+}
+
+
+ public function delete_employee($id=null)
+    {
+
+       $query = $this->db->query("delete from tbl_user where id=$id "); 
+
+         redirect('/admin/superAdmin/view_employee');
+
+        
+    }
+
+
+
 	
 	
 	
