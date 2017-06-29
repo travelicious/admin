@@ -1,3 +1,6 @@
+<!--<link href="<?php echo base_url("assets/datepicker/bootstrap-datepicker.css"); ?>" rel="stylesheet" type="text/css" />-->
+<!--<script src="<?php echo base_url("assets/datepicker/bootstrap-datepicker.js"); ?>" type="text/javascript"></script>-->
+
 <div class="col-md-10">
     <!-- Box Comment -->
     <div class="box box-widget">
@@ -86,3 +89,41 @@
     </div>
     <!-- /.box -->
 </div>
+
+<div class="col-md-2">
+    <!-- Box Comment -->
+    <div class="box box-widget">
+        <div class="box-header with-border">
+            <div class="user-block col-md-12">
+                <button type="submit" class="btn btn-default btn-info" onclick="show_datepicker();">Next Follow-Up</button>
+            </div>
+             <div class="form-group col-md-12" id="datepicker_block" style="display: none;">
+                 </br>
+                <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy" >
+            </div>
+            
+            <!-- /.user-block -->
+
+            <!-- /.box-tools -->
+        </div>
+      
+    </div>
+    <!-- /.box -->
+</div>
+<script>
+    function show_datepicker(){
+        $("#datepicker_block").show();
+    }
+    
+    $('#followup').change(function () {
+        var task_id = $(this).val();
+        $.ajax({
+            url: '<?php echo site_url("") ?>/' ,
+            success: function (data) {
+//                alert(data);
+               
+            }
+        });
+    });
+    
+</script>
