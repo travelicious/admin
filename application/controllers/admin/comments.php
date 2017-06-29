@@ -18,11 +18,19 @@ class Comments extends BackendController {
     }
 
     public function add_next_followup() {
-//        $followup_comment = array(
-//        'task_id' =>,
-//        'comments'=>,
-//        'emp_id' =>,
-//        );
+
+        $dates = $this->input->post('followup');
+        $followup_comment = array(
+        'task_id' => $this->input->post('task_id'),
+        'comments' => 'Next follow-up date:'. $dates,
+        'emp_id ' => $uid = $_SESSION['logged_in']['id'],
+        );
+       
+       $insrt_ok =  $this->db->insert('comments',$followup_comment);
+       $updt_ok  = $this->db->query("update customer set  next_followup = '$dates' where id = ".$followup_comment['task_id']."");
+       $this->showCommentBox($followup_comment['task_id']);
+        
+        
     }
 
 }
