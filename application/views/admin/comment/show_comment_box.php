@@ -45,7 +45,7 @@
             <span class="pull-right text-muted"> 
                 <?php
                 if (!empty($noOfComment)) {
-                    echo $noOfComment.'Comments';
+                    echo $noOfComment.'&nbsp'.'Comments';
                 }
                 ?>
             </span>

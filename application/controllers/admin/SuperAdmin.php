@@ -104,7 +104,7 @@ class SuperAdmin extends BackendController
    {
 	 $data = array();
 	 $assign = new stdClass();
-     $query = "select customer.*,tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on tbl_user.id = customer.assign_to order by customer.id desc";
+     $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer,tbl_user where customer.flag =1 and tbl_user.id = customer.assign_to";
 	 $tasks = $this->db->query($query);	 
 	 $tasks = $tasks->result();
 	 if(!empty($tasks))
@@ -132,6 +132,9 @@ class SuperAdmin extends BackendController
 
      $this->load->view('admin/layouts/home', $data); 
 	}
+	
+	
+	
 
 /*
 Code----By Gourav rajput-----
@@ -162,6 +165,8 @@ add employee in tbl_user
 	}
 
 
+	
+	
 
 /*
 Code----By suvendra singh-----
@@ -212,7 +217,7 @@ public function view_employee()
 	{
 	  if($id != null)
 	  {
-	    $query = "delete from customer where id=$id";
+	    $query = "update customer set flag = 0 where id=$id";
 		if($this->db->query($query))
 		{
 	      $this->session->set_flashdata('deleteSuccessMessage', 'Task Succesfully Deleted'); 

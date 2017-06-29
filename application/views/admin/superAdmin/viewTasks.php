@@ -33,16 +33,6 @@
 		}
 		?>
 
-
-		 <table class="table table-responsive">
-		 <th>Name</th> 
-		 <th>Email</th> 
-		 <th>Address</th> 
-		 <th>Country</th> 
-		 <th>Phone</th>
-		 <th>Assign To</th>
-		 <th>Action</th>
-
 		<?php
 		 if(!empty($updateSuccessMessage))
 		 {
@@ -88,7 +78,21 @@
 					  echo '-';	
 					}
 				  ?> 
-				 </td>  				  
+				 </td>
+                 
+				 <td>
+                  <?php 
+				    if(!empty($task->assign_to) && $task->user_type == 'mgr')
+					{
+				  	  echo $task->assigned_employee_name;			  
+					}
+					else
+					{
+					  echo '-';	
+					}
+				  ?> 
+				 </td>  
+				 
 		
 <td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a><a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
 				</td>
