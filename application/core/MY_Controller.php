@@ -28,5 +28,10 @@ class BackendController extends CommonController
             'user_name' => 'Saket Anand',
             'user_reg_date' => 'Dec 2013'
         );
+        $session_data = $this->session->userdata('logged_in');
+        if(!isset($session_data))
+            {
+                redirect('admin/welcome');
+            }
     }
 }

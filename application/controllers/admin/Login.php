@@ -2,10 +2,15 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends BackendController {
+class Login extends CI_Controller {
+    
+    private $user_id;
+    private $user_type;
+   
+  
     function __construct() {
-        parent::__construct();
         
+        parent::__construct();
         $this->load->model('Login_model');
     }
 
@@ -22,6 +27,10 @@ class Login extends BackendController {
                     'id'=>$result->id,
                 );
                 $this->session->set_userdata('logged_in', $sess);
+                
+                $this->user_id = $sess['id'];
+                
+                
                 redirect('admin/dashboard');
             }else{
                  $this->session->set_flashdata('msg', 'Your Username/Password is wrong. Please try again.');

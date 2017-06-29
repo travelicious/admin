@@ -16,9 +16,9 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/morris/morris.min.js"></script>
+<!-- google charts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/google_graph.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo base_url(); ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->

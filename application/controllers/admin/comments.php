@@ -9,7 +9,10 @@ class Comments extends BackendController {
         $this->load->model('admin/Comments_model');
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc46172d28fd17798df1a170736774badc0680ab
     public function showCommentBox($id) {
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
         $data['page_title'] = 'Customer Details';
@@ -33,6 +36,14 @@ class Comments extends BackendController {
 	  }
 		  
 	}
+
+    public function add_next_followup() {
+//        $followup_comment = array(
+//        'task_id' =>,
+//        'comments'=>,
+//        'emp_id' =>,
+//        );
+    }
 
 }
 

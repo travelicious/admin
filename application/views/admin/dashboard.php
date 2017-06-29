@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -71,7 +72,9 @@
         </div>
         <!-- ./col -->
     </div>
+
 	<?php } ?>
+
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
@@ -86,8 +89,8 @@
                     <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
                 </ul>
                 <div class="tab-content no-padding">
-                    <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+                    <!-- google chart - Sales -->
+                    <div class="chart tab-pane active" id="chart_div" style="position: relative; height: 300px;"></div>
                     <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
                 </div>
             </div>
@@ -306,22 +309,27 @@
                     <!-- /. tools -->
                 </div>
                 <div class="box-body">
-                    <form action="#" method="post">
+                    <form action="sendgrid-php/sendgrid-php.php" method="post">
                         <div class="form-group">
-                            <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name:" required="">
+                        </div>
+
+                                <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email:" required="">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" name="subject" placeholder="Subject">
                         </div>
                         <div>
-                            <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                            <textarea class="textarea" name="message" placeholder="Message" required="" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                         </div>
-                    </form>
-                </div>
+                 
+                
                 <div class="box-footer clearfix">
-                    <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
-                        <i class="fa fa-arrow-circle-right"></i></button>
+                    <input type="submit" class="pull-right btn btn-default" id="sendEmail" value="sendEmail">
                 </div>
+                </div>
+                </form>
             </div>
 
         </section>
@@ -502,5 +510,7 @@
     <!-- /.row (main row) -->
 
 </section>
+
+
 
 
