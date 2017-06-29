@@ -16,8 +16,14 @@
         </div>
         <div class="box-body">
 		
-		<table border="1px" style="text-align:center">
-		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To</th> <th>Action</th>
+		 <table class="table table-responsive">
+		 <th>Name</th> 
+		 <th>Email</th> 
+		 <th>Address</th> 
+		 <th>Country</th> 
+		 <th>Phone</th>
+		 <th>Assign To</th>
+		 <th>Action</th>
 		 
          
          <?php

@@ -39,7 +39,7 @@
         </div>
         <div class="box-body">
           <form action="<?php echo base_url('admin/superAdmin/createTask'); ?>" method="post"> 
->>>>>>> 183979105d7636fad0a9bb0adc78e23567bbeef9
+
 <label>Name</label>
 <input type="text" name="name"/>
 <br><br>

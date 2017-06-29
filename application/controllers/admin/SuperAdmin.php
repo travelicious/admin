@@ -115,6 +115,31 @@ class SuperAdmin extends BackendController
 
      $this->load->view('admin/layouts/home', $data); 
 	}
+
+
+
+
+	public function add_employee()
+
+	{
+
+		$this->load->model('admin/Superadmin_model');
+        if($this->input->post('submit'))
+        {
+           $this->Superadmin_model->insert();
+
+           redirect('admin/superAdmin/add_employee');
+           
+        }
+
+
+	 $data['page_title'] = 'Add employee';
+     $data['breadcrumb'] = 'View Tasks';
+	 $data['main_content'] = 'admin/superAdmin/add_employee';
+
+		$this->load->view('admin/layouts/home', $data); 
+	}
 }
+
 
 ?>
