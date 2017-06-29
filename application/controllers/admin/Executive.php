@@ -22,5 +22,5 @@ class Executive extends BackendController {
         $data['main_content'] = 'admin/executive/view_customer';
         $this->load->view('admin/layouts/home', $data);
     }
-
+    
 }
