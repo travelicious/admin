@@ -57,13 +57,7 @@
                 ?>
             </span>
 
-			 <?php
-			   if(!empty($noOfComment))
-			   {
-			     echo $noOfComment;	   
-			   }
-			 ?>
-			</span>
+			
 
 			</div>
         <!-- /.box-body -->
@@ -140,7 +134,7 @@
             </div>
             <div class="form-group col-md-12" id="datepicker_block" style="display: none;">
                 </br>
-                <form onchange="this.submit()" action="<?php echo base_url("admin/comments/add_next_followup");?>" method="post">
+                <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup");?>" method="post">
                      <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
                     <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
                 </form>
