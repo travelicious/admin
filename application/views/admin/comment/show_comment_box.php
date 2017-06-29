@@ -42,7 +42,14 @@
 
         <div class="box-body">
             <!--number of comments-->
-            <span class="pull-right text-muted"> 2 comments</span>
+            <span class="pull-right text-muted"> 
+			 <?php
+			   if(!empty($noOfComment))
+			   {
+			     echo $noOfComment;	   
+			   }
+			 ?>
+			</span>
         </div>
         <!-- /.box-body -->
 
@@ -57,7 +64,7 @@
 					<?php
 					  if(!empty($allComment))
 					  {
- 				        foreach($allComment as $comment)
+						foreach($allComment as $comment)
 						{
 				    ?>    <span class="username">
                         <?php
