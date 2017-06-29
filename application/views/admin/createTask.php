@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 /**
  * Created by Shahnawaz.
@@ -20,7 +20,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 
 <form action="<?php echo base_url('admin/superAdmin/createTask'); ?>" method="post"> 
-=======
+
    <!-- Main content -->
    
     <section class="content">

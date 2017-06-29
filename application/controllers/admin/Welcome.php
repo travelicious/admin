@@ -3,7 +3,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends BackendController {
+class Welcome extends CommonController {
     function __construct() {
         parent::__construct();
         
