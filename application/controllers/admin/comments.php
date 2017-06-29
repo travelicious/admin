@@ -9,7 +9,10 @@ class Comments extends BackendController {
         $this->load->model('admin/Comments_model');
     }
 
-    public function showCcomments($id) {
+
+   
+
+    public function showCommentBox($id) {
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
         $data['page_title'] = 'Customer Details';
         $data['breadcrumb'] = 'Customer Details';
