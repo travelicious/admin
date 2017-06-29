@@ -69,6 +69,7 @@
 
         <div class="box-footer">
             <form action="#" method="post">
+                <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
                 
                 <div class="img-push">
                     <input type="text" class="form-control input-sm" placeholder=" Post Your Comment">
