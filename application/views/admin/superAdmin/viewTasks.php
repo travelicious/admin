@@ -54,7 +54,7 @@
 			 {
 		?>
 		      <tr>
-			    <td> <?php echo $task->name; ?> </td>
+			    <td> <a href="<?php echo base_url('admin/comments/showCommentBox/'.$task->id) ?>"><?php echo $task->name; ?> </a></td>
 				<td> <?php echo $task->email; ?> </td>
 				
 				<td> <?php echo $task->address; ?> </td>
