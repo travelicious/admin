@@ -17,20 +17,30 @@ class Comments extends BackendController {
         $this->load->view('admin/layouts/home', $data);
     }
 
+    public function saveComment() {
+        $uid = $_SESSION['logged_in']['id'];
+        echo $uid;
+        die;
+        if ($this->input->method() == 'post') {
+            $formData = $this->input->post();
+            if (!empty($formData) && !empty($formData['task_id']) && !empty($formData['comment'])) {
+                
+            }
+        }
+    }
+
     public function add_next_followup() {
 
         $dates = $this->input->post('followup');
         $followup_comment = array(
-        'task_id' => $this->input->post('task_id'),
-        'comments' => 'Next follow-up date:'. $dates,
-        'emp_id ' => $uid = $_SESSION['logged_in']['id'],
+            'task_id' => $this->input->post('task_id'),
+            'comments' => 'Next follow-up date:' . $dates,
+            'emp_id ' => $uid = $_SESSION['logged_in']['id'],
         );
-       
-       $insrt_ok =  $this->db->insert('comments',$followup_comment);
-       $updt_ok  = $this->db->query("update customer set  next_followup = '$dates' where id = ".$followup_comment['task_id']."");
-       $this->showCommentBox($followup_comment['task_id']);
-        
-        
+
+        $insrt_ok = $this->db->insert('comments', $followup_comment);
+        $updt_ok = $this->db->query("update customer set  next_followup = '$dates' where id = " . $followup_comment['task_id'] . "");
+        $this->showCommentBox($followup_comment['task_id']);
     }
 
 }

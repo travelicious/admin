@@ -183,7 +183,10 @@ add employee in tbl_user
 	}
 	
 	
-    
+	/*
+	  Created by Shahnawaz
+	  This function edit task with given id
+    */
     public function edit($id=null)
 	{
 	  if($id != null)
