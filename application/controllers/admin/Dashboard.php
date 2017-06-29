@@ -17,7 +17,7 @@ class Dashboard extends BackendController {
     public function index() {
         if(!isset($this->session->userdata['logged_in'])){
             $this->session->set_flashdata('no_user', 'Please Login');
-                 redirect('admin/welcome');
+                   redirect('admin/welcome');
         }
         $data['page_title'] = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
