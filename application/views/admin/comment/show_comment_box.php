@@ -25,7 +25,9 @@
 
                     <tr>
                         <th class="row">Phone</th><td class="row"><?php echo $indv_custmr->phone ?></td>
-                        <!--<th class="row">Name</th><td class="row"><?php // echo $indv_custmr->name       ?></td>-->
+                    </tr>
+                    <tr>
+                        <th class="row">Next Follow-Up<td class="row"><?php echo $indv_custmr->next_followup ?></td>
                     </tr>
 
                 </table><!-- /.table -->
@@ -45,7 +47,7 @@
             <span class="pull-right text-muted"> 
                 <?php
                 if (!empty($noOfComment)) {
-                    echo $noOfComment.'Comments';
+                    echo $noOfComment.'&nbsp'.'Comments';
                 }
                 ?>
             </span>
@@ -143,7 +145,4 @@
         function show_datepicker() {
             $("#datepicker_block").show();
         }
-
-
-
     </script>

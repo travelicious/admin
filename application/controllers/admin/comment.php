@@ -11,22 +11,18 @@ class Comment extends BackendController {
 
     public function showCommentBox($id) {
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
-        $this->load->model('commentModel');
-        $allComment = $this->commentModel->getAllComment($id);
-		$noOfComment = $this->commentModel->totalNoOfComment($id);
-		if (!empty($allComment) && !empty($noOfComment)) 
-		{
+        $this->load->model('Comments_model');
+        $allComment = $this->Comments_model->getAllComment($id);
+        $noOfComment = $this->Comments_model->totalNoOfComment($id);
+        if (!empty($allComment) && !empty($noOfComment)) {
             $data['allComment'] = $allComment;
-			$data['noOfComment'] = $noOfComment;
+            $data['noOfComment'] = $noOfComment;
         }
         $data['page_title'] = 'Customer Details';
         $data['breadcrumb'] = 'Customer Details';
         $data['main_content'] = 'admin/comment/show_comment_box';
         $this->load->view('admin/layouts/home', $data);
     }
-	
-	
-	
 
     //Created by shahnawaz      
     public function saveComment() {
