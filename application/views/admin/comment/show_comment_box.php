@@ -87,15 +87,12 @@
 
 
         <div class="box-footer">
-<<<<<<< HEAD:application/views/admin/comments/Customer_details.php
-            <form action="#" method="post">
-                <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" id="task_id"/>
 
-=======
+       
             <form action="<?php echo base_url('admin/comment/saveComment'); ?>" method="post">
                 <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
                 
->>>>>>> 95e43036d627d7c5fe0c0b5e3106339e086e980c:application/views/admin/comment/show_comment_box.php
+
                 <div class="img-push">
                     <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="comment">
                 </div>
