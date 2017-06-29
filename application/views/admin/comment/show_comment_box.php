@@ -68,11 +68,11 @@
 
 
         <div class="box-footer">
-            <form action="#" method="post">
+            <form action="<?php echo base_url('admin/comment/saveComment'); ?>" method="post">
                 <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
                 
                 <div class="img-push">
-                    <input type="text" class="form-control input-sm" placeholder=" Post Your Comment">
+                    <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="comment">
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-1 box-footer">
