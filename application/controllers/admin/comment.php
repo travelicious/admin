@@ -16,17 +16,18 @@ class Comment extends BackendController {
 		$noOfComment = $this->commentModel->totalNoOfComment($id);
 		if (!empty($allComment) && !empty($noOfComment)) 
 		{
+        $this->load->model('Comments_model');
+        $allComment = $this->Comments_model->getAllComment($id);
+        $noOfComment = $this->Comments_model->totalNoOfComment($id);
+        if (!empty($allComment) && !empty($noOfComment)) {
             $data['allComment'] = $allComment;
-			$data['noOfComment'] = $noOfComment;
+            $data['noOfComment'] = $noOfComment;
         }
         $data['page_title'] = 'Customer Details';
         $data['breadcrumb'] = 'Customer Details';
         $data['main_content'] = 'admin/comment/show_comment_box';
         $this->load->view('admin/layouts/home', $data);
     }
-	
-	
-	
 
     //Created by shahnawaz      
     public function saveComment() {
