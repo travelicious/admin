@@ -32,7 +32,7 @@
         <?php   		
 		}
 		?>
-		
+
 
 		 <table class="table table-responsive">
 		 <th>Name</th> 
@@ -51,12 +51,16 @@
         <?php		
 		 }
 		?>
+
+		
+
 		  
 		<table border="1px" style="text-align:center">
 		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To Manager</th> <th>Assign To Executive</th> <th>Action</th>
 
 		 
          
+
          <?php
            if(!empty($tasks)) 
 		   {
@@ -72,20 +76,7 @@
 				<td> <?php echo $task->country; ?> </td>
 			    <td> <?php echo $task->phone; ?> </td>
 			    
-				<td> 
-				
-				  <?php 
-				    if(!empty($task->assign_to) && $task->user_type == 'mgr')
-					{
-				  	  echo $task->assigned_employee_name;			  
-					}
-					else
-					{
-					  echo '-';	
-					}
-				  ?> 
-				
-				</td>
+	
 				<td>
                   <?php 
 				    if(!empty($task->assign_to) && $task->user_type == 'exe')
@@ -99,8 +90,7 @@
 				  ?> 
 				 </td>  				  
 		
-			    <td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a>
-				     <a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>">delete</a>
+<td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a><a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
 				</td>
 					
 			  </tr>
