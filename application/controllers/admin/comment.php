@@ -9,24 +9,25 @@ class Comment extends BackendController {
         $this->load->model('admin/Comments_model');
     }
 
-    public function showCommentBox($id) {
+    public function showCommentBox($id)
+    {
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
         $this->load->model('admin/CommentsModel');
         $allComment = $this->commentModel->getAllComment($id);
-		$noOfComment = $this->commentModel->totalNoOfComment($id);
-		if (!empty($allComment) && !empty($noOfComment)) 
-		{
-        $this->load->model('Comments_model');
-        $allComment = $this->Comments_model->getAllComment($id);
-        $noOfComment = $this->Comments_model->totalNoOfComment($id);
+        $noOfComment = $this->commentModel->totalNoOfComment($id);
         if (!empty($allComment) && !empty($noOfComment)) {
-            $data['allComment'] = $allComment;
-            $data['noOfComment'] = $noOfComment;
+            $this->load->model('Comments_model');
+            $allComment = $this->Comments_model->getAllComment($id);
+            $noOfComment = $this->Comments_model->totalNoOfComment($id);
+            if (!empty($allComment) && !empty($noOfComment)) {
+                $data['allComment'] = $allComment;
+                $data['noOfComment'] = $noOfComment;
+            }
+            $data['page_title'] = 'Customer Details';
+            $data['breadcrumb'] = 'Customer Details';
+            $data['main_content'] = 'admin/comment/show_comment_box';
+            $this->load->view('admin/layouts/home', $data);
         }
-        $data['page_title'] = 'Customer Details';
-        $data['breadcrumb'] = 'Customer Details';
-        $data['main_content'] = 'admin/comment/show_comment_box';
-        $this->load->view('admin/layouts/home', $data);
     }
 
     //Created by shahnawaz      
@@ -41,8 +42,7 @@ class Comment extends BackendController {
                 $empId = $uid;
                 $comment = $formData['comment'];
 
-                $sql = "insert into comments (task_id, comments, emp_id)
-            values($taskId, '$comment', $empId)";
+                $sql = "insert into comments(task_id, comments, emp_id) values($taskId, '$comment', $empId)";
 
                 if ($this->db->query($sql)) {
                     $this->showCommentBox($taskId);
