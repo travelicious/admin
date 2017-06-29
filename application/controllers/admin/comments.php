@@ -14,7 +14,7 @@ class Comments extends BackendController {
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
         $data['page_title'] = 'Customer Details';
         $data['breadcrumb'] = 'Customer Details';
-        $data['main_content'] = 'admin/executive/Customer_details';
+        $data['main_content'] = 'admin/comments/Customer_details';
         $this->load->view('admin/layouts/home', $data);
     }
 	
