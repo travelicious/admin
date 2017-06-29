@@ -88,14 +88,9 @@ Executive
 </form>
         </div>
         <!-- /.box-body -->
-<<<<<<< HEAD
-       <!--  <div class="box-footer">
-          Footer
-        </div> -->
-=======
+
         <div class="box-footer">
         </div>
->>>>>>> d41f001683e88699acd480f990dea5bb65650453
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
