@@ -9,9 +9,6 @@ class Executive_model extends CI_Model {
         return $query;
         
     }
-    function fetch_customer_by_id($id){
-        $customer_query = $this->db->query("select * from customer where id = $id")->first_row();
-        return $customer_query;
-    }
+    
 
 }
