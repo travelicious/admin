@@ -7,6 +7,8 @@
  * Time: 3:32 PM
  */
 ?>
+
+
 <section class="content">
     <!-- Small boxes (Stat box) -->
 	<?php if ($_SESSION['logged_in']['uid'] == 'adm') { ?>
@@ -47,7 +49,7 @@
                 <div class="inner">
                     <h3><?php echo ($dashboardData['pendingValue']); ?></h3>
 
-                    <p>Inactive Tasks</p>
+                    <p>Closed Files</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>

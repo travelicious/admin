@@ -6,6 +6,7 @@
  * Date: 6/19/2017
  * Time: 3:54 PM
  */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends BackendController {
@@ -22,8 +23,16 @@ class Dashboard extends BackendController {
         $data['page_title'] = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
         $data['main_content'] = 'admin/dashboard';
-        $this->load->model("admin/admin");
-	    $data['dashboardData'] = $this->admin->fetchCounts();
+        
+        $this->load->model("admin/Admin");
+
+	    $data['dashboardData'] = $this->Admin->fetchCounts();
+
+        $data["fetch_notification"]=$this->Admin->fetch_notification();
+
         $this->load->view('admin/layouts/home', $data);
 	}
+
+  
 }
+?>

@@ -23,33 +23,75 @@ if(!empty($message))
         </div>
         <div class="box-body">
           <form action="<?php echo base_url('admin/superAdmin/createTask'); ?>" method="post"> 
-		  <input type="hidden" name="id" value="<?php echo (!empty($id)?$id:''); ?>"/>
-<label>Name</label>
-<input type="text" name="name" required="true" value="<?php echo (!empty($name)?$name:''); ?>"/>
-<br><br>
+          
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label"></label>
+<div class="col-xs-4">
+<input type="hidden" name="id" class="form-control" value="<?php echo (!empty($id)?$id:''); ?>"/>
+</div>
+</div>
 
-<label>Email</label>
-<input type="email" name="email" required="true" value="<?php echo (!empty($email)?$email:''); ?>"/>
-<br><br>
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Name</label>
+<div class="col-xs-4">
+<input type="text" name="name" class="form-control" required="true" value="<?php echo (!empty($name)?$name:''); ?>"/>
+</div>
+</div>
 
-<label>Address</label>
-<input type="text" name="address" required="true" value="<?php echo (!empty($address)?$address:''); ?>"`/>
-<br><br>
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Email</label>
+<div class="col-xs-4">
+<input type="email" name="email" class="form-control" required="true" value="<?php echo (!empty($email)?$email:''); ?>"/>
+</div></div>
 
-<label>Country</label>
-<input type="text" name="country" required="true" value="<?php echo (!empty($country)?$country:''); ?>"/>
-<br><br>
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Address</label>
+<div class="col-xs-4">
+<input type="text" name="address" class="form-control" required="true" value="<?php echo (!empty($address)?$address:''); ?>"`/>
+</div>
+</div>
 
-<label>Phone</label>
-<input type="text" name="phone" required="true" value="<?php echo (!empty($phone)?$phone:''); ?>"/>
-<br><br>
 
-<h5 style="color:red">Tick checkbox if you want to assigned task to employee or untick otherwise</h5>
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Country</label>
+<div class="col-xs-4">
+<input type="text" name="country" class="form-control" required="true" value="<?php echo (!empty($country)?$country:''); ?>"/>
+</div>
+</div>
+
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Phone</label>
+<div class="col-xs-4">
+<input type="text" name="phone" class="form-control" required="true" value="<?php echo (!empty($phone)?$phone:''); ?>"/>
+</div>
+</div>
+
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Destination</label>
+<div class="col-xs-4">
+<input type="text" name="destination" class="form-control" required="true" value="<?php echo (!empty($phone)?$destination:''); ?>"/>
+</div>
+</div>
+
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Source</label>
+<div class="col-xs-4">
+<select name="source" class="form-control" required="true" value="<?php echo (!empty($phone)?$destination:''); ?>"/>
+  <option>Please Select Source</option>
+  <option>Adword...</option>
+  <option>Facebook...</option>
+</select>
+</div>
+</div>
+
+
+<h5 style="color:red">Tick Checkbox If You Want To Assigned Task To Employee OR Untick Otherwise</h5>
+
 <input type="checkbox" name="assign" value="true"/>
-<label>Assign to</label>
-<input type="radio" name="assignTo" value="manager" onchange="showEmployeeList(event, this)"/>
+<label>Assign to</label>&nbsp;
+<input type="radio" name="assignTo" value="manager" onchange="showEmployeeList(event, this)"/>&nbsp;
 Manager
-<input type ="radio" name="assignTo" value="executive" onchange="showEmployeeList(event, this)"/>
+&nbsp;<input type ="radio" name="assignTo" value="executive" onchange="showEmployeeList(event, this)"/>&nbsp;
 Executive
 <br><br>
 
@@ -84,7 +126,7 @@ Executive
 </select>
 
 
-<input type="submit" name="Create Task" value="createTask"/>
+<input type="submit" class="btn btn-primary" name="Create Task" value="Create Task"/>
 </form>
         </div>
         <!-- /.box-body -->

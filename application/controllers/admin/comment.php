@@ -7,9 +7,11 @@ class Comment extends BackendController {
     public function __construct() {
         parent::__construct();
         $this->load->model('admin/Comments_model');
+        $this->load->model('admin/Admin');
     }
 
     public function showCommentBox($id) {
+
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
         
         $allComment = $this->Comments_model->getAllComment($id);
@@ -21,6 +23,8 @@ class Comment extends BackendController {
         $data['page_title'] = 'Customer Details';
         $data['breadcrumb'] = 'Customer Details';
         $data['main_content'] = 'admin/comment/show_comment_box';
+        
+        $data["fetch_notification"] = $this->Admin->fetch_notification();
         $this->load->view('admin/layouts/home', $data);
     }
 
