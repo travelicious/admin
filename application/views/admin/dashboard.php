@@ -7,6 +7,8 @@
  * Time: 3:32 PM
  */
 ?>
+
+
 <section class="content">
     <!-- Small boxes (Stat box) -->
 	<?php if ($_SESSION['logged_in']['uid'] == 'adm') { ?>

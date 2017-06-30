@@ -6,7 +6,8 @@ class SuperAdmin extends BackendController
 {
    public function __construct()
    {
-     parent::__construct();	   
+     parent::__construct();	 
+     $this->load->model('admin/Admin');  
    }
    
    
@@ -31,7 +32,7 @@ class SuperAdmin extends BackendController
 	   $country = $formData['country'];
 	   $phone = $formData['phone'];
 	   $destination = $formData['destination'];
-	   $source     = $formData['domain_source'];
+	   $source      = $formData['domain_source'];
 
 	   if(!empty($formData['assign']))           // Check if task assigned or not
 	   {
@@ -93,6 +94,10 @@ class SuperAdmin extends BackendController
        $data['breadcrumb'] = 'Create Task';
        $data['main_content'] = 'admin/superAdmin/createTask';
 
+
+
+      $data["fetch_notification"] = $this->Admin->fetch_notification();
+
        $this->load->view('admin/layouts/home', $data); 
 	 }
    }
@@ -134,7 +139,11 @@ class SuperAdmin extends BackendController
 	 }
 	 
 	 
+     
      $data['main_content'] = 'admin/superAdmin/viewTasks';
+
+     $data["fetch_notification"] = $this->Admin->fetch_notification();
+
 
      $this->load->view('admin/layouts/home', $data); 
 	}
@@ -167,6 +176,8 @@ add employee in tbl_user
      $data['breadcrumb'] = 'View Tasks';
 	 $data['main_content'] = 'admin/superAdmin/add_employee';
 
+	 $data["fetch_notification"] = $this->Admin->fetch_notification();
+
 		$this->load->view('admin/layouts/home', $data); 
 	}
 
@@ -194,6 +205,9 @@ public function view_employee()
 
 
      $data['main_content'] = 'admin/superAdmin/view_employee';
+
+
+     $data["fetch_notification"] = $this->Admin->fetch_notification();
 
 		$this->load->view('admin/layouts/home', $data); 
 }

@@ -15,6 +15,14 @@ class Admin extends CI_Model
 		return $data;
 	}
 	
+
+	public function fetch_notification()
+	{
+		$query =$this->db->query("select * from to_do_list order by id ");
+
+      return $query;
+
+	}
 }
 
 ?>
