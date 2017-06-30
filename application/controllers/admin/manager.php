@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No Direct Script Access Allowed');
 
 class Manager extends BackendController
 {
+    public function __construct()
+   {
+     parent::__construct();  
+     $this->load->model('admin/Admin');  
+   }
 
 
     public function index()
@@ -16,6 +21,8 @@ class Manager extends BackendController
     
 
         $data['main_content'] = 'admin/manager/view_customer';
+
+           $data["fetch_notification"] = $this->Admin->fetch_notification();
         $this->load->view('admin/layouts/home',$data);
 
 }
@@ -29,6 +36,8 @@ class Manager extends BackendController
         $data['breadcrumb'] = 'Assign Work';
     
         $data['main_content'] = 'admin/manager/assign_work';
+
+           $data["fetch_notification"] = $this->Admin->fetch_notification();
         $this->load->view('admin/layouts/home',$data);
 
 }

@@ -30,3 +30,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 assets/plugins/morris/morris.css
 assets/plugins/morris/morris.css
 assets/plugins/morris/morris.css
+application/controllers/admin/Dashboard.php
+application/models/admin/Admin.php
+application/models/admin/admin.php
+application/models/CommentModel.php

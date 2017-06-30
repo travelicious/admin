@@ -37,9 +37,7 @@
 
 
 		      <tr>
-			  
-
-				<td><a href="#"> <?php echo $fetch->name ?><a> </td>
+<td><a href="<?php echo base_url('admin/comment/ShowCommentBox').'/'.$fetch->id ?>"><?php echo $fetch->name ?><a> </td>
 				<td> <?php echo $fetch->email ?> </td>
 				<td> <?php echo $fetch->contact ?> </td>
 				<td> <?php echo $fetch->user_type ?> </td>

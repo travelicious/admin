@@ -6,7 +6,8 @@ class SuperAdmin extends BackendController
 {
    public function __construct()
    {
-     parent::__construct();	   
+     parent::__construct();	 
+     $this->load->model('admin/Admin');  
    }
    
    
@@ -30,6 +31,9 @@ class SuperAdmin extends BackendController
 	   $address = $formData['address'];
 	   $country = $formData['country'];
 	   $phone = $formData['phone'];
+	   $destination = $formData['destination'];
+	   $source      = $formData['domain_source'];
+
 	   if(!empty($formData['assign']))           // Check if task assigned or not
 	   {
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
@@ -45,11 +49,11 @@ class SuperAdmin extends BackendController
 	   }
 	   if($flag == true)
 	   {
-         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone, 'assign_to' => $employeeId];
+         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone,'destination' => $destination,'domain_source' => $domain_source, 'assign_to' => $employeeId];
 	   }
 	   else
 	   {
-		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone];
+		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone,'destination' => $destination, 'domain_source' => $domain_source];
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {
@@ -89,6 +93,10 @@ class SuperAdmin extends BackendController
 	   $data['page_title'] = 'Create Task';
        $data['breadcrumb'] = 'Create Task';
        $data['main_content'] = 'admin/superAdmin/createTask';
+
+
+
+      $data["fetch_notification"] = $this->Admin->fetch_notification();
 
        $this->load->view('admin/layouts/home', $data); 
 	 }
@@ -131,7 +139,11 @@ class SuperAdmin extends BackendController
 	 }
 	 
 	 
+     
      $data['main_content'] = 'admin/superAdmin/viewTasks';
+
+     $data["fetch_notification"] = $this->Admin->fetch_notification();
+
 
      $this->load->view('admin/layouts/home', $data); 
 	}
@@ -164,6 +176,8 @@ add employee in tbl_user
      $data['breadcrumb'] = 'View Tasks';
 	 $data['main_content'] = 'admin/superAdmin/add_employee';
 
+	 $data["fetch_notification"] = $this->Admin->fetch_notification();
+
 		$this->load->view('admin/layouts/home', $data); 
 	}
 
@@ -191,6 +205,9 @@ public function view_employee()
 
 
      $data['main_content'] = 'admin/superAdmin/view_employee';
+
+
+     $data["fetch_notification"] = $this->Admin->fetch_notification();
 
 		$this->load->view('admin/layouts/home', $data); 
 }
