@@ -30,6 +30,9 @@ class SuperAdmin extends BackendController
 	   $address = $formData['address'];
 	   $country = $formData['country'];
 	   $phone = $formData['phone'];
+	   $destination = $formData['destination'];
+	   $source     = $formData['domain_source'];
+
 	   if(!empty($formData['assign']))           // Check if task assigned or not
 	   {
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
@@ -45,11 +48,11 @@ class SuperAdmin extends BackendController
 	   }
 	   if($flag == true)
 	   {
-         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone, 'assign_to' => $employeeId];
+         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone,'destination' => $destination,'domain_source' => $domain_source, 'assign_to' => $employeeId];
 	   }
 	   else
 	   {
-		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone];
+		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone,'destination' => $destination, 'domain_source' => $domain_source];
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {

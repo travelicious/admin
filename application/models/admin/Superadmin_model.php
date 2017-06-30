@@ -15,7 +15,7 @@ class Superadmin_model extends CI_Model
 
             'contact'       => $this->input->post('contact'),
 
-            'password'      => $this->input->post('password'),
+            'password'      => md5($this->input->post('password')),
 
             'user_type'     => $this->input->post('user_type'),
 
