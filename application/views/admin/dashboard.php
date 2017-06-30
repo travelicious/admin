@@ -47,7 +47,7 @@
                 <div class="inner">
                     <h3><?php echo ($dashboardData['pendingValue']); ?></h3>
 
-                    <p>Inactive Tasks</p>
+                    <p>Closed Files</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
