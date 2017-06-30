@@ -1,10 +1,7 @@
 <?php
 class Admin extends CI_Model
 {
-<<<<<<< HEAD:application/models/admin/admin.php
- 
 
-=======
  public function fetchCounts()
 	{
 		$unassignedValue = $this->db->query("SELECT id FROM customer WHERE assign_to IS NULL");
@@ -27,7 +24,7 @@ class Admin extends CI_Model
       return $query;
 
 	}
->>>>>>> d5b36d205d780fc8f742a34d44fef0728d66ce6b:application/models/admin/Admin.php
+
 }
 
 ?>
