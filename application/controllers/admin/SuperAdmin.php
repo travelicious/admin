@@ -32,14 +32,10 @@ class SuperAdmin extends BackendController
 	   $country = $formData['country'];
 	   $phone = $formData['phone'];
 	   $destination = $formData['destination'];
-<<<<<<< HEAD
 	   $domain     = $formData['domain'];
 	   $source     = $formData['source'];
        $customer_requirement = $formData['customer_requirement'];   
-=======
-	   $source      = $formData['domain_source'];
 
->>>>>>> ebac205f41b822f73a00344604e4cb278b18f6e7
 	   if(!empty($formData['assign']))           // Check if task assigned or not
 	   {
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
@@ -307,6 +303,7 @@ public function view_employee()
 		   $data['page_title'] = 'Create Task';
 		   $data['breadcrumb'] = 'Create Task';
 		   $data['main_content'] = 'admin/superAdmin/createTask';
+		    $data["fetch_notification"] = $this->Admin->fetch_notification();
 
 		   $this->load->view('admin/layouts/home', $data);	
 		}			
