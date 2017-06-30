@@ -22,6 +22,9 @@
         <th>Address</th>
         <th>Country</th>
         <th>Phone</th>
+         <th>Destination</th>
+          <th>Domain</th>
+           <th>Customer Requirement</th>
         <th>Assign To</th>
 
 
@@ -37,12 +40,15 @@
 
 <tr>
 
-<td><?php echo $row->name; ?></td>
+<td><a href="<?php echo base_url('admin/comment/showCommentBox').'/'.$row->id;?>"><?php echo $row->name; ?></a></td>
 <td><?php echo $row->email; ?></td>
 <td><?php echo $row->address; ?></td>
 <td><?php echo $row->country; ?></td>
 
 <td><?php echo $row->phone; ?></td>
+<td><?php echo $row->destination; ?></td>
+<td><a href="<?php echo $row->domain; ?>"><?php echo $row->domain; ?></a></td>
+<td><?php echo $row->customer_requirement; ?></td>
 <td><?php echo $row->assigned_employee_name . " (" . $row->employee_user_type . ") ";?></td>
 
 
