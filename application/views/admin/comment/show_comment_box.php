@@ -29,9 +29,15 @@
                     </tr>
                     <tr>
                         <th class="row">Next Follow-Up<td class="row"><?php echo $indv_custmr->next_followup ?></td>
-
-                       
-
+                    </tr>
+                    <tr>
+                        <th class="row">Destination<td class="row"><?php echo $indv_custmr->destination ?></td>
+                    </tr>
+                    <tr>
+                        <th class="row">Domain<td class="row"><a href="<?php echo $indv_custmr->domain ?>" target="__blank"><?php echo $indv_custmr->domain ?></a></td>
+                    </tr>
+                    <tr>
+                        <th class="row">Customer Requirement<td class="row"><?php echo $indv_custmr->customer_requirement ?></td>
                     </tr>
 
                 </table><!-- /.table -->
@@ -52,77 +58,81 @@
 
                 <?php
                 if (!empty($noOfComment)) {
-                    echo $noOfComment.'&nbsp'.'Comments';
+                    echo $noOfComment . '&nbsp' . 'Comments';
                 }
                 ?>
             </span>
 
-			
 
-			</div>
+
+        </div>
         <!-- /.box-body -->
 
 
         <!--comment-->
-        <div class="box-footer box-comments">
+        <div class="col-md-3">
+            <label class="label label-default label-info">Comments</label></br></br>
+        </div>
+        <div class="box-footer box-comments" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 2px 2px 4px #000000;">
             <div class="box-comment">
 
                 <div class="comment-text">
-                    <label class="label label-default label-info">Comments</label></br></br>
                     
-					<?php
-					  if(!empty($allComment))
-					  {
-						foreach($allComment as $comment)
-						{
-				    ?>    <span class="username">
-                        <?php
-                          echo $comment->name
-						?>						
-                          <span class="text-muted pull-right"><?php echo $comment->created_date; ?></span>
-                    
-					      </span><!-- /.username -->
-                    
-					<?php   
-						  echo $comment->comments;
-						} 
-					  }
-					?>
-				
-				</div>
-				
-				</div>
-                <!-- /.comment-text -->
+
+                    <?php
+                    if (!empty($allComment)) {
+                        foreach ($allComment as $comment) {
+                            ?>    <span class="username">
+                            <?php if($comment->name == $_SESSION['logged_in']['name']){?>
+                                <label class="label label-default label-success" style="font-size: 12px;"><?php echo $comment->name ?></label>
+                            <?php } else {?>
+                                <label class="label label-default label-primary" style="font-size: 12px;"><?php echo $comment->name ?></label>
+                            <?php } ?>
+                           						
+                                <span class="text-muted pull-right"><?php echo $comment->created_date; ?></span>
+
+                            </span><!-- /.username -->
+
+        <?php
+        echo $comment->comments;
+    }
+}
+?>
+
+                </div>
+
             </div>
-            <!-- /.box-comment -->
-
+            <!-- /.comment-text -->
         </div>
-        <!-- /.box-footer -->
-        <!--comments end-->
+        <!-- /.box-comment -->
 
-
-
-        <div class="box-footer">
-
-       
-            <form action="<?php echo base_url('admin/comment/saveComment'); ?>" method="post">
-                <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
-                
-
-                <div class="img-push">
-                    <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="comment">
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-md-1 box-footer">
-                    </br>
-                    <button type="submit" class="btn btn-block btn-primary">Post</button>
-                </div>
-
-            </form>
-        </div>
-        <!-- /.box-footer -->
     </div>
-    <!-- /.box -->
+    <!-- /.box-footer -->
+    <!--comments end-->
+
+
+
+    <div class="box-footer">
+
+
+        <form action="<?php echo base_url('admin/comment/saveComment'); ?>" method="post">
+            <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
+
+
+            <div class="img-push">
+                <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="comment">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-1 box-footer">
+                </br>
+                <button type="submit" class="btn btn-block btn-primary">Post</button>
+            </div>
+
+        </form>
+    </div>
+    <!-- /.box-footer -->
+</div>
+<!-- /.box -->
 
 
 <div class="col-md-2">
@@ -134,8 +144,8 @@
             </div>
             <div class="form-group col-md-12" id="datepicker_block" style="display: none;">
                 </br>
-                <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup");?>" method="post">
-                     <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
+                <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup"); ?>" method="post">
+                    <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
                     <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
                 </form>
             </div>
@@ -153,7 +163,4 @@
     function show_datepicker() {
         $("#datepicker_block").show();
     }
-
-   
-
 </script>

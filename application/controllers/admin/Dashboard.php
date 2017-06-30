@@ -26,6 +26,7 @@ class Dashboard extends BackendController {
         $data['breadcrumb'] = 'Dashboard';
         $data['main_content'] = 'admin/dashboard';
 <<<<<<< HEAD
+<<<<<<< HEAD
         $this->load->model("admin/Dashboard_model");
 	    $data['dashboardData'] = $this->Dashboard_model->fetchCounts();
         $data['toDoDashboardData'] = $this->Dashboard_model->to_do_list_data();
@@ -43,6 +44,18 @@ class Dashboard extends BackendController {
         }
 
     }
+=======
+        
+        $this->load->model("admin/Admin");
+
+	    $data['dashboardData'] = $this->Admin->fetchCounts();
+
+        $data["fetch_notification"]=$this->Admin->fetch_notification();
+
+        $this->load->view('admin/layouts/home', $data);
+	}
+
+>>>>>>> d5b36d205d780fc8f742a34d44fef0728d66ce6b
 =======
         
         $this->load->model("admin/Admin");
