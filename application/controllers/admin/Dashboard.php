@@ -14,16 +14,32 @@ class Dashboard extends BackendController {
          
     }
 
-    public function index() {
+    public function index()
+    {
         if(!isset($this->session->userdata['logged_in'])){
-            $this->session->set_flashdata('no_user', 'Please Login');
-                   redirect('admin/welcome');
+        $this->session->set_flashdata('no_user', 'Please Login');
+        redirect('admin/welcome');
         }
+        
         $data['page_title'] = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
         $data['main_content'] = 'admin/dashboard';
-        $this->load->model("admin/admin");
-	    $data['dashboardData'] = $this->admin->fetchCounts();
+        $this->load->model("admin/Dashboard_model");
+	    $data['dashboardData'] = $this->Dashboard_model->fetchCounts();
+        $data['toDoDashboardData'] = $this->Dashboard_model->to_do_list_data();
         $this->load->view('admin/layouts/home', $data);
 	}
+
+    public function delete($id=null){
+        if(!isset($this->session->userdata['logged_in'])){
+          $this->session->set_flashdata('no_user', 'Please Login');
+          redirect('admin/welcome');
+        }
+        if($id != null){
+          $this->db->query("delete from to_do_list where id='$id'");
+          redirect('/admin/dashboard');
+        }
+
+    }
+  
 }
