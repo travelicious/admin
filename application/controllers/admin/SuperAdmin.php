@@ -31,8 +31,9 @@ class SuperAdmin extends BackendController
 	   $country = $formData['country'];
 	   $phone = $formData['phone'];
 	   $destination = $formData['destination'];
-	   $source     = $formData['domain_source'];
-
+	   $domain     = $formData['domain'];
+	   $source     = $formData['source'];
+       $customer_requirement = $formData['customer_requirement'];   
 	   if(!empty($formData['assign']))           // Check if task assigned or not
 	   {
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
@@ -48,11 +49,15 @@ class SuperAdmin extends BackendController
 	   }
 	   if($flag == true)
 	   {
-         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone,'destination' => $destination,'domain_source' => $domain_source, 'assign_to' => $employeeId];
+         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 
+		          'phone' => $phone,'destination' => $destination,'domain' => $domain, 
+		          'source' => $source, 'assign_to' => $employeeId, 'customer_requirement' => $customer_requirement];
 	   }
 	   else
 	   {
-		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 'phone' => $phone,'destination' => $destination, 'domain_source' => $domain_source];
+		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 
+		          'country' => $country, 'phone' => $phone,'destination' => $destination, 
+				  'domain' => $domain, 'source' => $source, 'customer_requirement' => $customer_requirement];
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {
@@ -72,8 +77,8 @@ class SuperAdmin extends BackendController
 	 }	
 	 else                 // Get request handling
 	 {
-	   $query1 = "select name, id  from tbl_user where user_type='mgr'";
-	   $query2 = "select name, id  from tbl_user where user_type='exe'";
+	   $query1 = "select name, id, email from tbl_user where user_type='mgr'";
+	   $query2 = "select name, id, email from tbl_user where user_type='exe'";
 	   
 	   $managerList = $this->db->query($query1);          // Get manager list from tbl_user
 	   $managerList = $managerList->result();
@@ -250,8 +255,8 @@ public function view_employee()
 		}
 		if(!empty($results))
 		{
-		   $query1 = "select name, id  from tbl_user where user_type='mgr'";
-		   $query2 = "select name, id  from tbl_user where user_type='exe'";
+		   $query1 = "select name, id, email from tbl_user where user_type='mgr'";
+		   $query2 = "select name, id, email from tbl_user where user_type='exe'";
 		   
 		   $managerList = $this->db->query($query1);          // Get manager list from tbl_user
 		   $managerList = $managerList->result();
@@ -273,6 +278,11 @@ public function view_employee()
 		   $data['address'] = $results->address;
 		   $data['country'] = $results->country;
            $data['phone'] = $results->phone;
+           $data['destination'] = $results->destination;
+           $data['source'] = $results->source;
+		   $data['customer_requirement'] = $results->customer_requirement;
+		   
+           $data['domain'] = $results->domain;
 
 		   
 		   $data['page_title'] = 'Create Task';

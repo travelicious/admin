@@ -69,18 +69,32 @@ if(!empty($message))
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Destination</label>
 <div class="col-xs-4">
-<input type="text" name="destination" class="form-control" required="true" value="<?php echo (!empty($phone)?$destination:''); ?>"/>
+<input type="text" name="destination" class="form-control" required="true" value="<?php echo (!empty($destination)?$destination:''); ?>"/>
 </div>
 </div>
 
 <div class="form-group row"> 
-<label for="name" class="col-xs-1 col-form-label">Source</label>
+<label for="domain" class="col-xs-1 col-form-label">Domain</label>
 <div class="col-xs-4">
-<select name="source" class="form-control" required="true" value="<?php echo (!empty($phone)?$destination:''); ?>"/>
+<input type="url" name="domain" class="form-control" required="true" value="<?php echo (!empty($domain)?$domain:''); ?>"/>
+</div>
+</div>
+
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Lead Source</label>
+<div class="col-xs-4">
+<select name="source" class="form-control" required="true" value="<?php echo (!empty($source)?$source:''); ?>"/>
   <option>Please Select Source</option>
-  <option>Adword...</option>
-  <option>Facebook...</option>
+  <option>Adword</option>
+  <option>Facebook</option>
 </select>
+</div>
+</div>
+
+<div class="form-group row"> 
+<label for="name" class="col-xs-1 col-form-label">Requirement</label>
+<div class="col-xs-4">
+<input type="text" name="customer_requirement" class="form-control" required="true" value="<?php echo (!empty($customer_requirement)?$customer_requirement:''); ?>"/>
 </div>
 </div>
 
@@ -103,7 +117,7 @@ Executive
 	 foreach($managerList as $manager)
 	 {
     ?>
-	   <option value="<?php echo $manager->id ?>" ><?php echo $manager->name ?></option>   
+	   <option value="<?php echo $manager->id ?>"> <?php echo $manager->name .' ('.$manager->email.')'; ?> </option>   
     <?php  	
 	 }	 
    }	   
@@ -118,7 +132,7 @@ Executive
 	 foreach($executiveList as $executive)
 	 {
     ?>
-	   <option value="<?php echo $executive->id ?>" ><?php echo $executive->name ?></option>   
+	   <option value="<?php echo $executive->id ?>" ><?php echo $executive->name.' ('.$executive->email.')' ?></option>   
     <?php  	
 	 }	 
    }	   
