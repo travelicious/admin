@@ -34,6 +34,22 @@ class Superadmin_model extends CI_Model
         
     }
 
+
+    public function fetch_employee_edit($id)
+
+    {
+       $query = $this->db->query("select * from tbl_user where id = '$id'  order by id desc "); 
+         return $query; 
+
+    }
+
+
+
+    function fetch_employee_detail($id) {
+        $query = $this->db->query("select tbl_user.*, customer.name,customer.id as cst_id from tbl_user, customer where tbl_user.id = '$id' and customer.assign_to = '$id' ");
+        return $query;
+    }
+
    
 }
 

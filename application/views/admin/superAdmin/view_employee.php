@@ -37,7 +37,8 @@
 
 
 		      <tr>
-<td><?php echo $fetch->name ?> </td>
+         <td>
+<a href="<?php echo base_url('admin/superAdmin/employee_detail') . '/' . $fetch->id; ?>">                     <?php echo $fetch->name ?> </a> </td>
 				<td> <?php echo $fetch->email ?> </td>
 				<td> <?php echo $fetch->contact ?> </td>
 				<td> <?php echo $fetch->user_type ?> </td>
@@ -58,9 +59,9 @@
 
 				  
 		
-<td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$fetch->id); ?>">Edit / </a>
+<td> <a href="<?php echo base_url('admin/superAdmin/edit_employee/'.$fetch->id); ?>">Edit / </a>
 
-<a href="<?php echo base_url('admin/superadmin/delete_employee/'.$fetch->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
+<a href="<?php echo base_url('admin/superAdmin/delete_employee/'.$fetch->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
 				</td>
 					
 			  </tr>

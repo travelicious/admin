@@ -8,6 +8,7 @@ class SuperAdmin extends BackendController
    {
      parent::__construct();	 
      $this->load->model('admin/Admin');  
+     $this->load->model('admin/Superadmin_model');
    }
    
    
@@ -230,10 +231,77 @@ public function view_employee()
     }
 
 
+    public function edit_employee($id)
 
-	
-	
-	
+
+    {
+
+     $data['page_title'] = 'Edit employee';
+     $data['breadcrumb'] = 'Edit Employee';
+
+     //$id = $_GET['id'];
+     //echo $id;exit;
+       $this->load->model('admin/Superadmin_model');
+       
+        $data['fetch_employee_edit']= $this->Superadmin_model->fetch_employee_edit($id);
+
+        $data['main_content'] = 'admin/superAdmin/edit_employee';
+        $data["fetch_notification"] = $this->Admin->fetch_notification();
+        
+     $this->load->view('admin/layouts/home', $data); 
+       
+
+         
+          }
+
+
+
+
+
+public function employee_detail($id) {
+
+        $data['detail'] = $this->Superadmin_model->fetch_employee_detail($id);
+        
+        // $allComment = $this->Comments_model->getAllComment($id);
+        // $noOfComment = $this->Comments_model->totalNoOfComment($id);
+        // if (!empty($allComment) && !empty($noOfComment)) {
+        //     $data['allComment'] = $allComment;
+        //     $data['noOfComment'] = $noOfComment;
+        // }
+        $data['page_title'] = 'Employee Details';
+        $data['breadcrumb'] = 'Employee Details';
+        $data['main_content'] = 'admin/superAdmin/employee_detail';
+        
+        $data["fetch_notification"] = $this->Admin->fetch_notification();
+        $this->load->view('admin/layouts/home', $data);
+    }
+
+
+
+
+
+
+        public function save_employee()
+    {
+        $id = $_POST['id'];
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $contact = $_POST["contact"];
+       // $password = $_POST["password"];
+        $usertype = $_POST["user_type"];
+        $address = $_POST["address"];
+       
+       if ($usertype =="") {
+        echo "string";exit;
+          $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
+          }else{
+       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , user_type = '$usertype' , address = '$address'  where id = '".$id."'");
+   }
+        redirect('admin/superAdmin/view_employee');
+    }
+
+
+
 	
 	/*
 	  Created by Shahnawaz
