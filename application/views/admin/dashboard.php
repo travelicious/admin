@@ -1,5 +1,6 @@
 
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Saket
@@ -7,6 +8,8 @@
  * Time: 3:32 PM
  */
 ?>
+
+
 <section class="content">
     <!-- Small boxes (Stat box) -->
 	<?php if ($_SESSION['logged_in']['uid'] == 'adm') { ?>
@@ -47,7 +50,7 @@
                 <div class="inner">
                     <h3><?php echo ($dashboardData['pendingValue']); ?></h3>
 
-                    <p>Inactive Tasks</p>
+                    <p>Closed Files</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -74,6 +77,68 @@
     </div>
 
 	<?php } ?>
+     <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['unassignedValue']); ?></h3>
+
+                    <p>Unassigned Tasks</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['noOfExicutive']); ?><sup style="font-size: 20px"></sup></h3>
+
+                    <p>Total Executive</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['pendingValue']); ?></h3>
+
+                    <p>Closed Files</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['assignButNotComplete']); ?></h3>
+
+                    <p>Assigned But Not Complate</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
 
     <!-- /.row -->
     <!-- Main row -->
@@ -201,8 +266,11 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
+               
                 <div class="box-body">
+                 
                     <ul class="todo-list">
+                    <?php foreach($toDoDashboardData as $value){  ?>
                         <li>
                             <!-- drag handle -->
                             <span class="handle">
@@ -212,82 +280,21 @@
                             <!-- checkbox -->
                             <input type="checkbox" value="">
                             <!-- todo text -->
-                            <span class="text">Design a nice theme</span>
+                            <span class="text"><?php echo $value->title;?></span>
                             <!-- Emphasis label -->
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                            <small class="label label-danger"><i class="fa fa-clock-o"><?php echo $value->created_date;  ?></i> </small>
+                            <small class="label label-danger"><i class="fa fa-frown-o"><?php echo $value->name;  ?></i> </small>
                             <!-- General tools such as edit or delete-->
                             <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                                <a href="<?php echo base_url().'/admin/dashboard/edit'.$value->id;?>"><i class="fa fa-edit"></i></a>
+                                 <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>"><i class="fa fa-trash-o"></i></a>
                             </div>
                         </li>
-                        <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                            <input type="checkbox" value="">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                            <input type="checkbox" value="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                            <input type="checkbox" value="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                            <input type="checkbox" value="">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                            <input type="checkbox" value="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
+                        <?php } ?>
                     </ul>
+                      
                 </div>
+               
                 <!-- /.box-body -->
                 <div class="box-footer clearfix no-border">
                     <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>

@@ -34,8 +34,11 @@
 		?>
 
 
+
+
 		 <table class="table table-responsive">
 		
+
 
 		<?php
 		 if(!empty($updateSuccessMessage))
@@ -49,7 +52,7 @@
 		
 
 		<table class="table table-responsive">
-		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Assign To</th> <th>Action</th>
+		 <th>Name</th> <th>Email</th> <th>Address</th> <th>Country</th> <th>Phone</th> <th>Destination</th> <th>Domain</th> <th>Source</th> <th>Customer Requirement</th> <th>Assign To Manager</th> <th>Assign To Executive</th> <th>Action</th>
 
 		 
          
@@ -63,18 +66,52 @@
 		?>
 		      <tr>
 			    <td> <a href="<?php echo base_url('admin/comment/showCommentBox/'.$task->id); ?>"><?php echo $task->name; ?> </a></td>
-				<td> <?php echo $task->email; ?> </td>
 				
-				<td> <?php echo $task->address; ?> </td>
-				<td> <?php echo $task->country; ?> </td>
-			    <td> <?php echo $task->phone; ?> </td>
+				<td> <?php echo !empty($task->email)?$task->email:'-'; ?> </td>
+				
+				<td> <?php echo !empty($task->address)?$task->address:'-'; ?> </td>
+				<td> <?php echo !empty($task->country)?$task->country:'-'; ?> </td>
+			    <td> <?php echo !empty($task->phone)?$task->phone:'-'; ?> </td>
+				<td> <?php echo !empty($task->destination)?$task->destination:'-'; ?> </td>
+				<td> <?php echo !empty($task->domain)?$task->domain:'-'; ?> </td>
+				<td> <?php echo !empty($task->source)?$task->source:'-'; ?> </td>
+				<td> <?php echo !empty($task->customer_requirement)?$task->customer_requirement:'-'; ?> </td>
+				
+				
 
-			    <td> <?php echo (!empty($task->assigned_employee_name)? $task->assigned_employee_name  : '-'); ?> </td>
-			    <td> <a href="<?php echo base_url('admin/superAdmin/edit') ?>">Edit / </a>
-				     <a href="<?php echo base_url('admin/superAdmin/delete') ?>">delete</a>
+			  
+				<td>
+                  <?php 
+				    if(!empty($task->assign_to) && $task->user_type == 'exe')
+					{
+				  	  echo $task->assigned_employee_name;			  
+					}
+					else
+					{
+					  echo '-';	
+					}
+				  ?> 
+				 </td>
+                 
+				 <td>
+                  <?php 
+				    if(!empty($task->assign_to) && $task->user_type == 'mgr')
+					{
+				  	  echo $task->assigned_employee_name;			  
+					}
+					else
+					{
+					  echo '-';	
+					}
+				  ?> 
+				 </td>  
+				 
+		
+                <td> 
+				    <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a> 
+				    <a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
+				</td>
 
-			    
-	
 					
 			  </tr>
         <?php   		

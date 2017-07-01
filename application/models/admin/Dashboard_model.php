@@ -1,7 +1,6 @@
 <?php
-class Admin extends CI_Model
+class Dashboard_model extends CI_Model
 {
-
  public function fetchCounts()
 	{
 		$unassignedValue = $this->db->query("SELECT id FROM customer WHERE assign_to IS NULL");
@@ -16,14 +15,11 @@ class Admin extends CI_Model
 		return $data;
 	}
 	
-
-	public function fetch_notification()
-	{
-		$query =$this->db->query("select * from to_do_list order by id ");
-
-      return $query;
-
-	}
+	public function to_do_list_data(){   
+         $data = $this->db->query("select to_do_list.id,to_do_list.title,to_do_list.created_date,tbl_user.name from to_do_list left join tbl_user on to_do_list.emp_id = tbl_user.id");
+          $data = $data->result();
+            return $data;
+         }
 
 }
 

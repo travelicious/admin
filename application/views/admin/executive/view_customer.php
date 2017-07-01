@@ -8,16 +8,35 @@
         <div class="box-header with-border">
             <h3 class="box-title"><?php echo $page_title ?></h3>
 
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fa fa-minus"></i></button>
-<!--                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fa fa-times"></i></button>-->
-            </div>
         </div>
 
-        <div class="box-body">
-      
+        <?php if ($this->session->flashdata('error')) { ?>
+            <div class="alert alert-danger"> <?= $this->session->flashdata('error') ?> </div>
+        <?php } ?>
+
+
+        <div class="box-tools">
+            <div class="form-group col-md-12">
+                <form  id="date_wise_search" id="date_wise_search">
+                    <div class="col-md-5">
+                        <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" required class="form-control" name="date_to" value="" id="date_to"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" name="submit" class="btn btn-default btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="box-body" id="date_wise_list"></div>
+
+        <div class="box-body" id="default_list">
+
             <?php
             if (!empty($customer_list)) {
                 ?>
@@ -30,6 +49,7 @@
                             <th>Contact</th>
                             <th>Address</th>
                             <th>Country</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -39,15 +59,15 @@
 //                                     
                             ?>
                             <tr>
-                                <td class="mailbox-star"><?php echo ++$i;?></td>
-                                <td class="mailbox-subject"><a href="<?php echo base_url('admin/comments/showCommentBox').'/'.$value->id;?>"><b><?php echo $value->name; ?></b></a></td>
+                                <td class="mailbox-star"><?php echo ++$i; ?></td>
+                                <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
                                 <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->address; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
+                                
                             </tr>
                             <?php
-                            
                         }
                         ?>
 
@@ -71,20 +91,47 @@
         </div>
         <!-- end /.box-body -->
 
-        </div>
- 
+    </div>
 
 
 
 
-         <!-- /.box-body -->
 
-        <div class="box-footer">
-      
-        </div>
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
+    <!-- /.box-body -->
 
-    </section>
+    <div class="box-footer">
+
+    </div>
+    <!-- /.box-footer-->
+
+    <!-- /.box -->
+    <script src="<?php echo base_url("assets/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
     <!-- /.content -->
+    <script>
+        $(function () {
+
+            $("#date_wise_search").submit(function (event) {
+
+                //            if ($(this).valid()) {
+                event.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo base_url("admin/executive/customer_by_date"); ?>",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#default_list").hide();
+                        $("#date_wise_list").html(response);
+
+                    }
+
+                });
+            });
+            //            }
+        });
+
+    </script>
