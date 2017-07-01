@@ -113,9 +113,10 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url('admin/superAdmin/createTask') ?>"><i class="fa fa-circle-o"></i> Add Customer</a></li>
-                        <li><a href="<?php echo base_url('admin/superAdmin/viewTask') ?>"><i class="fa fa-circle-o"></i> View Customer</a></li>
-                    </ul>
+                        <li><a href="<?php echo base_url('admin/superAdmin/create-task') ?>"><i class="fa fa-circle-o"></i> Add Customer</a></li>
+                        <li><a href="<?php echo base_url('admin/superAdmin/view-task') ?>"><i class="fa fa-circle-o"></i> View Customer</a></li>
+						<li><a href="<?php echo base_url('admin/superAdmin/view-task/deleted') ?>"><i class="fa fa-circle-o"></i> View Deleted Customer</a></li>
+				    </ul>
                 </li>
 
 

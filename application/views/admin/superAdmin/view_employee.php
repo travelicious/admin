@@ -58,7 +58,7 @@
 
 				  
 		
-<td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$fetch->id); ?>">Edit / </a>
+<td> <a href="<?php echo base_url('admin/superAdmin/edit_employee/'.$fetch->id); ?>">Edit / </a>
 
 <a href="<?php echo base_url('admin/superadmin/delete_employee/'.$fetch->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
 				</td>
