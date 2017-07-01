@@ -103,10 +103,6 @@ class SuperAdmin extends BackendController
    public function viewTask()
    {
 	 $data = array();
-
-     $query = "select customer.*,tbl_user.name as assigned_employee_name,tbl_user.user_type as employee_user_type from customer,tbl_user where tbl_user.id = customer.assign_to order by customer.id desc";                   // Fetch all tasks from customer table   
-     $tasks = $this->db->query($query);	 
-
 	 $assign = new stdClass();
      $query = "select customer.*,tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on tbl_user.id = customer.assign_to order by customer.id desc";
 	 $tasks = $this->db->query($query);	 
@@ -190,6 +186,58 @@ public function view_employee()
 
 		$this->load->view('admin/layouts/home', $data); 
 }
+
+
+ public function edit_employee($id)
+
+
+    {
+
+     $data['page_title'] = 'view employee';
+     $data['breadcrumb'] = 'View Employee';
+
+    	//$id = $_GET['id'];
+    	//echo $id;exit;
+       $this->load->model('admin/Superadmin_model');
+       
+        $data['fetch_employee_edit']= $this->Superadmin_model->fetch_employee_edit($id);
+
+        $data['main_content'] = 'admin/superAdmin/edit_employee';
+        
+     $this->load->view('admin/layouts/home', $data); 
+       
+
+         
+}
+
+        
+    
+
+/* ________________________________________Save Employee Alamgir ________________________________  */
+
+
+    public function save_employee()
+    {
+        $id = $_POST['id'];
+       // echo $id;exit;
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $contact = $_POST["contact"];
+       // $password = $_POST["password"];
+        $usertype = $_POST["user_type"];
+        $address = $_POST["address"];
+       
+       if ($usertype =="") {
+       	echo "string";exit;
+       			$this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
+       			}else{
+       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , user_type = '$usertype' , address = '$address'  where id = '".$id."'");
+   }
+        redirect('admin/superAdmin/view_employee');
+    }
+
+
+/* ________________________________________Save Employee End________________________________  */
 
 
  public function delete_employee($id=null)
@@ -276,6 +324,20 @@ public function view_employee()
 		}			
 	  }		  
 	}	
+
+	/*__________________________ notification query Alam ____________________ */
+
+    public function notification()
+    {
+      $this->load->model('admin/Superadmin_model');
+
+      $data['fetch_notification_query']= $this->Superadmin_model->notification_query();
+
+      echo json_encode($data['fetch_notification_query']->result());
+
+    }
+
+    /*__________________________ notification query end ____________________ */
 	
 
 }
