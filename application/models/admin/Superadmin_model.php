@@ -53,6 +53,13 @@ class Superadmin_model extends CI_Model
 
     /*__________________________ notification query end ____________________ */
 
+
+
+    function fetch_employee_detail($id) {
+        $query = $this->db->query("select tbl_user.*, customer.name,customer.id as cst_id from tbl_user, customer where tbl_user.id = '$id' and customer.assign_to = '$id' ");
+        return $query;
+    }
+
    
 }
 

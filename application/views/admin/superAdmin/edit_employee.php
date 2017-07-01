@@ -1,10 +1,15 @@
+
  <!-- Main content -->
    
     <section class="content">
 
+
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
+
+          <h3 class="box-title">Edit Employee</h3>
+
           <h3 class="box-title">Add Employee</h3>
 
           <div class="box-tools pull-right">
@@ -48,10 +53,10 @@
 <div class="col-xs-4">
 <select name="user_type" class="form-control">
 <option>Please Select</option>
-<option>mgr</option>
-<option>exe</option>
-<option>adm</option>
-  
+<option value="mgr">Manager</option>
+<option value="exe">Executive</option>
+<option value="adm">Admin</option>
+
 </select>
 </div>
 </div>
@@ -76,6 +81,9 @@
       </div>
       <!-- /.box -->
 
+
     </section>
+
     <!-- /.content -->
+
 
