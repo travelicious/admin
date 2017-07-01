@@ -243,6 +243,7 @@ public function view_employee()
         $data['fetch_employee_edit']= $this->Superadmin_model->fetch_employee_edit($id);
 
         $data['main_content'] = 'admin/superAdmin/edit_employee';
+         $data["fetch_notification"] = $this->Admin->fetch_notification();
         
      $this->load->view('admin/layouts/home', $data); 
        
@@ -371,7 +372,7 @@ public function view_employee()
 	  }		  
 	}	
 
-	/*__________________________ notification query Alam ____________________ */
+	/*__________________________ notification query Alamgir ____________________ */
 
     public function notification()
     {
