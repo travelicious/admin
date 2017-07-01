@@ -114,7 +114,7 @@ class SuperAdmin extends BackendController
     Created by Shahnawaz
 	This function display all tasks
    */
-   public function view_task($flag)
+   public function view_task($flag=null)
    {
 	 $data = array();
 
