@@ -532,7 +532,7 @@ function add_fields() {
 
     var objTo = document.getElementById('task_appand')
     var divtest = document.createElement("div");
-    divtest.innerHTML = '<form method="POST"><div class="label"></div><div ><span> Task<input type="text"  name="title" /></span><span style="margin-left:30px">Employee Name<select  namae="emp_id" style="width:100px"  /><option><?php echo $value->name;  ?><option></span></div></form>';
+    divtest.innerHTML = '<form method="POST"><div class="label"></div><div ><span> Task<input type="text"  name="title" /></span><span style="margin-left:30px">Employee Name<select  namae="emp_id" style="width:100px"  /><option><option></span></div></form>';
 
     objTo.appendChild(divtest)
 }
