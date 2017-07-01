@@ -10,7 +10,7 @@
     var flag;
     function checktime(){
     var d = new Date();
-    if(d.getHours() == 17)
+    if(d.getHours() == 112)
     {
       notification();   
     }    
@@ -20,7 +20,7 @@
     {
        $.get("<?php echo base_url('admin/SuperAdmin/notification') ?>", getNotification)
        
-      // clearInterval(flag);
+       clearInterval(flag);
     }
 
     function getNotification(data)
