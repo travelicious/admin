@@ -1,9 +1,16 @@
- <section class="content">
+
+ <!-- Main content -->
+   
+    <section class="content">
+
 
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
+
           <h3 class="box-title">Edit Employee</h3>
+
+          <h3 class="box-title">Add Employee</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -49,7 +56,7 @@
 <option value="mgr">Manager</option>
 <option value="exe">Executive</option>
 <option value="adm">Admin</option>
-  
+
 </select>
 </div>
 </div>
@@ -74,4 +81,9 @@
       </div>
       <!-- /.box -->
 
+
     </section>
+
+    <!-- /.content -->
+
+

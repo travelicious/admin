@@ -107,7 +107,9 @@
 				 </td>  
 				 
 		
-                <td> <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a><a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
+                <td> 
+				    <a href="<?php echo base_url('admin/superAdmin/edit/'.$task->id); ?>">Edit / </a> 
+				    <a href="<?php echo base_url('admin/superAdmin/delete/'.$task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')">Delete</a>
 				</td>
 
 					

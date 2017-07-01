@@ -77,6 +77,68 @@
     </div>
 
 	<?php } ?>
+     <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['unassignedValue']); ?></h3>
+
+                    <p>Unassigned Tasks</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['noOfExicutive']); ?><sup style="font-size: 20px"></sup></h3>
+
+                    <p>Total Executive</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['pendingValue']); ?></h3>
+
+                    <p>Closed Files</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3><?php echo ($dashboardData['assignButNotComplete']); ?></h3>
+
+                    <p>Assigned But Not Complate</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
 
     <!-- /.row -->
     <!-- Main row -->
@@ -224,20 +286,28 @@
                             <small class="label label-danger"><i class="fa fa-frown-o"><?php echo $value->name;  ?></i> </small>
                             <!-- General tools such as edit or delete-->
                             <div class="tools">
-                                <a href="<?php echo base_url().'/admin/dashboard/edit'.$value->id;?>"><i class="fa fa-edit"></i></a>
                                  <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>"><i class="fa fa-trash-o"></i></a>
                             </div>
                         </li>
-                        <?php } ?>
-                    </ul>
+                        <?php
+                         } 
+                           
+                         ?>
+
+                     <!--add field inside this div -->
+                       <div id="task_appand">
+                    </div>
+                      </ul>
                       
                 </div>
+
                
                 <!-- /.box-body -->
                 <div class="box-footer clearfix no-border">
-                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                    <button type="button" class="btn btn-default pull-right" onclick="add_fields();"><i class="fa fa-plus"></i> Add item</button>
                 </div>
             </div>
+
             <!-- /.box -->
 
             <!-- quick email widget -->
@@ -456,6 +526,16 @@
 
 </section>
 
+<script>
+var task = 0;
+function add_fields() {
 
+    var objTo = document.getElementById('task_appand')
+    var divtest = document.createElement("div");
+    divtest.innerHTML = '<form method="POST"><div class="label"></div><div ><span> Task<input type="text"  name="title" /></span><span style="margin-left:30px">Employee Name<select  namae="emp_id" style="width:100px"  /><option><?php echo $value->name;  ?><option></span></div></form>';
+
+    objTo.appendChild(divtest)
+}
+</script>
 
 

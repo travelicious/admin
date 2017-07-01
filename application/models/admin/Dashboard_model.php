@@ -16,10 +16,28 @@ class Dashboard_model extends CI_Model
 	}
 	
 	public function to_do_list_data(){   
-         $data = $this->db->query("select to_do_list.id,to_do_list.title,to_do_list.created_date,tbl_user.name from to_do_list left join tbl_user on to_do_list.emp_id = tbl_user.id");
+         $data = $this->db->query("select to_do_list.id,to_do_list.title,to_do_list.created_date,tbl_user.name from to_do_list left join tbl_user on to_do_list.emp_id = tbl_user.id where status = 1");
           $data = $data->result();
             return $data;
          }
+
+    public function tbl_user_data()
+    {   
+		$data = $this->db->query("select * from tbl_user");
+		$data = $data->result();
+
+		foreach ($data as $value )
+		{
+			if(!empty($value->name))
+			{
+				$emp_name = $value->name;
+				$empId = $value->id;
+				$options[$empId] = $emp_name;
+		    }                 
+
+		}
+		return $options;
+	}
 
 }
 

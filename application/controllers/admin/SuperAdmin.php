@@ -21,7 +21,7 @@ class SuperAdmin extends BackendController
     Created by shahnawaz 
 	This function create task or customer
    */
-   public function createTask()
+   public function create_task()
    {
 	 $flag = false; 
 	 if($this->input->method() == 'post')         // Post request handling
@@ -115,19 +115,28 @@ class SuperAdmin extends BackendController
     Created by Shahnawaz
 	This function display all tasks
    */
-   public function viewTask()
+   public function view_task($flag)
    {
 	 $data = array();
 
-     $assign = new stdClass();
-     $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer,tbl_user where customer.flag =1 and tbl_user.id = customer.assign_to";
+     if($flag == 'deleted')    // Make query for view only deleted task
+	 {
+	   $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on customer.assign_to = tbl_user.id where customer.flag =0";
+	 }
+	 else        // Make query for view all tasks
+	 {
+	   $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on customer.assign_to = tbl_user.id where customer.flag =1";
+	 }
+
 	 $tasks = $this->db->query($query);	 
 	 $tasks = $tasks->result();
 	 if(!empty($tasks))
 	 {
 	   $data['tasks'] = $tasks; 	 
-	   
 	 }
+	 
+	 //print_r($tasks);
+	 //die;
 	  
 	 $data['page_title'] = 'View Tasks';
      $data['breadcrumb'] = 'View Tasks';
@@ -218,6 +227,59 @@ public function view_employee()
 
 		$this->load->view('admin/layouts/home', $data); 
 }
+
+
+ public function edit_employee($id)
+
+
+    {
+
+     $data['page_title'] = 'view employee';
+     $data['breadcrumb'] = 'View Employee';
+
+    	//$id = $_GET['id'];
+    	//echo $id;exit;
+       $this->load->model('admin/Superadmin_model');
+       
+        $data['fetch_employee_edit']= $this->Superadmin_model->fetch_employee_edit($id);
+
+        $data['main_content'] = 'admin/superAdmin/edit_employee';
+         $data["fetch_notification"] = $this->Admin->fetch_notification();
+        
+     $this->load->view('admin/layouts/home', $data); 
+       
+
+         
+}
+
+        
+    
+
+/* ________________________________________Save Employee Alamgir ________________________________  */
+
+
+    public function save_employee()
+    {
+        $id = $_POST['id'];
+       // echo $id;exit;
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $contact = $_POST["contact"];
+       // $password = $_POST["password"];
+        $usertype = $_POST["user_type"];
+        $address = $_POST["address"];
+       
+       if ($usertype =="") {
+       	echo "string";exit;
+       			$this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
+       			}else{
+       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , user_type = '$usertype' , address = '$address'  where id = '".$id."'");
+   }
+        redirect('admin/superAdmin/view_employee');
+    }
+
+
+/* ________________________________________Save Employee End________________________________  */
 
 
  public function delete_employee($id=null)
@@ -377,8 +439,21 @@ public function employee_detail($id) {
 		}			
 	  }		  
 	}	
-	
 
+	/*__________________________ notification query Alamgir ____________________ */
+
+    public function notification()
+    {
+      $this->load->model('admin/Superadmin_model');
+
+      $data['fetch_notification_query']= $this->Superadmin_model->notification_query();
+
+      echo json_encode($data['fetch_notification_query']->result());
+
+    }
+
+    /*__________________________ notification query end ____________________ */
+	
 }
 
 
