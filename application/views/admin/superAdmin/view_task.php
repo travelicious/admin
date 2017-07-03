@@ -48,7 +48,7 @@
 		</div>
 
 
-        <div class="box-body" id="default_list">
+        <div class="box-body" id="default_list" style="overflow:auto">
 
 
             <?php
@@ -80,16 +80,20 @@
             <?php
             if (!empty($tasks)) {
                 ?>
-                <table>
+                <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th>Name</th> 
                             <th>Email</th> 
-                            <th>Address</th> 
                             <th>Country</th> 
                             <th>Phone</th> 
                             <th>Destination</th> 
-                            <th>Domain</th> 
+							<th>Arrival Date</th>
+                            <th>Duration</th>
+							<th>No of Kids</th>
+							<th>No of Adults</th>
+							<th>Hotel Category</th>
+							<th>Domain</th> 
                             <th>Source</th> 
                             <th>Customer Requirement</th> 
                             <th>Assign To Manager</th> 
@@ -109,10 +113,16 @@
 
                                 <td> <?php echo!empty($task->email) ? $task->email : '-'; ?> </td>
 
-                                <td> <?php echo!empty($task->address) ? $task->address : '-'; ?> </td>
                                 <td> <?php echo!empty($task->country) ? $task->country : '-'; ?> </td>
                                 <td> <?php echo!empty($task->phone) ? $task->phone : '-'; ?> </td>
                                 <td> <?php echo!empty($task->destination) ? $task->destination : '-'; ?> </td>
+								<td> <?php echo!empty($task->arrival_date) ? $task->arrival_date : '-'; ?> </td>
+								<td> <?php echo!empty($task->duration) ? $task->duration : '-'; ?> </td>
+								
+								<td> <?php echo!empty($task->no_of_kids) ? $task->no_of_kids : '-'; ?> </td>
+								<td> <?php echo!empty($task->no_of_adults) ? $task->no_of_adults : '-'; ?> </td>
+								<td> <?php echo!empty($task->hotel_category) ? $task->hotel_category : '-'; ?> </td>
+								
                                 <td> <?php echo!empty($task->domain) ? $task->domain : '-'; ?> </td>
                                 <td> <?php echo!empty($task->source) ? $task->source : '-'; ?> </td>
                                 <td> <?php echo!empty($task->customer_requirement) ? $task->customer_requirement : '-'; ?> </td>

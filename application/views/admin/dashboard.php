@@ -254,6 +254,12 @@
                     <i class="ion ion-clipboard"></i>
 
                     <h3 class="box-title">To Do List</h3>
+                    <div class="box-title">
+                    <form action="<?php echo base_url().'admin/dashboard/' ?>" method="POST">
+                        <input type="text" name="search">
+                        <input type="submit" value="search">
+                    </form>   
+                    </div>
 
                     <div class="box-tools pull-right">
                         <ul class="pagination pagination-sm inline">
@@ -285,13 +291,23 @@
                             <small class="label label-danger"><i class="fa fa-clock-o"><?php echo $value->created_date;  ?></i> </small>
                             <small class="label label-danger"><i class="fa fa-frown-o"><?php echo $value->name;  ?></i> </small>
                             <!-- General tools such as edit or delete-->
+                            
+
                             <div class="tools">
                                  <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>"><i class="fa fa-trash-o"></i></a>
+                            </div>
+                            <?php if($value->status == '1'){ ?>
+                            <div class="tools">
+                                 <i>Completed</i>
+                            </div>
+                            <?php }else{  ?>
+                            <div class="tools">
+                                 <a href="<?php echo base_url().'/admin/dashboard/markAsComplete/'.$value->id;?>"><i >Mark As Complete</i></a>
                             </div>
                         </li>
                         <?php
                          } 
-                           
+                          } 
                          ?>
 
                      <!--add field inside this div -->
@@ -532,7 +548,7 @@ function add_fields() {
 
     var objTo = document.getElementById('task_appand')
     var divtest = document.createElement("div");
-    divtest.innerHTML = '<form method="POST"><div class="label"></div><div ><span> Task<input type="text"  name="title" /></span><span style="margin-left:30px">Employee Name<select  namae="emp_id" style="width:100px"  /><option><?php echo $value->name;  ?><option></span></div></form>';
+    divtest.innerHTML = '<form method="POST"><div class="label"></div><div ><span> Task<input type="text"  name="title" /></span><span style="margin-left:30px">Employee Name<select  namae="emp_id" style="width:100px"  /><option><option></span></div></form>';
 
     objTo.appendChild(divtest)
 }

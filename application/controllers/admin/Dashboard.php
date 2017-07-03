@@ -22,12 +22,17 @@ class Dashboard extends BackendController {
         $this->session->set_flashdata('no_user', 'Please Login');
         redirect('admin/welcome');
         }
+        if($this->input->post()){
+        $search = $this->input->post('search'); 
+        }else{
+            $search = "";
+        }
         $data['page_title'] = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
         $data['main_content'] = 'admin/dashboard';
         $this->load->model("admin/Dashboard_model");
 	    $data['dashboardData'] = $this->Dashboard_model->fetchCounts();
-        $data['toDoDashboardData'] = $this->Dashboard_model->to_do_list_data();
+        $data['toDoDashboardData'] = $this->Dashboard_model->to_do_list_data($search);
         $data['tbl_user_data'] = $this->Dashboard_model->tbl_user_data();
         $data["fetch_notification"]=$this->Admin->fetch_notification();
 
@@ -43,7 +48,22 @@ class Dashboard extends BackendController {
         }
         if($id != null)
         {
-          $this->db->query("update to_do_list set status = '0' where id='$id'");
+          $this->db->query("update to_do_list set flag = '0' where id='$id'");
+          redirect('/admin/dashboard');
+        }
+
+    }
+
+     public function markAsComplete ($id=null)
+    {
+        if(!isset($this->session->userdata['logged_in']))
+        {
+          $this->session->set_flashdata('no_user', 'Please Login');
+          redirect('admin/welcome');
+        }
+        if($id != null)
+        {
+          $this->db->query("update to_do_list set status ='1' where id='$id'");
           redirect('/admin/dashboard');
         }
 

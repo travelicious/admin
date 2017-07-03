@@ -57,7 +57,10 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?php echo base_url("admin/executive");?>"><i class="fa fa-circle-o"></i> View Task</a></li>
+                        <li><a href="<?php echo base_url("admin/executive");?>"><i class="fa fa-circle-o"></i> Ongoing Task</a></li>
+                        <li><a href="<?php echo base_url("admin/executive");?>"><i class="fa fa-circle-o"></i> Completed Task</a></li>
+                        <li><a href="<?php echo base_url("admin/executive");?>"><i class="fa fa-circle-o"></i> Postponed Task</a></li>
+                        <li><a href="<?php echo base_url("admin/executive");?>"><i class="fa fa-circle-o"></i> Cancel Task</a></li>
                        
                     </ul>
                 </li>
@@ -114,7 +117,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<?php echo base_url('admin/superAdmin/create-task') ?>"><i class="fa fa-circle-o"></i> Add Customer</a></li>
-                        <li><a href="<?php echo base_url('admin/superAdmin/view-task') ?>"><i class="fa fa-circle-o"></i> View Customer</a></li>
+                        <li><a href="<?php echo base_url('admin/superAdmin/view-task') ?>"><i class="fa fa-circle-o"></i> View All</a></li>
 						<li><a href="<?php echo base_url('admin/superAdmin/view-task/deleted') ?>"><i class="fa fa-circle-o"></i> View Deleted Customer</a></li>
 				    </ul>
                 </li>

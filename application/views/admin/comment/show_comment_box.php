@@ -15,9 +15,7 @@
                         <th class="row">Email</th><td class="row"><?php echo $indv_custmr->email ?></td>
                     </tr>
 
-                    <tr>
-                        <th class="row">Address</th><td class="row"><?php echo $indv_custmr->address ?></td>
-                    </tr>
+                    
 
                     <tr>
                         <th class="row">Country</th><td class="row"><?php echo $indv_custmr->country ?></td>
@@ -73,7 +71,7 @@
         <div class="col-md-3">
             <label class="label label-default label-info">Comments</label></br></br>
         </div>
-        <div class="box-footer box-comments" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 0px 0px 4px #000000;">
+        <div class="box-footer box-comments"  id="comment_div_post" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 0px 0px 4px #000000;">
             <div class="box-comment">
 
                 <div class="comment-text">
@@ -119,7 +117,7 @@
             <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
 
 
-            <div class="img-push">
+            <div class="img-push" >
                 <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="comment">
             </div>
             <div class="clearfix"></div>
@@ -147,12 +145,14 @@
                     </br>
                     <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup"); ?>" method="post">
                         <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
-                        <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
+                        <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd"  >
                     </form>
                 </div>
 
-                <button type="submit" class="btn btn-default btn-success" onclick="show_datepicker();">Mark as Finished</button></br></br>
-                <button type="submit" class="btn btn-default btn-success"><a href="<?php echo base_url("admin/executive/whatsapp_loader");?>" style="text-decoration: none; color: #fff;"><i class="fa fa-whatsapp fa-2x"></i></a></button>
+                <button type="submit" class="btn btn-default btn-success" onclick="finishedModel();">Completed</button></br></br>
+                <button type="submit" class="btn btn-default btn-warning" onclick="postponedModel();">Postponed</button></br></br>
+                <button type="submit" class="btn btn-default btn-danger" onclick="cancelModel();">Cancel</button></br></br>
+               <a href="<?php echo base_url("admin/executive/whatsapp_loader"); ?>" style="text-decoration: none; color: #fff;" class="btn btn-default btn-success"><i class="fa fa-whatsapp fa-2x"></i></a>
                 <!-- /.user-block -->
 
                 <!-- /.box-tools -->
@@ -165,7 +165,87 @@
 </div>
 
 
+<div class="modal fade finished" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <form id="save_finished_comment_Form" action="<?php echo base_url("admin/comment/save_finished_comment_Form");?>" method="post">
 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Comment For Finished</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="successmsg"></div>
+                    <div class="clearfix"></div>
+
+                    <div class="clearfix"></div>                   
+                    <div class="img-push">
+                        <input type="hidden" name="id_comment" value="<?php echo $indv_custmr->id ?>"/>
+                        <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="finished_comment" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade postponed" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <form id="save_finished_comment_Form" action="<?php echo base_url("admin/comment/save_postponed_comment_Form");?>" method="post">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Comment/Reason For Postpond</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="successmsg"></div>
+                    <div class="clearfix"></div>
+
+                    <div class="clearfix"></div>                   
+                    <div class="img-push">
+                        <input type="hidden" name="id_comment" value="<?php echo $indv_custmr->id ?>"/>
+                        <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="postpond_comment" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade cancel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <form id="save_finished_comment_Form" action="<?php echo base_url("admin/comment/save_cancel_comment_Form");?>" method="post">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Comment/Reason For Cancel</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="successmsg"></div>
+                    <div class="clearfix"></div>
+
+                    <div class="clearfix"></div>                   
+                    <div class="img-push">
+                        <input type="hidden" name="id_comment" value="<?php echo $indv_custmr->id ?>"/>
+                        <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="cancel_comment" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <script>
@@ -173,5 +253,25 @@
         $("#datepicker_block").show();
     }
 
-   
+
+    function finishedModel() {
+
+        $(".finished").modal('show');
+    }
+    function postponedModel() {
+
+        $(".postponed").modal('show');
+    }
+    function cancelModel() {
+
+        $(".cancel").modal('show');
+    }
+
+//$('#comment_div_post').scrollTop($('#comment_div_post')[0].scrollHeight);
+//$("#comment_div_post").animate({ scrollTop: $('#comment_div_post').prop("scrollHeight")}, 1000);
+
+//$("#comment_div_post").animate({ scrollTop: $('#comment_div_post').prop("scrollHeight")}, 1000);
+
+//$("#comment_div_post").prop("scrollHeight")
+
 </script>
