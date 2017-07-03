@@ -9,27 +9,42 @@
         </div>
 
 
-        <div class="box-tools">
-            <div class="form-group col-md-12">
-                <select name="date_list" id="date_wise_search_list"  class="form-control">
-                    <option value="0">---Select Date---</option>
-                    <option value="today">Today</option>
-                    <option value="yesterday">Yesterday</option>
-                    <option value="svn_days">Last 7 days</option>
-                    <option value="fiftn_days">Last 15 Days</option>
-                </select>
+       <div class="box-tools" class="pull-right col-md-12" >
+            <div class="form-group col-md-2">
+                <div>
+                    <label>Search By Customer Added Date</label>
+                    <select name="date_list" id="date_wise_search_list"  class="form-control">
+                        <option value="0">---Select Date---</option>
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="svn_days">Last 7 days</option>
+                        <option value="fiftn_days">Last 15 Days</option>
+                    </select>
+                </div>
             </div>
-        </div>
-
-
-		
-		<div class="box-tools" class="pull-left col-md-6">
-            <div class="form-group col-md-3">
+            
+            
+            <div class="form-group col-md-2">
+                <div>
+                    <label>Search By Follow -Up Date</label>
+                    <select name="followup_list" id="date_wise_followup"  class="form-control">
+                        <option value="0">---FolloW-Up---</option>
+                        <option value="today_followup">Today</option>
+                        <option value="yesterday_followup">Yesterday</option>
+                        <option value="svn_days_followup">Last 7 days</option>
+                        <option value="fiftn_days_followup">Last 15 Days</option>
+                        <option value="next_svn_days_followup">Next 7 Days</option>
+                        <option value="next_fiftn_days_followup">Next 15 Days</option>
+                        <option value="next_thirty_days_followup">Next 30 Days</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group col-md-2">
+                <label>Custom Search By added date</label>
                 <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
             </div>
-
-
-        </div>
+            
 
         <div class="box-tools" style="display: none;" id="show_custom_srch">
             <div class="form-group col-md-12">
@@ -208,31 +223,8 @@
 <!-- /.box -->
 <script src="<?php echo base_url("assets/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
 <!-- /.content -->
-<script>
-                                $(function () {
-
-                                    $("#date_wise_search_list").change(function (event) {
-                                        event.preventDefault();
-                                        var formData = $(this).val();
-                                        //alert(formData);
-                                        $.ajax({
-                                            url: "<?php echo base_url('admin/superadmin/customer-by-date-list/'); ?>" + formData,
-                                            cache: false,
-                                            contentType: false,
-                                            processData: false,
-                                            success: function (response){
-                                                $("#default_list").hide();
-                                                $("#date_wise_list").html(response);
-
-                                            }
-                                        });
-                                    });
-                                });
-								
-								
-								
-								
-								$(function () {
+ <script>
+        $(function () {
 
             $("#date_wise_search").submit(function (event) {
 
@@ -258,10 +250,38 @@
             //            }
         });
 
-		
-		
-		$("#custom_srch").click(function () {
+
+        $('#date_wise_search_list').change(function () {
+            var date_str = $(this).val();
+            $.ajax({
+                url: '<?php echo site_url("admin/superadmin/customer_by_date_list") ?>/' + date_str,
+                success: function (data) {
+//                    alert(data);
+                    $("#default_list").hide();
+                    $("#date_wise_list").html(data);
+
+
+                }
+            });
+        });
+        
+        
+        $('#date_wise_followup').change(function () {
+            var date_str = $(this).val();
+            $.ajax({
+                url: '<?php echo site_url("admin/superadmin/date_wise_followup") ?>/' + date_str,
+                success: function (data) {
+//                    alert(data);
+                    $("#default_list").hide();
+                    $("#date_wise_list").html(data);
+
+
+                }
+            });
+        });
+
+        
+        $("#custom_srch").click(function () {
             $("#show_custom_srch").toggle();
         });
-		
-</script>
+    </script>
