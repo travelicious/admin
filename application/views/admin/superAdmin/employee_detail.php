@@ -20,8 +20,9 @@
          <th>Name</th> 
          <th>Email</th> 
          <th>Contact</th> 
-         <th>User Type</th> 
+        <!--  <th>User Type</th>  -->
          <th>Address</th>
+         <th>Country</th>
          <th>Status</th>
          <th>Created_At
         </tr>
@@ -36,12 +37,13 @@
 
            <tr>
                 <td><a href="<?php echo base_url('admin/comment/showCommentBox') .'/'.$detail->cst_id ?>"> <?php echo $detail->name ?></a>      </td>
-                <td> <?php echo $detail->email ?>      </td>
-                <td> <?php echo $detail->contact ?>    </td>
-                <td> <?php echo $detail->user_type ?>  </td>
-                <td> <?php echo $detail->address ?>    </td>
+                <td> <?php echo $detail->cst_email; ?>      </td>
+                <td> <?php echo $detail->cst_contact; ?>    </td>
+                <!-- <td> <?php // echo $detail->user_type; ?>  </td> -->
+                <td> <?php echo $detail->cst_address; ?>    </td>
+                <td> <?php echo $detail->cst_country; ?>    </td>
                 <td> <?php echo $detail->active ?>  </td>
-                <td> <?php echo $detail->created_date ?>    </td>
+                <td> <?php echo $detail->cst_created_at ?>    </td>
 
                 </tr>
                    <!--  <tr>

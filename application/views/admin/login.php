@@ -27,7 +27,7 @@
 
 
 
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Customer Relationship Management</p>
 
                 <form action="<?php echo base_url('admin/login/authenticate'); ?>" method="post">
                     <div class="form-group has-feedback">

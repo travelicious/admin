@@ -15,7 +15,31 @@
         <?php } ?>
 
 
-        <div class="box-tools">
+        <div class="box-tools" class="pull-right col-md-6" >
+            <div class="form-group col-md-6">
+                <div>
+                    <select name="date_list" id="date_wise_search_list"  class="form-control">
+                        <option value="0">---Select Date---</option>
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="svn_days">Last 7 days</option>
+                        <option value="fiftn_days">Last 15 Days</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="box-tools" class="pull-left col-md-6">
+            <div class="form-group col-md-3">
+                <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
+            </div>
+
+
+        </div>
+
+        <div class="box-tools" style="display: none;" id="show_custom_srch">
             <div class="form-group col-md-12">
                 <form  id="date_wise_search" id="date_wise_search">
                     <div class="col-md-5">
@@ -49,7 +73,7 @@
                             <th>Contact</th>
                             <th>Address</th>
                             <th>Country</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +89,7 @@
                                 <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->address; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                                
+
                             </tr>
                             <?php
                         }
@@ -134,4 +158,23 @@
             //            }
         });
 
+
+        $('#date_wise_search_list').change(function () {
+            var date_str = $(this).val();
+            $.ajax({
+                url: '<?php echo site_url("admin/executive/customer_by_date_list") ?>/' + date_str,
+                success: function (data) {
+//                    alert(data);
+                    $("#default_list").hide();
+                    $("#date_wise_list").html(data);
+
+
+                }
+            });
+        });
+
+        
+        $("#custom_srch").click(function () {
+            $("#show_custom_srch").toggle();
+        });
     </script>
