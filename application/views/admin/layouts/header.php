@@ -11,10 +11,14 @@
     function checktime(){
     var d = new Date();
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(d.getHours() == 7)
 =======
     if(d.getHours() == 112)
 >>>>>>> 4bb16ea4a94a6cdb4343aa70fe4681221bfcafdb
+=======
+    if(d.getHours() == 16)
+>>>>>>> 629ddb8e99aa0b9bd36726762f7305ea39fca4f4
     {
       notification();   
     }    
@@ -38,7 +42,7 @@
 
       var data = JSON.parse(data);
        for (var i=0; i < data.length; i++) {
-            alert(data[i].id +"    -   "+ data[i].name );
+            alert("Task Pending"+"\n"+"\n"+data[i].id +"    -   "+ data[i].name );
             //document.write(data[i].id +"    -   "+ data[i].name + "<br>");
         }
 
