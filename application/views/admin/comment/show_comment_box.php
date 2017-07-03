@@ -73,31 +73,31 @@
         <div class="col-md-3">
             <label class="label label-default label-info">Comments</label></br></br>
         </div>
-        <div class="box-footer box-comments" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 2px 2px 4px #000000;">
+        <div class="box-footer box-comments" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 0px 0px 4px #000000;">
             <div class="box-comment">
 
                 <div class="comment-text">
-                    
+
 
                     <?php
                     if (!empty($allComment)) {
                         foreach ($allComment as $comment) {
                             ?>    <span class="username">
-                            <?php if($comment->name == $_SESSION['logged_in']['name']){?>
-                                <label class="label label-default label-success" style="font-size: 12px;"><?php echo $comment->name ?></label>
-                            <?php } else {?>
-                                <label class="label label-default label-primary" style="font-size: 12px;"><?php echo $comment->name ?></label>
-                            <?php } ?>
-                           						
+                            <?php if ($comment->name == $_SESSION['logged_in']['name']) { ?>
+                                    <label class="label label-default label-success" style="font-size: 12px;"><?php echo $comment->name ?></label>
+                                <?php } else { ?>
+                                    <label class="label label-default label-primary" style="font-size: 12px;"><?php echo $comment->name ?></label>
+                                <?php } ?>
+
                                 <span class="text-muted pull-right"><?php echo $comment->created_date; ?></span>
 
                             </span><!-- /.username -->
 
-        <?php
-        echo $comment->comments;
-    }
-}
-?>
+                            <?php
+                            echo $comment->comments;
+                        }
+                    }
+                    ?>
 
                 </div>
 
@@ -140,27 +140,38 @@
     <div class="box box-widget">
         <div class="box-header with-border">
             <div class="user-block col-md-12">
-                <button type="submit" class="btn btn-default btn-info" onclick="show_datepicker();">Next Follow-Up</button>
-            </div>
-            <div class="form-group col-md-12" id="datepicker_block" style="display: none;">
-                </br>
-                <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup"); ?>" method="post">
-                    <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
-                    <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
-                </form>
+                <button type="submit" class="btn btn-default btn-info" onclick="show_datepicker();">Next Follow-Up</button></br></br>
+
+
+                <div class="form-group col-md-12" id="datepicker_block" style="display: none;">
+                    </br>
+                    <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup"); ?>" method="post">
+                        <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
+                        <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="dd/mm/yyyy"  >
+                    </form>
+                </div>
+
+                <button type="submit" class="btn btn-default btn-success" onclick="show_datepicker();">Mark as Finished</button></br></br>
+                <button type="submit" class="btn btn-default btn-success"><a href="<?php echo base_url("admin/executive/whatsapp_loader");?>" style="text-decoration: none; color: #fff;"><i class="fa fa-whatsapp fa-2x"></i></a></button>
+                <!-- /.user-block -->
+
+                <!-- /.box-tools -->
             </div>
 
-            <!-- /.user-block -->
 
-            <!-- /.box-tools -->
         </div>
-
-
+        <!-- /.box -->
     </div>
-    <!-- /.box -->
 </div>
+
+
+
+
+
 <script>
     function show_datepicker() {
         $("#datepicker_block").show();
     }
+
+   
 </script>

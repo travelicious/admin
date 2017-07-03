@@ -67,14 +67,14 @@ class SuperAdmin extends BackendController
 		 if($this->db->update('customer', $data, array('id' => $formData['id'])))
 		 {
 		   $this->session->set_flashdata('updateSuccessMessage', 'Task successfully Updated');
-           redirect('admin/superadmin/viewTask');		 
+           redirect('admin/superadmin/view-task');		 
 	     }
 	   }
 	   else                           // Insert data in customer table
 	   {
 		 if($this->db->insert('customer', $data))   
 	     {
-		   redirect('admin/superadmin/viewTask');		  	 
+		   redirect('admin/superadmin/view_task');		  	 
 		 }
 	   }
 	 }	
@@ -99,7 +99,7 @@ class SuperAdmin extends BackendController
 	   
 	   $data['page_title'] = 'Create Task';
        $data['breadcrumb'] = 'Create Task';
-       $data['main_content'] = 'admin/superAdmin/createTask';
+       $data['main_content'] = 'admin/superAdmin/create_task';
 
 
 
@@ -116,13 +116,15 @@ class SuperAdmin extends BackendController
 	This function display all tasks
    */
 
+
    public function view_task($flag=NULL)
    {
 	 $data = array();
-
+     
      if($flag == 'deleted')    // Make query for view only deleted task
 	 {
 	   $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on customer.assign_to = tbl_user.id where customer.flag =0";
+	   $data['retrievedTask'] = true;
 	 }
 	 else        // Make query for view all tasks
 	 {
@@ -154,10 +156,14 @@ class SuperAdmin extends BackendController
 	 {
 	   $data['updateSuccessMessage'] = $this->session->flashdata('updateSuccessMessage'); 	 
 	 }
+	 if(!empty($this->session->flashdata('retrieveSuccessMessage')))
+	 {
+	   $data['retrieveSuccessMessage'] = $this->session->flashdata('retrieveSuccessMessage'); 	 
+	 }
 	 
 	 
      
-     $data['main_content'] = 'admin/superAdmin/viewTasks';
+     $data['main_content'] = 'admin/superAdmin/view_task';
 
      $data["fetch_notification"] = $this->Admin->fetch_notification();
 
@@ -307,7 +313,7 @@ public function employee_detail($id) {
 	  Created by Shahnawaz
 	  This function delete task with given id
     */
-	public function delete($id=null)
+	public function delete_task($id=null)
 	{
 	  if($id != null)
 	  {
@@ -315,7 +321,7 @@ public function employee_detail($id) {
 		if($this->db->query($query))
 		{
 	      $this->session->set_flashdata('deleteSuccessMessage', 'Task Succesfully Deleted'); 
-          redirect('admin/superadmin/viewTask');		 
+          redirect('admin/superadmin/view-task');		 
 	   }
 	  }		  
 	}
@@ -325,7 +331,7 @@ public function employee_detail($id) {
 	  Created by Shahnawaz
 	  This function edit task with given id
     */
-    public function edit($id=null)
+    public function edit_task($id=null)
 	{
 	  if($id != null)
 	  {
@@ -370,13 +376,63 @@ public function employee_detail($id) {
 		   
 		   $data['page_title'] = 'Create Task';
 		   $data['breadcrumb'] = 'Create Task';
-		   $data['main_content'] = 'admin/superAdmin/createTask';
-		    $data["fetch_notification"] = $this->Admin->fetch_notification();
+		   $data['main_content'] = 'admin/superAdmin/create_task';
+		   $data["fetch_notification"] = $this->Admin->fetch_notification();
 
 		   $this->load->view('admin/layouts/home', $data);	
 		}			
 	  }		  
-	}	
+	}
+
+
+    public function retrieve_task($id=null)
+	{
+	  if($id != null)
+	  {
+		$query = "update customer set flag = 1 where id=$id";; 
+        if($this->db->query($query))
+		{
+		  $this->session->set_flashdata('retrieveSuccessMessage', 'Task Succesfully Retrieved'); 
+          redirect('admin/superadmin/view-task');		  	
+		}			
+	  }		  
+	}
+
+
+
+
+
+
+    public function customer_by_date_list($date_str) {
+        $this->load->helper('date');
+        $today_date = date('Y-m-d');
+        $yesterday = date('Y-m-d', strtotime("-1 days"));
+        $seven_days = date('Y-m-d', strtotime("-7 days"));
+        $fifteen_days = date('Y-m-d', strtotime("-15 days"));
+
+        $uid = $_SESSION['logged_in']['id'];
+        if ($date_str == 'today') {
+            $data['today_list'] = $this->db->query("select * from customer where created_date = '$today_date'")->result();
+            print_r($data['today_list']);
+			return;
+			$this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        } else if ($date_str == 'yesterday') {
+            $data['yesterday_list'] = $this->db->query("select * from customer where created_date = '$yesterday'")->result();
+
+            $this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        } else if ($date_str == 'seven_days') {
+            $data['svn_days_list'] = $this->db->query("select * from customer where created_date = '$seven_days'")->result();
+            print_r($data['svn_days']);
+			return; 
+            $this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        } else if ($date_str == 'fiftn_days') {
+            $data['fiftn_days_list'] = $this->db->query("select * from customer where created_date = '$fifteen_days'")->result();
+
+            $this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        }
+    }
+
+	
 
 	/*__________________________ notification query Alamgir ____________________ */
 
@@ -391,7 +447,7 @@ public function employee_detail($id) {
     }
 
     /*__________________________ notification query end ____________________ */
-	
+
 }
 
 
