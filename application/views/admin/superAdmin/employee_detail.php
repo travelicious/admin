@@ -21,7 +21,7 @@
          <th>Email</th> 
          <th>Contact</th> 
         <!--  <th>User Type</th>  -->
-         <th>Address</th>
+    
          <th>Country</th>
          <th>Status</th>
          <th>Created_At
@@ -40,7 +40,6 @@
                 <td> <?php echo $detail->cst_email; ?>      </td>
                 <td> <?php echo $detail->cst_contact; ?>    </td>
                 <!-- <td> <?php // echo $detail->user_type; ?>  </td> -->
-                <td> <?php echo $detail->cst_address; ?>    </td>
                 <td> <?php echo $detail->cst_country; ?>    </td>
                 <td> <?php echo $detail->active ?>  </td>
                 <td> <?php echo $detail->cst_created_at ?>    </td>

@@ -129,6 +129,8 @@ class SuperAdmin extends BackendController
 	 else        // Make query for view all tasks
 	 {
 	   $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on customer.assign_to = tbl_user.id where customer.flag =1";
+
+	   
 	 }
 
 	 $tasks = $this->db->query($query);	 
