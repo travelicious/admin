@@ -120,7 +120,7 @@ class SuperAdmin extends BackendController
    public function view_task($flag=NULL)
    {
 	 $data = array();
-
+     
      if($flag == 'deleted')    // Make query for view only deleted task
 	 {
 	   $query = "select customer.*, tbl_user.name as assigned_employee_name, tbl_user.user_type from customer left join tbl_user on customer.assign_to = tbl_user.id where customer.flag =0";

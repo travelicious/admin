@@ -121,7 +121,7 @@
                                     <a href="<?php echo base_url('admin/superAdmin/edit-task/' . $task->id); ?>">Edit / </a> 
                                     <a href="<?php echo base_url('admin/superAdmin/delete-task/' . $task->id); ?>" onclick="return confirm('Are You Sure You Want To Delete')"> Delete </a>
                                     <?php
-                                    if (!empty($retrieveSuccessMessage)) {
+                                    if (!empty($retrievedTask)) {
                                         ?>
                                         <a href="<?php echo base_url('admin/superAdmin/retrieve-task/' . $task->id) ?>" onclick="return confirm('Are You Sure You Want To retrieved task')"> Retrieved </a>
                                         <?php
