@@ -29,14 +29,18 @@ class SuperAdmin extends BackendController
 	   $formData = $this->input->post();
 	   $name = $formData['name'];
 	   $email = $formData['email'];
-	   $address = $formData['address'];
 	   $country = $formData['country'];
 	   $phone = $formData['phone'];
 	   $destination = $formData['destination'];
 	   $domain     = $formData['domain'];
 	   $source     = $formData['source'];
-       $customer_requirement = $formData['customer_requirement'];   
-
+       $customer_requirement = $formData['customer_requirement'];  
+       $arrival_date = $formData['arrival_date'];  
+       $duration = $formData['duration'];	   
+       $no_of_adults = $formData['no_of_adults'];
+	   $no_of_kids = $formData['no_of_kids'];
+	   $hotel_category = $formData['hotel_category'];
+	   
 	   if(!empty($formData['assign']))           // Check if task assigned or not
 	   {
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
@@ -52,15 +56,19 @@ class SuperAdmin extends BackendController
 	   }
 	   if($flag == true)
 	   {
-         $data = ['name' => $name, 'email' => $email, 'address' => $address, 'country' => $country, 
+         $data = ['name' => $name, 'email' => $email, 'country' => $country, 
 		          'phone' => $phone,'destination' => $destination,'domain' => $domain, 
-		          'source' => $source, 'assign_to' => $employeeId, 'customer_requirement' => $customer_requirement];
+		          'source' => $source, 'assign_to' => $employeeId, 'customer_requirement' => $customer_requirement, 
+				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $no_of_adults, 
+				  'no_of_kids' => $no_of_kids, 'hotel_category' => $hotel_category];
 	   }
 	   else
 	   {
-		 $data = ['name' => $name, 'email' => $email, 'address' => $address, 
+		 $data = ['name' => $name, 'email' => $email, 
 		          'country' => $country, 'phone' => $phone,'destination' => $destination, 
-				  'domain' => $domain, 'source' => $source, 'customer_requirement' => $customer_requirement];
+				  'domain' => $domain, 'source' => $source, 'customer_requirement' => $customer_requirement,
+				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $adults, 
+				  'no_of_kids' => $kids, 'hotel_category' => $hotel_category];
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {
@@ -364,18 +372,23 @@ public function employee_detail($id) {
 		   $data['id'] = $results->id;                 // Get value for populate form fields
 		   $data['name'] = $results->name;
 		   $data['email'] = $results->email;
-		   $data['address'] = $results->address;
+		   $data['domain'] = $results->domain;
 		   $data['country'] = $results->country;
            $data['phone'] = $results->phone;
            $data['destination'] = $results->destination;
            $data['source'] = $results->source;
 		   $data['customer_requirement'] = $results->customer_requirement;
-		   
-           $data['domain'] = $results->domain;
-
+		   $data['domain'] = $results->domain;
+           $data['arrival_date'] = $results->arrival_date;
+           $data['duration'] = $results->duration;
+           $data['no_of_adults'] = $results->no_of_adults;
+           $data['no_of_kids'] = $results->no_of_kids;
+           $data['hotel_category'] = $results->hotel_category;
+              
 		   
 		   $data['page_title'] = 'Create Task';
 		   $data['breadcrumb'] = 'Create Task';
+		   $data['edit_task'] = true;
 		   $data['main_content'] = 'admin/superAdmin/create_task';
 		   $data["fetch_notification"] = $this->Admin->fetch_notification();
 
