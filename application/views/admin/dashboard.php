@@ -254,6 +254,12 @@
                     <i class="ion ion-clipboard"></i>
 
                     <h3 class="box-title">To Do List</h3>
+                    <div class="box-title">
+                    <form action="<?php echo base_url().'admin/dashboard/' ?>" method="POST">
+                        <input type="text" name="search">
+                        <input type="submit" value="search">
+                    </form>   
+                    </div>
 
                     <div class="box-tools pull-right">
                         <ul class="pagination pagination-sm inline">
