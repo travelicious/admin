@@ -286,20 +286,28 @@
                             <small class="label label-danger"><i class="fa fa-frown-o"><?php echo $value->name;  ?></i> </small>
                             <!-- General tools such as edit or delete-->
                             <div class="tools">
-                                <a href="<?php echo base_url().'/admin/dashboard/edit'.$value->id;?>"><i class="fa fa-edit"></i></a>
                                  <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>"><i class="fa fa-trash-o"></i></a>
                             </div>
                         </li>
-                        <?php } ?>
-                    </ul>
+                        <?php
+                         } 
+                           
+                         ?>
+
+                     <!--add field inside this div -->
+                       <div id="task_appand">
+                    </div>
+                      </ul>
                       
                 </div>
+
                
                 <!-- /.box-body -->
                 <div class="box-footer clearfix no-border">
-                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                    <button type="button" class="btn btn-default pull-right" onclick="add_fields();"><i class="fa fa-plus"></i> Add item</button>
                 </div>
             </div>
+
             <!-- /.box -->
 
             <!-- quick email widget -->
@@ -518,6 +526,16 @@
 
 </section>
 
+<script>
+var task = 0;
+function add_fields() {
 
+    var objTo = document.getElementById('task_appand')
+    var divtest = document.createElement("div");
+    divtest.innerHTML = '<form method="POST"><div class="label"></div><div ><span> Task<input type="text"  name="title" /></span><span style="margin-left:30px">Employee Name<select  namae="emp_id" style="width:100px"  /><option><?php echo $value->name;  ?><option></span></div></form>';
+
+    objTo.appendChild(divtest)
+}
+</script>
 
 

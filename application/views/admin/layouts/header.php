@@ -6,6 +6,49 @@
  * Time: 3:31 PM
  */
 ?>
+<script type="text/javascript">
+    var flag;
+    function checktime(){
+    var d = new Date();
+    if(d.getHours() == 112)
+    {
+      notification();   
+    }    
+    }
+
+    function notification()
+    {
+       $.get("<?php echo base_url('admin/SuperAdmin/notification') ?>", getNotification)
+       
+       clearInterval(flag);
+    }
+
+    function getNotification(data)
+    {
+     //alert(data);
+      /*var data = JSON.parse(data);
+      alert(data[0].name +"\n"+ data[1].name);*/
+      //document.write(data);
+      /*alert(JSON.stringify(data)); 
+      alert(data.join(","));*/
+
+      var data = JSON.parse(data);
+       for (var i=0; i < data.length; i++) {
+            alert(data[i].id +"    -   "+ data[i].name );
+            //document.write(data[i].id +"    -   "+ data[i].name + "<br>");
+        }
+
+
+     
+      
+    }
+ 
+
+    flag = setInterval(checktime,1000);
+
+
+</script>
+
 <header class="main-header">
     <!-- Logo -->
     <a href="<?php echo base_url(); ?>admin/dashboard" class="logo">
@@ -13,7 +56,9 @@
         <span class="logo-mini"><b>CRM</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>CRM</b></span>
+        <span></span>
     </a>
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
