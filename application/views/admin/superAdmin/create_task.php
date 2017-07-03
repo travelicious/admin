@@ -85,8 +85,8 @@ if(!empty($message))
 <div class="col-xs-4">
 <select name="source" class="form-control" required="true" value="<?php echo (!empty($source)?$source:''); ?>"/>
   <option>Please Select Source</option>
-  <option value="adword">Adword</option>
-  <option value="facebook">Facebook</option>
+  <option value="adword" <?php echo (!empty($source) && ($source == 'adword')?'selected':null); ?> >Adword</option>
+  <option value="facebook" <?php echo (!empty($source) && ($source == 'facebook')?'selected':null); ?> >Facebook</option>
 </select>
 </div>
 </div>
@@ -94,7 +94,7 @@ if(!empty($message))
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Requirement</label>
 <div class="col-xs-4">
-<input type="text" name="customer_requirement" class="form-control" required="true" value="<?php echo (!empty($customer_requirement)?$customer_requirement:''); ?>"/>
+<textarea name="customer_requirement" rows="10" class="form-control"  value="<?php echo (!empty($customer_requirement)?$customer_requirement:''); ?>" >  </textarea>
 </div>
 </div>
 
