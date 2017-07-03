@@ -51,9 +51,9 @@
 <div class="col-xs-4">
 <select name="user_type" class="form-control">
 <option>Please Select</option>
-<option>mgr</option>
-<option>exe</option>
-<option>adm</option>
+<option value="mgr">Manager</option>
+<option value="exe">Executive</option>
+<option value="adm">Admin</option>
   
 </select>
 </div>

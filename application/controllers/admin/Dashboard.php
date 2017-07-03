@@ -43,7 +43,22 @@ class Dashboard extends BackendController {
         }
         if($id != null)
         {
-          $this->db->query("update to_do_list set status = '0' where id='$id'");
+          $this->db->query("update to_do_list set flag = '0' where id='$id'");
+          redirect('/admin/dashboard');
+        }
+
+    }
+
+     public function markAsComplete ($id=null)
+    {
+        if(!isset($this->session->userdata['logged_in']))
+        {
+          $this->session->set_flashdata('no_user', 'Please Login');
+          redirect('admin/welcome');
+        }
+        if($id != null)
+        {
+          $this->db->query("update to_do_list set status ='1' where id='$id'");
           redirect('/admin/dashboard');
         }
 

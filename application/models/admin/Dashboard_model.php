@@ -16,7 +16,7 @@ class Dashboard_model extends CI_Model
 	}
 	
 	public function to_do_list_data(){   
-         $data = $this->db->query("select to_do_list.id,to_do_list.title,to_do_list.created_date,tbl_user.name from to_do_list left join tbl_user on to_do_list.emp_id = tbl_user.id where status = 1");
+         $data = $this->db->query("select to_do_list.id,to_do_list.title,to_do_list.status,to_do_list.created_date,tbl_user.name from to_do_list left join tbl_user on to_do_list.emp_id = tbl_user.id where flag = 1");
           $data = $data->result();
             return $data;
          }

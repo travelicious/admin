@@ -285,13 +285,23 @@
                             <small class="label label-danger"><i class="fa fa-clock-o"><?php echo $value->created_date;  ?></i> </small>
                             <small class="label label-danger"><i class="fa fa-frown-o"><?php echo $value->name;  ?></i> </small>
                             <!-- General tools such as edit or delete-->
+                            
+
                             <div class="tools">
                                  <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>"><i class="fa fa-trash-o"></i></a>
+                            </div>
+                            <?php if($value->status == '1'){ ?>
+                            <div class="tools">
+                                 <i>Completed</i>
+                            </div>
+                            <?php }else{  ?>
+                            <div class="tools">
+                                 <a href="<?php echo base_url().'/admin/dashboard/markAsComplete/'.$value->id;?>"><i >Mark As Complete</i></a>
                             </div>
                         </li>
                         <?php
                          } 
-                           
+                          } 
                          ?>
 
                      <!--add field inside this div -->
