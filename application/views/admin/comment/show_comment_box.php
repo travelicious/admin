@@ -15,9 +15,7 @@
                         <th class="row">Email</th><td class="row"><?php echo $indv_custmr->email ?></td>
                     </tr>
 
-                    <tr>
-                        <th class="row">Address</th><td class="row"><?php echo $indv_custmr->address ?></td>
-                    </tr>
+                    
 
                     <tr>
                         <th class="row">Country</th><td class="row"><?php echo $indv_custmr->country ?></td>

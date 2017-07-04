@@ -98,7 +98,6 @@
                             <th>Customer Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Address</th>
                             <th>Country</th>
 
                         </tr>
@@ -114,7 +113,6 @@
                                 <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
                                 <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                                <td class="mailbox-subject"><b><?php echo $value->address; ?></b></td>
                                 <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
 
                             </tr>
