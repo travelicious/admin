@@ -10,7 +10,13 @@
     var flag;
     function checktime(){
     var d = new Date();
+<<<<<<< HEAD
     if(d.getHours() == 14)
+=======
+    if(d.getHours() == 18)
+
+
+>>>>>>> 4ab539bb353c074b93286a25e59899d4c325e2a9
     {
       notification();   
     }    
