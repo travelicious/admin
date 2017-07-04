@@ -46,8 +46,10 @@
             </div>
             
 
-        <div class="box-tools" style="display: none;" id="show_custom_srch">
-            <div class="form-group col-md-12">
+        <div class="box-tools  col-md-6" style="display: none;" id="show_custom_srch">
+            </br>
+            </br>
+            <div class="form-group">
                 <form  id="date_wise_search" id="date_wise_search">
                     <div class="col-md-5">
                         <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
