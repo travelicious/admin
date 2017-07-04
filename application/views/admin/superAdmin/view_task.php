@@ -46,7 +46,7 @@
             </div>
             
 
-        <div class="box-tools" style="display: none;" id="show_custom_srch">
+        <div class="box-tools" style="" id="show_custom_srch">
             <div class="form-group col-md-12">
                 <form  id="date_wise_search" id="date_wise_search">
                     <div class="col-md-5">
