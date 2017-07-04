@@ -47,21 +47,22 @@ class Executive extends BackendController {
         $fifteen_days = date('Y-m-d', strtotime("-15 days"));
 
         $uid = $_SESSION['logged_in']['id'];
+
+
+        $where = "";
         if ($date_str == 'today') {
-            $data['today_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$today_date' and assign_to = $uid  and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
-            $this->load->view('admin/executive/date_wise_customer_list', $data);
+            $where = 'where Date(`created_date`) = ' . "'$today_date'" . '  and assign_to = ' . $uid . '  and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc';
         } else if ($date_str == 'yesterday') {
-            $data['yesterday_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$yesterday' and assign_to = $uid and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
-
-            $this->load->view('admin/executive/date_wise_customer_list', $data);
+            $where = 'where Date(`created_date`) = ' . "' $yesterday'" . ' and assign_to = ' . $uid . '  and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc';
         } else if ($date_str == 'svn_days') {
-            $data['svn_days_list'] = $this->db->query("select * from customer where created_date between '$seven_days' and '$today_date' and assign_to = $uid and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/executive/date_wise_customer_list', $data);
+            $where = 'where created_date between ' . "'$seven_days'" . ' and ' . "' $today_date'" . ' and assign_to = ' . $uid . ' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc';
         } else if ($date_str == 'fiftn_days') {
-            $data['fiftn_days_list'] = $this->db->query("select * from customer where created_date between '$fifteen_days' and '$today_date' and assign_to = $uid and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-
-            $this->load->view('admin/executive/date_wise_customer_list', $data);
+            $where = 'where created_date between ' . "' $fifteen_days '" . ' and ' . "' $today_date '" . ' and assign_to = ' . $uid . ' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ';
         }
+
+        $data['customer_added_list'] = $this->db->query("select * from customer $where")->result();
+
+        $this->load->view('admin/executive/date_wise_customer_list', $data);
     }
 
     public function whatsapp_loader() {
