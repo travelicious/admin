@@ -19,7 +19,6 @@
         <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Address</th>
         <th>Country</th>
         <th>Phone</th>
          <th>Destination</th>
@@ -42,7 +41,6 @@
 
 <td><a href="<?php echo base_url('admin/comment/showCommentBox').'/'.$row->id;?>"><?php echo $row->name; ?></a></td>
 <td><?php echo $row->email; ?></td>
-<td><?php echo $row->address; ?></td>
 <td><?php echo $row->country; ?></td>
 
 <td><?php echo $row->phone; ?></td>
