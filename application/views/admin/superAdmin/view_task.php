@@ -46,12 +46,13 @@
             </div>
             
 
+        <div class="box-tools" style="display: none;" id="show_custom_srch">
+
 
             </br>
             </br>
             <div class="form-group">
 
-        <div class="box-tools" style="" id="show_custom_srch">
             <div class="form-group col-md-12">
 
                 <form  id="date_wise_search" id="date_wise_search">
@@ -69,7 +70,7 @@
 		</div>
 
 
-        <div class="box-body" id="default_list" style="overflow:auto">
+        <div class="box-body" id="default_list" >
 
 
             <?php

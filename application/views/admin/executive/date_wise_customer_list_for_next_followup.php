@@ -1,7 +1,7 @@
 <div class="box-body">
 
     <?php
-    if (!empty($today_followup)) {
+    if (!empty($fllow_up_date_list)) {
         ?>
         <table class="table table-hover table-striped">
             <thead>
@@ -16,40 +16,7 @@
             <tbody>
                 <?php
                 $i = 0;
-                foreach ($today_followup as $value) {
-//                                     
-                    ?>
-                    <tr>
-                        <td class="mailbox-star"><?php echo ++$i; ?></td>
-                        <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
-                        <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-
-
-            </tbody>
-        </table><!-- /.table -->
-        <?php
-    } else if (!empty($yesterday_followup)) {
-        ?>
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($yesterday_followup as $value) {
+                foreach ($fllow_up_date_list as $value) {
 //                                     
                     ?>
                     <tr>
@@ -67,175 +34,6 @@
             </tbody>
         </table><!-- /.table -->
 
-
-        <?php
-    } else if (!empty($svn_days_followup)) {
-        ?>
-
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($svn_days_followup as $value) {
-//                                     
-                    ?>
-                    <tr>
-                        <td class="mailbox-star"><?php echo ++$i; ?></td>
-                        <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
-                        <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-
-
-
-            </tbody>
-        </table><!-- /.table -->
-
-
-
-    <?php } else if (!empty($fiftn_days_followup)) { ?>
-
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($fiftn_days_followup as $value) {
-//                                     
-                    ?>
-                    <tr>
-                        <td class="mailbox-star"><?php echo ++$i; ?></td>
-                        <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
-                        <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-
-
-            </tbody>
-        </table><!-- /.table -->
-
-
-    <?php } else if (!empty($next_svn_days_followup)) { ?>
-
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($next_svn_days_followup as $value) {
-//                                     
-                    ?>
-                    <tr>
-                        <td class="mailbox-star"><?php echo ++$i; ?></td>
-                        <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
-                        <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-
-
-            </tbody>
-        </table><!-- /.table -->
-        
-    <?php }else if(!empty($next_fiftn_days_followup)){?>
-        
-          <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($next_fiftn_days_followup as $value) {
-//                                     
-                    ?>
-                    <tr>
-                        <td class="mailbox-star"><?php echo ++$i; ?></td>
-                        <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
-                        <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-
-
-            </tbody>
-        </table><!-- /.table -->
-    <?php } else if(!empty($next_thirty_days_followup)){?>
-     <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($next_thirty_days_followup as $value) {
-//                                     
-                    ?>
-                    <tr>
-                        <td class="mailbox-star"><?php echo ++$i; ?></td>
-                        <td class="mailbox-subject"><a href="<?php echo base_url('admin/comment/showCommentBox') . '/' . $value->id; ?>"><b><?php echo $value->name; ?></b></a></td>
-                        <td class="mailbox-subject"><b><?php echo $value->email; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->phone; ?></b></td>
-                        <td class="mailbox-subject"><b><?php echo $value->country; ?></b></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-
-
-            </tbody>
-        </table><!-- /.table -->
 
     <?php } else { ?>
 
