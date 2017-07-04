@@ -1,7 +1,7 @@
 <div class="box-body">
 
     <?php
-    if (!empty($customer_added_list)) {
+    if (!empty($fllow_up_date_list)) {
         ?>
         <table class="table table-hover table-striped">
             <thead>
@@ -16,7 +16,7 @@
             <tbody>
                 <?php
                 $i = 0;
-                foreach ($customer_added_list as $value) {
+                foreach ($fllow_up_date_list as $value) {
 //                                     
                     ?>
                     <tr>
@@ -33,6 +33,8 @@
 
             </tbody>
         </table><!-- /.table -->
+
+
     <?php } else { ?>
 
         </br></br></br></br> <div class="box-body">

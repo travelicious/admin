@@ -10,7 +10,9 @@
     var flag;
     function checktime(){
     var d = new Date();
-    if(d.getHours() == 20)
+
+    if(d.getHours() == 24)
+
     {
       notification();   
     }    
