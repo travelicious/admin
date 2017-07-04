@@ -67,8 +67,8 @@ class SuperAdmin extends BackendController
 		 $data = ['name' => $name, 'email' => $email, 
 		          'country' => $country, 'phone' => $phone,'destination' => $destination, 
 				  'domain' => $domain, 'source' => $source, 'customer_requirement' => $customer_requirement,
-				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $adults, 
-				  'no_of_kids' => $kids, 'hotel_category' => $hotel_category];
+				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $no_of_adults, 
+				  'no_of_kids' => $no_of_kids, 'hotel_category' => $hotel_category];
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {
