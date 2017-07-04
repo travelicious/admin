@@ -108,4 +108,45 @@ class Executive extends BackendController {
         }
     }
 
+    public function completed_task() {
+        $uid = $_SESSION['logged_in']['id'];
+
+        $data['customer_completed_list'] = $this->Executive_model->customer_completed_list($uid);
+        $data['page_title'] = 'Completed Task';
+        $data['breadcrumb'] = 'Completed Task';
+        $data['main_content'] = 'admin/executive/completed_task';
+
+
+        $data["fetch_notification"] = $this->Admin->fetch_notification();
+
+        $this->load->view('admin/layouts/home', $data);
+    }
+
+    public function postpond_task() {
+        $uid = $_SESSION['logged_in']['id'];
+
+        $data['customer_postponed_list'] = $this->Executive_model->customer_postponed_list($uid);
+        $data['page_title'] = 'Postponed Task';
+        $data['breadcrumb'] = 'Postponed Task';
+        $data['main_content'] = 'admin/executive/customer_postponed_list';
+
+
+        $data["fetch_notification"] = $this->Admin->fetch_notification();
+
+        $this->load->view('admin/layouts/home', $data);
+    }
+    public function customer_cancel_list() {
+        $uid = $_SESSION['logged_in']['id'];
+
+        $data['customer_cancel_list'] = $this->Executive_model->customer_cancel_list($uid);
+        $data['page_title'] = 'Postponed Task';
+        $data['breadcrumb'] = 'Postponed Task';
+        $data['main_content'] = 'admin/executive/customer_cancel_list';
+
+
+        $data["fetch_notification"] = $this->Admin->fetch_notification();
+
+        $this->load->view('admin/layouts/home', $data);
+    }
+
 }
