@@ -48,7 +48,7 @@
 
 
 
-<div class="form-group row"> 
+<!-- <div class="form-group row"> 
 <label for="user type" class="col-xs-1 col-form-label">User Type</label>
 <div class="col-xs-4">
 <select name="user_type" class="form-control">
@@ -59,7 +59,7 @@
 
 </select>
 </div>
-</div>
+</div> -->
 
 <div class="form-group row"> 
 <label for="address" class="col-xs-1 col-form-label">Address</label>
