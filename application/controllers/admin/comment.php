@@ -10,7 +10,8 @@ class Comment extends BackendController {
         $this->load->model('admin/Admin');
     }
 
-    public function showCommentBox($id) {
+    public function showCommentBox($id) 
+	{
 
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
 

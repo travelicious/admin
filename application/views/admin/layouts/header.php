@@ -11,6 +11,7 @@
     function checktime(){
     var d = new Date();
     if(d.getHours() == 18)
+
     {
       notification();   
     }    
