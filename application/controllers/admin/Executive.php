@@ -48,7 +48,6 @@ class Executive extends BackendController {
 
         $uid = $_SESSION['logged_in']['id'];
 
-
         $where = "";
         if ($date_str == 'today') {
             $where = 'where Date(`created_date`) = ' . "'$today_date'" . '  and assign_to = ' . $uid . '  and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc';
