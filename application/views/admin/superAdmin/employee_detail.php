@@ -19,7 +19,16 @@
               <tr>
          <th>Name</th> 
          <th>Email</th> 
+<<<<<<< HEAD
         
+=======
+         <th>Contact</th> 
+        <!--  <th>User Type</th>  -->
+         <th>Address</th>
+         <th>Country</th>
+         <th>Status</th>
+         <th>Created_At
+>>>>>>> 0b0c775c1fe1ebe2b1a8cad550181b8942d1f760
         </tr>
 
         <?php
@@ -32,8 +41,18 @@
 
            <tr>
                 <td><a href="<?php echo base_url('admin/comment/showCommentBox') .'/'.$detail->cst_id ?>"> <?php echo $detail->name ?></a>      </td>
+<<<<<<< HEAD
                 <td> <?php echo $detail->cst_email ?>      </td>
                
+=======
+                <td> <?php echo $detail->cst_email; ?>      </td>
+                <td> <?php echo $detail->cst_contact; ?>    </td>
+                <!-- <td> <?php // echo $detail->user_type; ?>  </td> -->
+                <td> <?php echo $detail->cst_address; ?>    </td>
+                <td> <?php echo $detail->cst_country; ?>    </td>
+                <td> <?php echo $detail->active ?>  </td>
+                <td> <?php echo $detail->cst_created_at ?>    </td>
+>>>>>>> 0b0c775c1fe1ebe2b1a8cad550181b8942d1f760
 
                 </tr>
                    <!--  <tr>

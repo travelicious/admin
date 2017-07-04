@@ -10,7 +10,14 @@
     var flag;
     function checktime(){
     var d = new Date();
+
+
+    if(d.getHours() == 7)
+
     if(d.getHours() == 112)
+
+    if(d.getHours() == 16)
+
     {
       notification();   
     }    
@@ -34,7 +41,7 @@
 
       var data = JSON.parse(data);
        for (var i=0; i < data.length; i++) {
-            alert(data[i].id +"    -   "+ data[i].name );
+            alert("Task Pending"+"\n"+"\n"+data[i].id +"    -   "+ data[i].name );
             //document.write(data[i].id +"    -   "+ data[i].name + "<br>");
         }
 

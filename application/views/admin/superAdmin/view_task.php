@@ -22,6 +22,30 @@
         </div>
 
 
+		
+		<div class="box-tools" class="pull-left col-md-6">
+            <div class="form-group col-md-3">
+                <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
+            </div>
+
+
+        </div>
+
+        <div class="box-tools" style="display: none;" id="show_custom_srch">
+            <div class="form-group col-md-12">
+                <form  id="date_wise_search" id="date_wise_search">
+                    <div class="col-md-5">
+                        <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" required class="form-control" name="date_to" value="" id="date_to"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" name="submit" class="btn btn-default btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+		</div>
 
 
         <div class="box-body" id="default_list">
@@ -180,14 +204,13 @@
                                     $("#date_wise_search_list").change(function (event) {
                                         event.preventDefault();
                                         var formData = $(this).val();
-                                        alert(formData);
+                                        //alert(formData);
                                         $.ajax({
                                             url: "<?php echo base_url('admin/superadmin/customer-by-date-list/'); ?>" + formData,
                                             cache: false,
                                             contentType: false,
                                             processData: false,
-                                            success: function (response) {
-                                                alert(response);
+                                            success: function (response){
                                                 $("#default_list").hide();
                                                 $("#date_wise_list").html(response);
 
@@ -195,5 +218,40 @@
                                         });
                                     });
                                 });
+								
+								
+								
+								
+								$(function () {
 
+            $("#date_wise_search").submit(function (event) {
+
+                //            if ($(this).valid()) {
+                event.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo base_url("admin/superadmin/customer_by_date"); ?>",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#default_list").hide();
+                        $("#date_wise_list").html(response);
+
+                    }
+
+                });
+            });
+            //            }
+        });
+
+		
+		
+		$("#custom_srch").click(function () {
+            $("#show_custom_srch").toggle();
+        });
+		
 </script>

@@ -384,7 +384,10 @@ public function employee_detail($id) {
 	  }		  
 	}
 
-
+    /*
+	  Created by Shahnawaz
+	*/
+   
     public function retrieve_task($id=null)
 	{
 	  if($id != null)
@@ -402,7 +405,9 @@ public function employee_detail($id) {
 
 
 
-
+    /*
+	  Created by Shahnawaz
+	*/
     public function customer_by_date_list($date_str) {
         $this->load->helper('date');
         $today_date = date('Y-m-d');
@@ -413,8 +418,8 @@ public function employee_detail($id) {
         $uid = $_SESSION['logged_in']['id'];
         if ($date_str == 'today') {
             $data['today_list'] = $this->db->query("select * from customer where created_date = '$today_date'")->result();
-            print_r($data['today_list']);
-			return;
+            //print_r($data['today_list']);
+			//return;
 			$this->load->view('admin/superadmin/date_wise_customer_list', $data);
         } else if ($date_str == 'yesterday') {
             $data['yesterday_list'] = $this->db->query("select * from customer where created_date = '$yesterday'")->result();
@@ -422,8 +427,8 @@ public function employee_detail($id) {
             $this->load->view('admin/superadmin/date_wise_customer_list', $data);
         } else if ($date_str == 'seven_days') {
             $data['svn_days_list'] = $this->db->query("select * from customer where created_date = '$seven_days'")->result();
-            print_r($data['svn_days']);
-			return; 
+            //print_r($data['svn_days']);
+			//return; 
             $this->load->view('admin/superadmin/date_wise_customer_list', $data);
         } else if ($date_str == 'fiftn_days') {
             $data['fiftn_days_list'] = $this->db->query("select * from customer where created_date = '$fifteen_days'")->result();
@@ -432,6 +437,20 @@ public function employee_detail($id) {
         }
     }
 
+	
+	/*
+	  Created by Shahnawaz
+	*/
+    public function customer_by_date() {
+        $uid = $_SESSION['logged_in']['id'];
+
+        if ($this->input->post('date_to') != "" || $this->input->post('date_from') != "") {
+            $data['list_between_date_range'] = $this->db->query("select * from customer where created_date between '" . $this->input->post('date_from') . "'  and '" . $this->input->post('date_to') . "' and assign_to = $uid ")->result();
+            $this->load->view('admin/executive/date_wise_customer_list', $data);
+        }
+    }
+	
+	
 	
 
 	/*__________________________ notification query Alamgir ____________________ */
