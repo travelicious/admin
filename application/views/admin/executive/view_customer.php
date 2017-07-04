@@ -1,8 +1,8 @@
-
+<link href="<?php echo base_url("assets/plugins/datatables/dataTables.bootstrap.css");?>" rel="stylesheet" type="text/css"/>
 
 <!-- Main content -->
 <section class="content">
-
+   
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
@@ -28,8 +28,8 @@
                     </select>
                 </div>
             </div>
-            
-            
+
+
             <div class="form-group col-md-2">
                 <div>
                     <label>Search By Follow -Up Date</label>
@@ -45,44 +45,44 @@
                     </select>
                 </div>
             </div>
-            
+
             <div class="form-group col-md-2">
                 <label>Custom Search By added date</label>
                 <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
             </div>
-            
+
             <div  class="col-md-6" style="display: none;" id="show_custom_srch">
                 </br>
                 </br>
-            <div class="form-group">
-                <form  id="date_wise_search" id="date_wise_search">
-                    <div class="col-md-5">
-                        <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
-                    </div>
-                    <div class="col-md-5">
-                        <input type="text" required class="form-control" name="date_to" value="" id="date_to"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" name="submit" class="btn btn-default btn-primary">Submit</button>
-                    </div>
-                </form>
+                <div class="form-group">
+                    <form  id="date_wise_search" id="date_wise_search">
+                        <div class="col-md-5">
+                            <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" required class="form-control" name="date_to" value="" id="date_to"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" name="submit" class="btn btn-default btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+
             </div>
 
 
         </div>
 
+        <!--        <div class="box-tools" class="pull-left col-md-6">
+                    <div class="form-group col-md-2">
+                        <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
+                    </div>
+        
+        
+                </div>-->
 
-        </div>
 
-<!--        <div class="box-tools" class="pull-left col-md-6">
-            <div class="form-group col-md-2">
-                <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
-            </div>
-
-
-        </div>-->
-
-      
 
         <div class="box-body" id="date_wise_list"></div>
 
@@ -91,7 +91,7 @@
             <?php
             if (!empty($customer_list)) {
                 ?>
-                <table class="table table-hover table-striped">
+                <table  id="example2" class="table table-hover table-bordered table-striped">
                     <thead>
                         <tr>
                             <th></th>
@@ -128,7 +128,7 @@
                 ?>
                 <div class="box-body">
                     <div class="alert alert-info alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
                         <h4><i class="icon fa fa-info"></i> Alert!</h4>
                         No Record Found.
                     </div>
@@ -156,6 +156,10 @@
     <!-- /.box -->
     <script src="<?php echo base_url("assets/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
     <!-- /.content -->
+    
+    <script src="<?php echo base_url("assets/plugins/datatables/jquery.dataTables.min.js");?>" type="text/javascript"></script>
+
+    <script src="<?php echo base_url("assets/plugins/datatables/dataTables.bootstrap.min.js");?>" type="text/javascript"></script>
     <script>
         $(function () {
 
@@ -197,8 +201,8 @@
                 }
             });
         });
-        
-        
+
+
         $('#date_wise_followup').change(function () {
             var date_str = $(this).val();
             $.ajax({
@@ -213,8 +217,21 @@
             });
         });
 
-        
+
         $("#custom_srch").click(function () {
             $("#show_custom_srch").toggle();
+        });
+
+
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
         });
     </script>
