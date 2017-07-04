@@ -56,7 +56,7 @@
             <?php
             if (!empty($tasks)) {
                 ?>
-                <table>
+                <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th>Name</th> 
