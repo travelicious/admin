@@ -46,7 +46,7 @@
             </div>
             
 
-        <div class="box-tools" style="display: none;" id="show_custom_srch">
+        <div class="box-tools" style="display:;" id="show_custom_srch">
 
 
             </br>
@@ -100,6 +100,7 @@
 
 
             <?php
+			echo "hello";
             if (!empty($tasks)) {
                 ?>
                 <table class="table table-responsive">
