@@ -141,7 +141,7 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Arrival Date</label>
 <div class="col-xs-4">
-<input type="date" name="arrival_date" class="form-control" required="true" value="<?php echo (!empty($arrival_date)?$arrival_date:''); ?>"/>
+<input type="text" data-provide="datepicker" data-data-autoclose="true" data-date-format="yyyy-mm-dd hh:mm:ss" name="arrival_date" class="form-control" required="true" value="<?php echo (!empty($arrival_date)?$arrival_date:''); ?>"/>
 </div>
 </div>
 
