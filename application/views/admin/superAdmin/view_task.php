@@ -99,7 +99,7 @@
                     <thead>
                         <tr>
                             <th>Name</th> 
-                            <th>Email</th> 
+                            <!--<th>Email</th> -->
                             <th>Country</th> 
                             <th>Phone</th> 
                             <th>Destination</th> 
@@ -110,9 +110,8 @@
 							<th>Hotel Category</th>
 							<th>Domain</th> 
                             <th>Source</th> 
-                            <th>Customer Requirement</th> 
-                            <th>Assign To Manager</th> 
-                            <th>Assign To Executive</th> 
+                            <!-- <th>Customer Requirement</th> --> 
+                            <th>Assign To</th> 
                             <th>Action</th>
 
                         </tr>
@@ -126,7 +125,7 @@
                             <tr>
                                 <td> <a href="<?php echo base_url('admin/comment/showCommentBox/' . $task->id); ?>"><?php echo $task->name; ?> </a></td>
 
-                                <td> <?php echo!empty($task->email) ? $task->email : '-'; ?> </td>
+                                <!-- <td> <?php //echo!empty($task->email) ? $task->email : '-'; ?> </td> -->
 
                                 <td> <?php echo!empty($task->country) ? $task->country : '-'; ?> </td>
                                 <td> <?php echo!empty($task->phone) ? $task->phone : '-'; ?> </td>
@@ -140,30 +139,27 @@
 								
                                 <td> <?php echo!empty($task->domain) ? $task->domain : '-'; ?> </td>
                                 <td> <?php echo!empty($task->source) ? $task->source : '-'; ?> </td>
-                                <td> <?php echo!empty($task->customer_requirement) ? $task->customer_requirement : '-'; ?> </td>
+                                <!-- <td> <?php //echo!empty($task->customer_requirement) ? $task->customer_requirement : '-'; ?> </td> -->
 
 
 
 
                                 <td>
                                     <?php
-                                    if (!empty($task->assign_to) && $task->user_type == 'exe') {
-                                        echo $task->assigned_employee_name;
-                                    } else {
+                                    if (!empty($task->assign_to) && $task->user_type == 'exe') 
+									{
+                                        echo $task->assigned_employee_name." (Executive)";
+                                    } 
+									else if (!empty($task->assign_to) && $task->user_type == 'mgr') 
+									{
+                                        echo $task->assigned_employee_name." (Manager)";
+                                    } 
+									else 
+									{
                                         echo '-';
                                     }
-                                    ?> 
+									?> 
                                 </td>
-
-                                <td>
-                                    <?php
-                                    if (!empty($task->assign_to) && $task->user_type == 'mgr') {
-                                        echo $task->assigned_employee_name;
-                                    } else {
-                                        echo '-';
-                                    }
-                                    ?> 
-                                </td>  
 
 
                                 <td> 
@@ -172,7 +168,7 @@
                                     <?php
                                     if (!empty($retrievedTask)) {
                                         ?>
-                                        <a href="<?php echo base_url('admin/superAdmin/retrieve-task/' . $task->id) ?>" onclick="return confirm('Are You Sure You Want To retrieved task')"> Retrieved </a>
+                                        <a href="<?php echo base_url('admin/superAdmin/retrieve-task/' . $task->id) ?>" onclick="return confirm('Are You Sure You Want To retrieved task')"> /Retrieved </a>
                                         <?php
                                     }
                                     ?>

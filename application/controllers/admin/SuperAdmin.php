@@ -436,7 +436,7 @@ public function employee_detail($id) {
             
 			$this->load->view('admin/executive/date_wise_customer_list', $data);
         } else if ($date_str == 'yesterday') {
-            $data['yesterday_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$yesterday' and and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            $data['yesterday_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$yesterday' and complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
 
             $this->load->view('admin/executive/date_wise_customer_list', $data);
         } else if ($date_str == 'svn_days') {
