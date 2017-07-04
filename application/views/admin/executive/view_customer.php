@@ -201,6 +201,7 @@
                 }
             });
         });
+        
 
 
         $('#date_wise_followup').change(function () {
