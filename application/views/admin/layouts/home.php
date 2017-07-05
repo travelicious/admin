@@ -32,7 +32,7 @@
                 <small>Control panel</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="http://[::1]/admin/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
                 <!--li class="active"><?php //echo $breadcrumb; ?></li-->
                 <li class="active"><?php echo $page_title; ?></li>
             </ol>
