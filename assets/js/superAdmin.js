@@ -17,7 +17,7 @@ function showEmployeeList(event, element)
 
 function submitForm(event)
  {
-   if(document.getElementById('countries').value === '-----------------------------------------------' 
+   if(document.getElementById('countries').value === '-----------------------------------------------') 
    {
      alert("Select your country");
 	 event.preventDefault();	 

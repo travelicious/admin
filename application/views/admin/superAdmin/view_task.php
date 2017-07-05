@@ -249,7 +249,7 @@
 <script src="<?php echo base_url("assets/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
 <!-- /.content -->
  <script>
-        $(function () {
+        $(function () {                 // custom search for customer
 
             $("#show_custom_srch_for_customer").submit(function (event) {
 
@@ -259,7 +259,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: "<?php echo base_url("admin/superadmin/customer_by_date"); ?>",
+                    url: "<?php echo base_url("admin/superAdmin/customer_by_date"); ?>",
                     data: formData,
                     cache: false,
                     contentType: false,
@@ -276,7 +276,7 @@
         });
 		
 		
-		    $(function () {
+		    $(function () {               // custom search for next follow up
 
             $("#show_custom_srch_for_next_follow_up").submit(function (event) {
 
@@ -286,7 +286,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: "<?php echo base_url("admin/superadmin/follow_up_by_date"); ?>",
+                    url: "<?php echo base_url("admin/superAdmin/custom_srch_next_followup"); ?>",
                     data: formData,
                     cache: false,
                     contentType: false,
@@ -304,10 +304,10 @@
 
 
 
-        $('#date_wise_search_list').change(function () {
+        $('#date_wise_search_list').change(function () {    // Search customer
             var date_str = $(this).val();
             $.ajax({
-                url: '<?php echo site_url("admin/superadmin/customer_by_date_list") ?>/' + date_str,
+                url: '<?php echo site_url("admin/superAdmin/customer_by_date_list") ?>/' + date_str,
                 success: function (data) {
 //                    alert(data);
                     $("#default_list").hide();
@@ -319,10 +319,10 @@
         });
         
         
-        $('#date_wise_followup').change(function () {
+        $('#date_wise_followup').change(function () {        // Search Next follow up
             var date_str = $(this).val();
             $.ajax({
-                url: '<?php echo site_url("admin/superadmin/date_wise_followup") ?>/' + date_str,
+                url: '<?php echo site_url("admin/superAdmin/date_wise_followup") ?>/' + date_str,
                 success: function (data) {
 //                    alert(data);
                     $("#default_list").hide();
