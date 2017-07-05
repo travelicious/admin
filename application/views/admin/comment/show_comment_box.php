@@ -29,6 +29,9 @@
                         <th class="row">Next Follow-Up<td class="row"><?php echo $indv_custmr->next_followup ?></td>
                     </tr>
                     <tr>
+                        <th class="row">Next Private Follow-Up<td class="row"><?php echo $indv_custmr->next_followup_pvt ?></td>
+                    </tr>
+                    <tr>
                         <th class="row">Destination<td class="row"><?php echo $indv_custmr->destination ?></td>
                     </tr>
                     <tr>
@@ -129,6 +132,68 @@
         </form>
     </div>
     <!-- /.box-footer -->
+
+
+
+    <h2> This is for private comment</h2>
+    <div class="box-footer box-comments"  id="comment_div_post" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 0px 0px 4px #000000;">
+        <div class="box-comment">
+
+            <div class="comment-text">
+
+
+                <?php
+                if (!empty($allPvtComment)) {
+                    foreach ($allPvtComment as $comment) {
+                        ?>    <span class="username">
+                            <?php if ($comment->name == $_SESSION['logged_in']['name']) { ?>
+                                <label class="label label-default label-success" style="font-size: 12px;"><?php echo $comment->name ?></label>
+                            <?php } else { ?>
+                                <label class="label label-default label-primary" style="font-size: 12px;"><?php echo $comment->name ?></label>
+                            <?php } ?>
+
+                            <span class="text-muted pull-right"><?php echo $comment->created_date; ?></span>
+
+                            </span><!-- /.username -->
+
+                        <?php
+                        echo $comment->comments;
+                    }
+                }
+                ?>
+
+            </div>
+
+        </div>
+        <!-- /.comment-text -->
+    </div>
+    <!-- /.box-comment -->
+
+    <div class="box-footer">
+
+
+
+
+        <form action="<?php echo base_url('admin/comment/savePvtComment'); ?>" method="post">
+            <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id"/>
+
+
+            <div class="img-push" >
+                <input type="text" class="form-control input-sm" placeholder=" Post Your Comment" name="comment">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-1 box-footer">
+                </br>
+                <button type="submit" class="btn btn-block btn-primary">Post</button>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+
 </div>
 <!-- /.box -->
 
@@ -146,6 +211,17 @@
                     <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_next_followup"); ?>" method="post">
                         <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
                         <input type="text" class="form-control" name="followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd"  >
+                    </form>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-default btn-info" onclick="show_datepicker_pvt();">Follow-Up (Private)</button></br></br>
+                <div class="form-group col-md-12" id="datepicker_block_pvt" style="display: none;">
+                    </br>
+                    <form onchange="this.submit()" action="<?php echo base_url("admin/comment/add_pvt_next_followup"); ?>" method="post">
+                        <input type="hidden" value="<?php echo $indv_custmr->id ?>" name="task_id" />
+                        <input type="text" class="form-control" name="pvt_followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd"  >
                     </form>
                 </div>
 
@@ -251,6 +327,9 @@
 <script>
     function show_datepicker() {
         $("#datepicker_block").show();
+    }
+    function show_datepicker_pvt() {
+        $("#datepicker_block_pvt").show();
     }
 
 

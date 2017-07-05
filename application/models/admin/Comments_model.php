@@ -19,6 +19,16 @@ class Comments_model extends CI_Model {
         }
     }
 
+    public function getAllPvtComment($taskId) {
+        $query = "select pvt_comments.comments, pvt_comments.created_date, tbl_user.name from pvt_comments inner join tbl_user on pvt_comments.emp_id=tbl_user.id where pvt_comments.task_id=$taskId order by pvt_comments.created_date ASC ";
+        $results = $this->db->query($query);
+        if (!empty($results->result())) {
+            return $results->result();
+        } else {
+            return false;
+        }
+    }
+
     public function totalNoOfComment($taskId) {
         $query = "select * from comments where task_id=$taskId";
         $results = $this->db->query($query);
