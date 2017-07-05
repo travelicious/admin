@@ -34,14 +34,14 @@ if(!empty($message))
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Name</label>
 <div class="col-xs-4">
-<input type="text" name="name" class="form-control" required="true" value="<?php echo (!empty($name)?$name:''); ?>"/>
+<input type="text" name="name" class="form-control" value="<?php echo (!empty($name)?$name:''); ?>"/>
 </div>
 </div>
 
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Email</label>
 <div class="col-xs-4">
-<input type="email" name="email" class="form-control" required="true" value="<?php echo (!empty($email)?$email:''); ?>"/>
+<input type="email" name="email" class="form-control" value="<?php echo (!empty($email)?$email:''); ?>"/>
 </div></div>
 
 
@@ -80,8 +80,8 @@ var countries = ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra
 					"Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", 
 					"Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"];
 					
-var mainCountries = ['Afghanistan', 'Australia', 'Brazil', 'China', 'Canada', 
-                     'India', 'Russia', 'South Africa', 'Turkey', 'United States of America'];
+var mainCountries = ['Australia', 'Brazil', 'China', 'Canada', 
+                     'India', 'Malaysia', 'New Zealand', 'Russia', 'South Africa', 'Singapore', 'Turkey', 'UAE/Oman', 'United States of America'];
 
 var i=0;
 
@@ -128,28 +128,28 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Phone</label>
 <div class="col-xs-4">
-<input type="text" name="phone" class="form-control" required="true" value="<?php echo (!empty($phone)?$phone:''); ?>"/>
+<input type="text" name="phone" class="form-control" value="<?php echo (!empty($phone)?$phone:''); ?>"/>
 </div>
 </div>
 
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Destination</label>
 <div class="col-xs-4">
-<input type="text" name="destination" class="form-control" required="true" value="<?php echo (!empty($destination)?$destination:''); ?>"/>
+<input type="text" name="destination" class="form-control" value="<?php echo (!empty($destination)?$destination:''); ?>"/>
 </div>
 </div>
 
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Arrival Date</label>
 <div class="col-xs-4">
-<input type="text" data-provide="datepicker" data-data-autoclose="true" data-date-format="yyyy-mm-dd hh:mm:ss" name="arrival_date" class="form-control" required="true" value="<?php echo (!empty($arrival_date)?$arrival_date:''); ?>"/>
+<input type="text" data-provide="datepicker" data-data-autoclose="true" data-date-format="yyyy-mm-dd" name="arrival_date" class="form-control" value="<?php echo (!empty($arrival_date)?$arrival_date:''); ?>"/>
 </div>
 </div>
 
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Duration</label>
 <div class="col-xs-4">
-<input type="text" name="duration" class="form-control" required="true" value="<?php echo (!empty($duration)?$duration:''); ?>"/>
+<input type="text" name="duration" class="form-control" value="<?php echo (!empty($duration)?$duration:''); ?>"/>
 </div>
 </div>
 
@@ -157,7 +157,7 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Adults</label>
 <div class="col-xs-4">
-<input type="text" name="no_of_adults" class="form-control" required="true" value="<?php echo (!empty($no_of_adults)?$no_of_adults:''); ?>"/>
+<input type="text" name="no_of_adults" class="form-control" value="<?php echo (!empty($no_of_adults)?$no_of_adults:''); ?>"/>
 </div>
 </div>
 
@@ -165,7 +165,7 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Kids</label>
 <div class="col-xs-4">
-<input type="text" name="no_of_kids" class="form-control" required="true" value="<?php echo (!empty($no_of_kids)?$no_of_kids:''); ?>"/>
+<input type="text" name="no_of_kids" class="form-control" value="<?php echo (!empty($no_of_kids)?$no_of_kids:''); ?>"/>
 </div>
 </div>
 
@@ -194,9 +194,9 @@ for(i=0; i<countries.length; i++)
 
 <script type="text/javascript">
 var domain = ['agratourbookings.com', 'goldentriangleindiapackage.com', 'grouptoursofindia.com', 'holidaystonorthindia.com', 
-              'holidaystosouthindia.com', 'honeymoonindiatrip.com', 'indiatourbookings.com', 'jaipurtourbookings.com',  
-              'keralaindiatrip.com', 'luxuryindiatrain.com', 'luxuryindiatravel.in', 'luxuryrajasthantrip.com',  
-			  'rajasthanindiatrip.com', 'rajasthanindiatrip.us', 'tajmahalindiatrip.com', 'traveliciousholiday.com', 
+              'holidaystosouthindia.com', 'indiatourbookings.com', 'jaipurtourbookings.com',  
+              'keralaindiatrip.com', 'luxuryrajasthantrip.com',  
+			  'rajasthanindiatrip.us', 'traveliciousholiday.com', 
 			  'traveliciousholidays.in'];
 			  
 i=0;
@@ -225,7 +225,7 @@ for(i=0; i<domain.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Lead Source</label>
 <div class="col-xs-4">
-<select name="source" id="source" class="form-control" required="true" value="<?php echo (!empty($source)?$source:''); ?>"/>
+<select name="source" id="source" class="form-control" value="<?php echo (!empty($source)?$source:''); ?>"/>
   <option value="Select Source">Select Source</option>
   <option value="adword" <?php echo (!empty($source) && ($source == 'adword')?'selected':null); ?> >Adword</option>
   <option value="facebook" <?php echo (!empty($source) && ($source == 'facebook')?'selected':null); ?> >Facebook</option>
@@ -241,10 +241,7 @@ for(i=0; i<domain.length; i++)
 </div>
 
 
-<?php
-  if(empty($edit_task))
-  {
-?>
+
 <label>Assign to</label>&nbsp;
 <input type="radio" name="assignTo" value="manager" onchange="showEmployeeList(event, this)"/>&nbsp;
 Manager
@@ -281,9 +278,7 @@ Executive
    }	   
  ?>
 </select>
-<?php
-  }
-?>
+
 
 <input type="submit" class="btn btn-primary" name="Create Task" value="Create Task"/>
 </form>

@@ -18,11 +18,8 @@ function showEmployeeList(event, element)
 function submitForm(event)
  {
    if(document.getElementById('countries').value === '-----------------------------------------------' 
-      || document.getElementById('countries').value === 'Select Country' 
-	  || document.getElementById('domain').value === 'Select Domain' 
-	  || document.getElementById('source').value === 'Select Source' 
-	  || document.getElementById('hotel_category').value === 'Select Hotel Category')
    {
-     event.preventDefault();	 
+     alert("Select your country");
+	 event.preventDefault();	 
    }  
  }

@@ -41,8 +41,7 @@ class SuperAdmin extends BackendController
 	   $no_of_kids = intval($formData['no_of_kids']);
 	   $hotel_category = $formData['hotel_category'];
 	   
-	   if(!empty($formData['assign']))           // Check if task assigned or not
-	   {
+	  
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
 		 {
 		   $employeeId = $formData['executiveList']; 	 
@@ -53,10 +52,10 @@ class SuperAdmin extends BackendController
 			$employeeId = $formData['managerList']; 
 			$flag = true;
 		 }
-	   }
+	   
 	   if($flag == true)
 	   {
-         $data = ['name' => $name, 'email' => $email, 'country' => $country, 
+         $data1 = ['name' => $name, 'email' => $email, 'country' => $country, 
 		          'phone' => $phone,'destination' => $destination,'domain' => $domain, 
 		          'source' => $source, 'assign_to' => $employeeId, 'customer_requirement' => $customer_requirement, 
 				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $no_of_adults, 
@@ -64,7 +63,7 @@ class SuperAdmin extends BackendController
 	   }
 	   else
 	   {
-		 $data = ['name' => $name, 'email' => $email, 
+		 $data1 = ['name' => $name, 'email' => $email, 
 		          'country' => $country, 'phone' => $phone,'destination' => $destination, 
 				  'domain' => $domain, 'source' => $source, 'customer_requirement' => $customer_requirement,
 				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $no_of_adults, 
@@ -72,7 +71,7 @@ class SuperAdmin extends BackendController
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {
-		 if($this->db->update('customer', $data, array('id' => $formData['id'])))
+		 if($this->db->update('customer', $data1, array('id' => $formData['id'])))
 		 {
 		   $this->session->set_flashdata('updateSuccessMessage', 'Task successfully Updated');
            redirect('admin/superadmin/view-task');		 
@@ -80,7 +79,7 @@ class SuperAdmin extends BackendController
 	   }
 	   else                           // Insert data in customer table
 	   {
-		 if($this->db->insert('customer', $data))   
+		 if($this->db->insert('customer', $data1))   
 	     {
 		   redirect('admin/superadmin/view_task');		  	 
 		 }
