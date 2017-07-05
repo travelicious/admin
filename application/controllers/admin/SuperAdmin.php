@@ -37,8 +37,8 @@ class SuperAdmin extends BackendController
        $customer_requirement = $formData['customer_requirement'];  
        $arrival_date = $formData['arrival_date'];  
        $duration = $formData['duration'];	   
-       $no_of_adults = $formData['no_of_adults'];
-	   $no_of_kids = $formData['no_of_kids'];
+       $no_of_adults = intval($formData['no_of_adults']);
+	   $no_of_kids = intval($formData['no_of_kids']);
 	   $hotel_category = $formData['hotel_category'];
 	   
 	   if(!empty($formData['assign']))           // Check if task assigned or not

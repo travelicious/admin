@@ -22,7 +22,7 @@ if(!empty($message))
           </div>
         </div>
         <div class="box-body">
-          <form action="<?php echo base_url('admin/superAdmin/create-task'); ?>" method="post"> 
+          <form action="<?php echo base_url('admin/superAdmin/create-task'); ?>" onsubmit="submitForm(event)" method="post"> 
           
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label"></label>
@@ -49,6 +49,7 @@ if(!empty($message))
 <label for="name" class="col-xs-1 col-form-label">Country</label>
 <div class="col-xs-4">
   <select name="country" id="countries">
+   <option value="Select Country">Select Country</option>
   </select>
 </div>
 </div>
@@ -172,8 +173,8 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Hotel Category</label>
 <div class="col-xs-4">
-<select name="hotel_category">
- 
+<select name="hotel_category" id="hotel_category">
+ <option value="Select Hotel Category">Select Hotel Category</option>
  <option value="3Star" <?php echo (!empty($hotel_category) && $hotel_category == '3Star'?'selected':null); ?> >3 Star</option>
  <option value="4Star" <?php echo (!empty($hotel_category) && $hotel_category == '4Star'?'selected':null); ?> >4 Star</option>
  <option value="5Star" <?php echo (!empty($hotel_category) && $hotel_category == '5Star'?'selected':null); ?> >5 Star</option>
@@ -186,6 +187,7 @@ for(i=0; i<countries.length; i++)
 <label for="domain" class="col-xs-1 col-form-label">Domain</label>
 <div class="col-xs-4">
 <select name="domain" id="domain">
+<option value="Select Domain">Select Domain</option>
 </select>
 </div>
 </div>
@@ -223,8 +225,8 @@ for(i=0; i<domain.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Lead Source</label>
 <div class="col-xs-4">
-<select name="source" class="form-control" required="true" value="<?php echo (!empty($source)?$source:''); ?>"/>
-  <option>Please Select Source</option>
+<select name="source" id="source" class="form-control" required="true" value="<?php echo (!empty($source)?$source:''); ?>"/>
+  <option value="Select Source">Select Source</option>
   <option value="adword" <?php echo (!empty($source) && ($source == 'adword')?'selected':null); ?> >Adword</option>
   <option value="facebook" <?php echo (!empty($source) && ($source == 'facebook')?'selected':null); ?> >Facebook</option>
 </select>
@@ -243,8 +245,6 @@ for(i=0; i<domain.length; i++)
   if(empty($edit_task))
   {
 ?>
-<h5 style="color:red">Tick Checkbox If You Want To Assigned Task To Employee OR Untick Otherwise</h5>
-<input type="checkbox" name="assign" value="true"/>
 <label>Assign to</label>&nbsp;
 <input type="radio" name="assignTo" value="manager" onchange="showEmployeeList(event, this)"/>&nbsp;
 Manager
