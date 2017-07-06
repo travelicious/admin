@@ -134,7 +134,7 @@
     <!-- /.box-footer -->
 
 
-
+<?php if ($_SESSION['logged_in']['uid'] == 'adm') { ?>
     <h2> This is for private comment</h2>
     <div class="box-footer box-comments"  id="comment_div_post" style=" height:17em; width:64.5em; overflow: auto; box-shadow:  inset 0px 0px 4px #000000;">
         <div class="box-comment">
@@ -190,7 +190,7 @@
         </form>
     </div>
 
-
+<?php  }?>
 
 
 
@@ -215,7 +215,7 @@
                 </div>
 
 
-
+                 <?php if ($_SESSION['logged_in']['uid'] == 'adm') { ?>
                 <button type="submit" class="btn btn-default btn-info" onclick="show_datepicker_pvt();">Follow-Up (Private)</button></br></br>
                 <div class="form-group col-md-12" id="datepicker_block_pvt" style="display: none;">
                     </br>
@@ -224,7 +224,7 @@
                         <input type="text" class="form-control" name="pvt_followup" value="" id="followup"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd"  >
                     </form>
                 </div>
-
+                  <?php }  ?>
                 <button type="submit" class="btn btn-default btn-success" onclick="finishedModel();">Completed</button></br></br>
                 <button type="submit" class="btn btn-default btn-warning" onclick="postponedModel();">Postponed</button></br></br>
                 <button type="submit" class="btn btn-default btn-danger" onclick="cancelModel();">Cancel</button></br></br>
