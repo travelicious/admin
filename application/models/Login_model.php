@@ -5,7 +5,7 @@
 class Login_model extends CI_Model {
 
     public function login_check($username, $password) {
-         $pass = md5($password);
+         $pass = $password;
         $user_data = $this->db->query("select * from tbl_user where email = '$username' and password  = '$pass'")->first_row();
         return $user_data;
     }

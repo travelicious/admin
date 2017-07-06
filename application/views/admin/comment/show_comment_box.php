@@ -32,7 +32,7 @@
                         <th class="row">Destination<td class="row"><?php echo $indv_custmr->destination ?></td>
                     </tr>
                     <tr>
-                        <th class="row">Domain<td class="row"><a href="<?php echo $indv_custmr->domain ?>" target="__blank"><?php echo $indv_custmr->domain ?></a></td>
+                        <th class="row">Domain<td class="row"><a href="<?php echo $indv_custmr->domain ?>" target="__blank"><?php echo $indv_custmr->domain ?></a></td></th>
                     </tr>
                     <tr>
                         <th class="row">Customer Requirement<td class="row"><?php echo $indv_custmr->customer_requirement ?></td>
