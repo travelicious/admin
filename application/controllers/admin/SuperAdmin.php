@@ -37,12 +37,11 @@ class SuperAdmin extends BackendController
        $customer_requirement = $formData['customer_requirement'];  
        $arrival_date = $formData['arrival_date'];  
        $duration = $formData['duration'];	   
-       $no_of_adults = $formData['no_of_adults'];
-	   $no_of_kids = $formData['no_of_kids'];
+       $no_of_adults = intval($formData['no_of_adults']);
+	   $no_of_kids = intval($formData['no_of_kids']);
 	   $hotel_category = $formData['hotel_category'];
 	   
-	   if(!empty($formData['assign']))           // Check if task assigned or not
-	   {
+	  
 	     if(empty($formData['managerList']) && !empty($formData['executiveList'])) 
 		 {
 		   $employeeId = $formData['executiveList']; 	 
@@ -53,10 +52,10 @@ class SuperAdmin extends BackendController
 			$employeeId = $formData['managerList']; 
 			$flag = true;
 		 }
-	   }
+	   
 	   if($flag == true)
 	   {
-         $data = ['name' => $name, 'email' => $email, 'country' => $country, 
+         $data1 = ['name' => $name, 'email' => $email, 'country' => $country, 
 		          'phone' => $phone,'destination' => $destination,'domain' => $domain, 
 		          'source' => $source, 'assign_to' => $employeeId, 'customer_requirement' => $customer_requirement, 
 				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $no_of_adults, 
@@ -64,7 +63,7 @@ class SuperAdmin extends BackendController
 	   }
 	   else
 	   {
-		 $data = ['name' => $name, 'email' => $email, 
+		 $data1 = ['name' => $name, 'email' => $email, 
 		          'country' => $country, 'phone' => $phone,'destination' => $destination, 
 				  'domain' => $domain, 'source' => $source, 'customer_requirement' => $customer_requirement,
 				  'arrival_date' => $arrival_date, 'duration' => $duration, 'no_of_adults' => $no_of_adults, 
@@ -72,7 +71,7 @@ class SuperAdmin extends BackendController
 	   }
 	   if(!empty($formData['id']))        // update data in customer Table
 	   {
-		 if($this->db->update('customer', $data, array('id' => $formData['id'])))
+		 if($this->db->update('customer', $data1, array('id' => $formData['id'])))
 		 {
 		   $this->session->set_flashdata('updateSuccessMessage', 'Task successfully Updated');
            redirect('admin/superadmin/view-task');		 
@@ -80,7 +79,7 @@ class SuperAdmin extends BackendController
 	   }
 	   else                           // Insert data in customer table
 	   {
-		 if($this->db->insert('customer', $data))   
+		 if($this->db->insert('customer', $data1))   
 	     {
 		   redirect('admin/superadmin/view_task');		  	 
 		 }
@@ -287,6 +286,7 @@ public function employee_detail($id) {
         $data['page_title'] = 'Employee Details';
         $data['breadcrumb'] = 'Employee Details';
         $data['main_content'] = 'admin/superAdmin/employee_detail';
+		$data['emp_id'] = $id;
         
         $data["fetch_notification"] = $this->Admin->fetch_notification();
         $this->load->view('admin/layouts/home', $data);
@@ -304,15 +304,11 @@ public function employee_detail($id) {
         $email = $_POST["email"];
         $contact = $_POST["contact"];
        // $password = $_POST["password"];
-        $usertype = $_POST["user_type"];
+       // $usertype = $_POST["user_type"];
         $address = $_POST["address"];
        
-       if ($usertype =="") {
-        echo "string";exit;
-          $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
-          }else{
-       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , user_type = '$usertype' , address = '$address'  where id = '".$id."'");
-   }
+       
+       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
         redirect('admin/superAdmin/view_employee');
     }
 
@@ -423,8 +419,8 @@ public function employee_detail($id) {
     /*
 	  Created by Shahnawaz
 	*/
-    public function customer_by_date_list($date_str) {
-        $this->load->helper('date');
+    public function customer_by_date_list($empId=null, $date_str=null) {
+		$this->load->helper('date');
         $today_date = date('Y-m-d');
         $yesterday = date('Y-m-d', strtotime("-1 days"));
         $seven_days = date('Y-m-d', strtotime("-7 days"));
@@ -432,20 +428,52 @@ public function employee_detail($id) {
 
         $uid = $_SESSION['logged_in']['id'];
         if ($date_str == 'today') {
-            $data['customer_added_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
             
+			if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
 			$this->load->view('admin/superadmin/date_wise_customer_list', $data);
-        } else if ($date_str == 'yesterday') {
-            $data['customer_added_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$yesterday' and complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
-
+        } 
+		else if ($date_str == 'yesterday') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
             $this->load->view('admin/superadmin/date_wise_customer_list', $data);
-        } else if ($date_str == 'svn_days') {
-            $data['customer_added_list'] = $this->db->query("select * from customer where created_date between '$seven_days' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/superadmin/date_wise_customer_list', $data);
-        } else if ($date_str == 'fiftn_days') {
-            $data['customer_added_list'] = $this->db->query("select * from customer where created_date between '$fifteen_days' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-
-            $this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        } 
+		else if ($date_str == 'svn_days') 
+		{
+           if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            } 
+			$this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        } 
+		else if ($date_str == 'fiftn_days') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where Date(`created_date`) = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superadmin/date_wise_customer_list', $data);
         }
     }
 
@@ -462,11 +490,36 @@ public function employee_detail($id) {
 	/*
 	  Created by Shahnawaz
 	*/
-    public function customer_by_date() {
+    public function customer_by_date($empId = null) {
 
-        if ($this->input->post('date_to') != "" || $this->input->post('date_from') != "") {
-            $data['customer_added_list'] = $this->db->query("select * from customer where created_date between '" . $this->input->post('date_from') . "'  and '" . $this->input->post('date_to') . "' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
-            $this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        if ($this->input->post('date_to') != "" || $this->input->post('date_from') != "") 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = $empId and created_date between '" . $this->input->post('date_from') . "'  and '" . $this->input->post('date_to') . "' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result(); 	
+			}
+			else
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where created_date between '" . $this->input->post('date_from') . "'  and '" . $this->input->post('date_to') . "' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superadmin/date_wise_customer_list', $data);
+        }
+    }
+	
+	
+	 public function custom_srch_next_followup($empId = null) {
+
+        if ($this->input->post('date_to') != "" || $this->input->post('date_from') != "") 
+		{
+            if(!empty($empId))
+			{
+			  $data['fllow_up_date_list'] = $this->db->query("select * from customer where next_followup between '" . $this->input->post('date_from') . "'  and '" . $this->input->post('date_to') . "' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			else
+			{
+			  $data['fllow_up_date_list'] = $this->db->query("select * from customer where assign_to = $empId and next_followup between '" . $this->input->post('date_from') . "'  and '" . $this->input->post('date_to') . "' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
         }
     }
 	
@@ -475,7 +528,7 @@ public function employee_detail($id) {
 	/*
 	  Created by Shahnawaz
 	*/
-     public function date_wise_followup($follow_up) {
+     public function date_wise_followup($empId = null, $follow_up = null) {
         $this->load->helper('date');
         $today_date = date('Y-m-d');
         $yesterday = date('Y-m-d', strtotime("-1 days"));
@@ -487,26 +540,86 @@ public function employee_detail($id) {
 
         $uid = $_SESSION['logged_in']['id'];
         if ($follow_up == 'today_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
-        } else if ($follow_up == 'yesterday_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$yesterday'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
-        } else if ($follow_up == 'svn_days_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where next_followup between '$seven_days' and '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
-        } else if ($follow_up == 'fiftn_days_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where next_followup between '$fifteen_days' and '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
-        } else if ($follow_up == 'next_svn_days_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where next_followup between '$today_date' and '$next_seven_days' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
-        } else if ($follow_up == 'next_fiftn_days_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where next_followup between '$today_date' and '$next_fifteen_days' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
-        } else if ($follow_up == 'next_thirty_days_followup') {
-            $data['fllow_up_date_list'] = $this->db->query("select * from customer where next_followup between '$today_date' and '$next_thirty_days' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc ")->result();
-            $this->load->view('admin/executive/date_wise_customer_list_for_next_followup', $data);
+			if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
+        } 
+		else if ($follow_up == 'yesterday_followup') {
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
+        } 
+		else if ($follow_up == 'svn_days_followup') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
+        }
+		else if ($follow_up == 'fiftn_days_followup') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
+        } 
+		else if ($follow_up == 'next_svn_days_followup') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
+        } 
+		else if ($follow_up == 'next_fiftn_days_followup') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
+        } 
+		else if ($follow_up == 'next_thirty_days_followup') 
+		{
+            if(!empty($empId))
+			{
+			  $data['customer_added_list'] = $this->db->query("select * from customer where assign_to = '$empId' and next_followup = '$today_date' and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();	
+			}
+			else
+			{
+             $data['fllow_up_date_list'] = $this->db->query("select * from customer where Date(`next_followup`) = '$today_date'and  complete_status = 0 and  postpond_status = 0 and  cancel_status = 0 and   flag = 1 order by id desc")->result();
+            }
+			$this->load->view('admin/superAdmin/date_wise_customer_list_for_next_followup', $data);
         }
     }
     
