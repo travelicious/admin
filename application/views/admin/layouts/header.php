@@ -11,7 +11,7 @@
     function checktime(){
     var d = new Date();
     if(d.getHours() == 12)
-    {
+  {
       notification();   
     }    
     }

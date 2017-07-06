@@ -304,15 +304,11 @@ public function employee_detail($id) {
         $email = $_POST["email"];
         $contact = $_POST["contact"];
        // $password = $_POST["password"];
-        $usertype = $_POST["user_type"];
+       // $usertype = $_POST["user_type"];
         $address = $_POST["address"];
        
-       if ($usertype =="") {
-        echo "string";exit;
-          $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
-          }else{
-       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , user_type = '$usertype' , address = '$address'  where id = '".$id."'");
-   }
+       
+       $queryUpdate = $this->db->query("UPDATE tbl_user SET name = '$name' , email = '$email' , contact = '$contact' , address = '$address'  where id = '".$id."'");
         redirect('admin/superAdmin/view_employee');
     }
 
