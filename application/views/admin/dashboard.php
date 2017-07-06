@@ -298,7 +298,7 @@
                             
 
                             <div class="tools">
-                                 <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>"><i class="fa fa-trash-o"></i></a>
+                                 <a href="<?php echo base_url().'/admin/dashboard/delete/'.$value->id;?>" onclick="return confirm('Are You Sure Do You Want To Delete')"><i class="fa fa-trash-o"></i></a>
                             </div>
                             <?php if($value->status == '1'){ ?>
                             <div class="tools">

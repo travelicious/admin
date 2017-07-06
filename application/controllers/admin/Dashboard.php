@@ -13,6 +13,7 @@ class Dashboard extends BackendController {
     function __construct() {
         parent::__construct();
         $this->load->model('admin/Admin');
+         $this->load->library("pagination");
          
     }
 
