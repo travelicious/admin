@@ -34,11 +34,8 @@ if(!empty($message))
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Name</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
-<input type="text" name="name" class="form-control"  value="<?php echo (!empty($name)?$name:''); ?>"/>
-=======
+
 <input type="text" name="name" class="form-control" value="<?php echo (!empty($name)?$name:''); ?>"/>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 </div>
 </div>
 
@@ -132,33 +129,21 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Phone</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
-<input type="text" name="phone" class="form-control"  value="<?php echo (!empty($phone)?$phone:''); ?>"/>
-=======
 <input type="text" name="phone" class="form-control" value="<?php echo (!empty($phone)?$phone:''); ?>"/>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 </div>
 </div>
 
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Destination</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
-<input type="text" name="destination" class="form-control"  value="<?php echo (!empty($destination)?$destination:''); ?>"/>
-=======
 <input type="text" name="destination" class="form-control" value="<?php echo (!empty($destination)?$destination:''); ?>"/>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 </div>
 </div>
 
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Arrival Date</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
 <input type="text" data-provide="datepicker" data-data-autoclose="true" data-date-format="yyyy-mm-dd" name="arrival_date" class="form-control"  value="<?php echo (!empty($arrival_date)?$arrival_date:''); ?>"/>
-=======
-<input type="text" data-provide="datepicker" data-data-autoclose="true" data-date-format="yyyy-mm-dd" name="arrival_date" class="form-control" value="<?php echo (!empty($arrival_date)?$arrival_date:''); ?>"/>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 </div>
 </div>
 
@@ -173,11 +158,7 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Adults</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
-<input type="text" name="no_of_adults" class="form-control"  value="<?php echo (!empty($no_of_adults)?$no_of_adults:''); ?>"/>
-=======
 <input type="text" name="no_of_adults" class="form-control" value="<?php echo (!empty($no_of_adults)?$no_of_adults:''); ?>"/>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 </div>
 </div>
 
@@ -185,11 +166,7 @@ for(i=0; i<countries.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Kids</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
-<input type="text" name="no_of_kids" class="form-control"  value="<?php echo (!empty($no_of_kids)?$no_of_kids:''); ?>"/>
-=======
 <input type="text" name="no_of_kids" class="form-control" value="<?php echo (!empty($no_of_kids)?$no_of_kids:''); ?>"/>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 </div>
 </div>
 
@@ -249,13 +226,9 @@ for(i=0; i<domain.length; i++)
 <div class="form-group row"> 
 <label for="name" class="col-xs-1 col-form-label">Lead Source</label>
 <div class="col-xs-4">
-<<<<<<< HEAD
-<select name="source" class="form-control"  value="<?php echo (!empty($source)?$source:''); ?>"/>
-  <option>Please Select Source</option>
-=======
+
 <select name="source" id="source" class="form-control" value="<?php echo (!empty($source)?$source:''); ?>"/>
   <option value="Select Source">Select Source</option>
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
   <option value="adword" <?php echo (!empty($source) && ($source == 'adword')?'selected':null); ?> >Adword</option>
   <option value="facebook" <?php echo (!empty($source) && ($source == 'facebook')?'selected':null); ?> >Facebook</option>
 </select>
@@ -271,11 +244,7 @@ for(i=0; i<domain.length; i++)
 
 
 
-<<<<<<< HEAD
-<h5 style="color:red">Tick Checkbox If You Want To Assigned Task To Employee OR Untick Otherwise</h5>
-<input type="checkbox" name="assign" value="true"/>
-=======
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
+
 <label>Assign to</label>&nbsp;
 <input type="radio" name="assignTo" value="manager" onchange="showEmployeeList(event, this)"/>&nbsp;
 Manager
@@ -312,10 +281,6 @@ Executive
    }	   
  ?>
 </select>
-<<<<<<< HEAD
-=======
-
->>>>>>> 344ca4ee7771e8e0c27121a4e03776bafdf1b3ab
 
 
 

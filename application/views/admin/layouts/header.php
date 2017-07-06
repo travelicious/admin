@@ -10,15 +10,9 @@
     var flag;
     function checktime(){
     var d = new Date();
-<<<<<<< HEAD
     if(d.getHours() == 20)
     {
-=======
-    if(d.getHours() == 12)
-  {
->>>>>>> 119eafdfc3f8e7b7245ea23c6a248aed5764f5ac
       notification();   
-    }    
     }
 
     function notification()
