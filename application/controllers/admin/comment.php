@@ -14,12 +14,15 @@ class Comment extends BackendController {
 	{
 
         $data['indv_custmr'] = $this->Comments_model->fetch_customer_by_id($id);
-
+        $allPvtComment = $this->Comments_model->getAllPvtComment($id);
         $allComment = $this->Comments_model->getAllComment($id);
         $noOfComment = $this->Comments_model->totalNoOfComment($id);
         if (!empty($allComment) && !empty($noOfComment)) {
             $data['allComment'] = $allComment;
             $data['noOfComment'] = $noOfComment;
+        }
+        if (!empty($allPvtComment)) {
+            $data['allPvtComment'] = $allPvtComment;
         }
         $data['page_title'] = 'Customer Details';
         $data['breadcrumb'] = 'Customer Details';
@@ -114,6 +117,41 @@ class Comment extends BackendController {
         $finished_comment_status = $this->db->insert('comments', $finished_comment);
         if($finished_comment_status){
             redirect("admin/executive");
+        }
+    }
+
+    function add_pvt_next_followup() {
+
+        $dates = $this->input->post('pvt_followup');
+        $followup_comment = array(
+            'task_id' => $this->input->post('task_id'),
+            'comments' => 'Next follow-up date:' . $dates,
+            'emp_id ' => $uid = $_SESSION['logged_in']['id'],
+        );
+
+        $insrt_ok = $this->db->insert('pvt_comments', $followup_comment);
+        $updt_ok = $this->db->query("update customer set  next_followup_pvt = '$dates' where id = " . $followup_comment['task_id'] . "");
+        redirect("admin/comment/showCommentBox/" . $followup_comment['task_id']);
+    }
+
+    //Created by Saket
+    public function savePvtComment() {
+        $uid = $_SESSION['logged_in']['id'];
+        if ($this->input->method() == 'post') {
+            $formData = $this->input->post();
+            if (!empty($formData) && !empty($formData['task_id']) && !empty($formData['comment']) && !empty($uid)) {
+                $this->load->helper('date');
+                $date = date('d-m-Y');
+                $taskId = $formData['task_id'];
+                $empId = $uid;
+                $comment = $formData['comment'];
+
+                $sql = "insert into pvt_comments(task_id, comments, emp_id) values($taskId, '$comment', $empId)";
+
+                if ($this->db->query($sql)) {
+                    redirect("admin/comment/showCommentBox/" . $taskId);
+                }
+            }
         }
     }
 

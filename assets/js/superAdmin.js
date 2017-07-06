@@ -13,3 +13,13 @@ function showEmployeeList(event, element)
     $("#executiveList").prop("selectedIndex", 0); 
   }
 }
+
+
+function submitForm(event)
+ {
+   if(document.getElementById('countries').value === '-----------------------------------------------' 
+   {
+     alert("Select your country");
+	 event.preventDefault();	 
+   }  
+ }

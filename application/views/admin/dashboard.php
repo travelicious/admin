@@ -286,7 +286,11 @@
                             <!-- checkbox -->
                             <input type="checkbox" value="">
                             <!-- todo text -->
-                            <span class="text"><?php echo $value->title;?></span>
+                            <?php if(strlen($value->title) >30 ) { ?>
+                            <span class="text"><?php echo substr($value->title, 0, 30).'...'?></span>
+                            <?php }else{  ?>
+                            <span class="text"><?php echo $value->title; ?></span>
+                            <?php  } ?>
                             <!-- Emphasis label -->
                             <small class="label label-danger"><i class="fa fa-clock-o"><?php echo $value->created_date;  ?></i> </small>
                             <small class="label label-danger"><i class="fa fa-frown-o"><?php echo $value->name;  ?></i> </small>

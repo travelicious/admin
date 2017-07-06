@@ -42,20 +42,21 @@
             
             <div class="form-group col-md-2">
                 <label>Custom Search By added date</label>
-                <button type="buttion" id="custom_srch" class="btn btn-default btn-primary">Custom Search</button>
+                <button type="buttion" id="custom_srch_customer" class="btn btn-default btn-primary">Custom Search</button>
+            </div>
+			
+			<div class="form-group col-md-2">
+                <label>Custom Search for next follow Up</label>
+                <button type="buttion" id="custom_srch_next_follow_up" class="btn btn-default btn-primary">Custom Search</button>
             </div>
             
 
-        <div class="box-tools" style="display:;" id="show_custom_srch">
-
-
-            </br>
-            </br>
-            <div class="form-group">
+			
+		 <div class="form-group">
 
             <div class="form-group col-md-12">
 
-                <form  id="date_wise_search" id="date_wise_search">
+                <form id="show_custom_srch_for_customer" style="display:none">
                     <div class="col-md-5">
                         <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
                     </div>
@@ -67,8 +68,28 @@
                     </div>
                 </form>
             </div>
-		</div>
+		</div>	
+		
+		<div class="form-group">
 
+            <div class="form-group col-md-12">
+
+                <form id="show_custom_srch_for_next_follow_up" style="display:none">
+                    <div class="col-md-5">
+                        <input type="text" required class="form-control" name="date_from" value="" id="date_from"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" required class="form-control" name="date_to" value="" id="date_to"  placeholder="Select Date" data-provide="datepicker" data-date-autoclose="true" data-date-format="yyyy-mm-dd">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" name="submit" class="btn btn-default btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+		</div>	
+			
+			
+        <div class="box-tools">
 
         <div class="box-body" id="default_list" >
 
@@ -230,7 +251,7 @@
  <script>
         $(function () {
 
-            $("#date_wise_search").submit(function (event) {
+            $("#show_custom_srch_for_customer").submit(function (event) {
 
                 //            if ($(this).valid()) {
                 event.preventDefault();
@@ -253,6 +274,34 @@
             });
             //            }
         });
+		
+		
+		    $(function () {
+
+            $("#show_custom_srch_for_next_follow_up").submit(function (event) {
+
+                //            if ($(this).valid()) {
+                event.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo base_url("admin/superadmin/follow_up_by_date"); ?>",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#default_list").hide();
+                        $("#date_wise_list").html(response);
+
+                    }
+
+                });
+            });
+            //            }
+        });
+
 
 
         $('#date_wise_search_list').change(function () {
@@ -285,7 +334,16 @@
         });
 
         
-        $("#custom_srch").click(function () {
-            $("#show_custom_srch").toggle();
+        $("#custom_srch_customer").click(function () {
+            $("#show_custom_srch_for_customer").toggle();
+			$("#show_custom_srch_for_next_follow_up").hide();
+			
         });
+		
+		$("#custom_srch_next_follow_up").click(function () {
+            $("#show_custom_srch_for_customer").hide();
+			$("#show_custom_srch_for_next_follow_up").toggle();
+			
+        });
+		
     </script>
